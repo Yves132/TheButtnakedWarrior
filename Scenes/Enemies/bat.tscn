@@ -1,0 +1,143 @@
+[gd_scene load_steps=20 format=3 uid="uid://0k3s2k71kem1"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/bat.gd" id="1_gft11"]
+[ext_resource type="Texture2D" uid="uid://78redeedx276" path="res://Sprites/Enemies/Bat/Bat1.png" id="2_7ajtk"]
+[ext_resource type="Texture2D" uid="uid://dfyni05qharks" path="res://Sprites/Enemies/Bat/BatBurnt1.png" id="2_s6ai8"]
+[ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="3_cnydw"]
+[ext_resource type="Texture2D" uid="uid://dlambwpqvyi2m" path="res://Sprites/Enemies/Bat/bat2.png" id="3_i0kh1"]
+[ext_resource type="Texture2D" uid="uid://ccnrn52k3bglm" path="res://Sprites/Enemies/Bat/BatBurnt3.png" id="4_pmxja"]
+[ext_resource type="Texture2D" uid="uid://ckclv1eyd2jh0" path="res://Sprites/Enemies/Bat/bat3.png" id="4_vo6ej"]
+[ext_resource type="Texture2D" uid="uid://dltia78uomugp" path="res://Sprites/Enemies/Bat/BatPlunging.png" id="5_2ouqq"]
+[ext_resource type="Texture2D" uid="uid://2nhdj78nsxkd" path="res://Sprites/Enemies/Bat/BatBurnt4.png" id="5_jntjm"]
+[ext_resource type="Texture2D" uid="uid://2vk18mxda46l" path="res://Sprites/Enemies/Bat/BatBurnt5.png" id="6_68mc6"]
+[ext_resource type="Texture2D" uid="uid://6ipo2o7k007j" path="res://Sprites/Enemies/Bat/BatBurnt6.png" id="7_q71u6"]
+[ext_resource type="Texture2D" uid="uid://d1dqopducj0bs" path="res://Sprites/Enemies/Bat/BatSliced.png" id="12_tha54"]
+[ext_resource type="Texture2D" uid="uid://cah5utj2c28o" path="res://Sprites/Enemies/Bat/BatSliced2.png" id="12_wus1p"]
+[ext_resource type="Texture2D" uid="uid://dy768rewef2kg" path="res://Sprites/Drops/BatWing.png" id="14_afumt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7m201"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s6ai8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pmxja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jntjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_68mc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q71u6")
+}],
+"loop": false,
+"name": &"Burnt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7ajtk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i0kh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vo6ej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i0kh1")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2ouqq")
+}],
+"loop": false,
+"name": &"Plunging",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_tha54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wus1p")
+}],
+"loop": false,
+"name": &"Sliced",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vjtcr"]
+radius = 3.23329
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sem20"]
+size = Vector2(48.2659, 621)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3li4"]
+radius = 4.21964
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jkr3i"]
+radius = 5.60802
+
+[node name="Bat" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 1186
+script = ExtResource("1_gft11")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.96046e-08, -2.38419e-07)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_7m201")
+animation = &"Fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vjtcr")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_cnydw")]
+offset_top = -9.0
+offset_bottom = -9.0
+scale = Vector2(0.07, 0.07)
+
+[node name="SpotBox" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpotBox"]
+position = Vector2(0.969849, 300.5)
+shape = SubResource("RectangleShape2D_sem20")
+debug_color = Color(0.493788, 0.583269, 0, 0.42)
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_o3li4")
+debug_color = Color(0.996909, 0, 0.177246, 0.42)
+
+[node name="HitDetector" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 1056
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
+shape = SubResource("CircleShape2D_jkr3i")
+debug_color = Color(0.254272, 0.634906, 0, 0.42)
+
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Drop" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("14_afumt")
+
+[connection signal="body_entered" from="SpotBox" to="." method="_on_spot_box_body_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="area_entered" from="HitDetector" to="." method="_on_hit_detector_area_entered"]
+[connection signal="body_entered" from="HitDetector" to="." method="_on_hit_detector_body_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

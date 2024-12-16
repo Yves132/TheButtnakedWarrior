@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjoo2rga8aolh"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory/InventoryItem/inventory_item.gd" id="1_35kt1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akg8c"]
+size = Vector2(79.9895, 24.6325)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rb8t1"]
+size = Vector2(81.6023, 24.8031)
+
+[node name="InventoryItem" type="Node2D" groups=["Items"]]
+position = Vector2(0, 1428.28)
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_35kt1")
+is_on_hotbar = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(7.92361, 0.0218925)
+shape = SubResource("RectangleShape2D_akg8c")
+
+[node name="FloorChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 130
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorChecker"]
+position = Vector2(7.88729, 0.419794)
+shape = SubResource("RectangleShape2D_rb8t1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="FloorChecker" to="." method="_on_floor_checker_body_entered"]

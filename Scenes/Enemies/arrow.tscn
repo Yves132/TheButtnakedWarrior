@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgnlgmb1wpndq"]
+
+[ext_resource type="Texture2D" uid="uid://dajohd22nxj4s" path="res://Sprites/Enemies/GoblinArcher/Arrow.png" id="1_ockvq"]
+[ext_resource type="Script" path="res://Scripts/Enemies/arrow.gd" id="1_xn1x3"]
+[ext_resource type="Texture2D" uid="uid://vpdc1pl1dxvm" path="res://Sprites/Enemies/GoblinArcher/ArrowBroken1.png" id="2_ha3bp"]
+[ext_resource type="Texture2D" uid="uid://di7tv4d4ioow7" path="res://Sprites/Enemies/GoblinArcher/ArrowBroken3.png" id="4_trkgj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6e2w4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ha3bp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_trkgj")
+}],
+"loop": false,
+"name": &"Break",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ockvq")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyks6"]
+size = Vector2(108.752, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0eabk"]
+size = Vector2(196.738, 16.1933)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4cpu"]
+size = Vector2(159.852, 20)
+
+[node name="Arrow" type="CharacterBody2D"]
+scale = Vector2(0.1, 0.1)
+collision_layer = 0
+collision_mask = 1027
+script = ExtResource("1_xn1x3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6e2w4")
+animation = &"Fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-25.6239, 7.99999)
+shape = SubResource("RectangleShape2D_uyks6")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.5686, 8.09664)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_0eabk")
+debug_color = Color(0.983961, 0, 0.348118, 0.42)
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(0.244298, 7.99999)
+shape = SubResource("RectangleShape2D_n4cpu")
+debug_color = Color(2.69532e-06, 0.644433, 0.28099, 0.42)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

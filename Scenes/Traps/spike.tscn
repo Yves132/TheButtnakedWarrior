@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://didxqqfpgikq4"]
+
+[ext_resource type="Script" path="res://Scripts/Traps/spike.gd" id="1_st1xr"]
+[ext_resource type="Texture2D" uid="uid://dua4p0a2b4tkf" path="res://Sprites/Traps/Spikes.png" id="2_hsv0k"]
+
+[node name="Spike" type="Node2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_st1xr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.3113e-06, 0.533331)
+scale = Vector2(0.208333, 0.204167)
+texture = ExtResource("2_hsv0k")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 256
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(0, 3.33333)
+scale = Vector2(0.94733, 1.82912)
+polygon = PackedVector2Array(-26.4174, 12.7281, -26.3899, 11.8454, -19.2976, 8.25762, -15.8889, 8.25762, -8.79665, 11.8312, -1.73184, 8.25762, 1.70435, 8.25762, 8.76916, 11.8169, 15.8065, 8.25762, 19.3251, 8.25762, 26.3899, 11.8169, 26.3899, 12.7708)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

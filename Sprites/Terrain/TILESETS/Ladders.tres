@@ -1,0 +1,22 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b2iqnhd33178a"]
+
+[ext_resource type="Texture2D" uid="uid://bxnd45nbrmb7b" path="res://Sprites/Stairs/LadderTileSet.png" id="1_pl1qk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ty7si"]
+texture = ExtResource("1_pl1qk")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, -8, -1, 8, 8, 8, 8, -8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 1, 8, 1, -8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, -8, -1, 0, 8, 0, 8, -8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -8, 1, 0, -8, 0, -8, -8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, -1, 0, -1, 0, -1, 8, 8, 8, 8, 0)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, 0, 1, 8, -8, 8, -8, 0)
+
+[resource]
+physics_layer_0/collision_layer = 64
+sources/1 = SubResource("TileSetAtlasSource_ty7si")

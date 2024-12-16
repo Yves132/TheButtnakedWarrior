@@ -1,0 +1,138 @@
+[gd_scene load_steps=16 format=3 uid="uid://yomc1b05tjfp"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/frog.gd" id="1_w6b52"]
+[ext_resource type="Texture2D" uid="uid://vwxwlpbwgrjb" path="res://Sprites/Enemies/Frog/Frog1.png" id="2_qwfq2"]
+[ext_resource type="Texture2D" uid="uid://dffung0x8m2tk" path="res://Sprites/Enemies/Frog/FrogBurnt1.png" id="2_y6pi1"]
+[ext_resource type="Texture2D" uid="uid://0puuo803nxry" path="res://Sprites/Enemies/Frog/FrogBurnt2.png" id="3_6tho6"]
+[ext_resource type="Texture2D" uid="uid://cruouqajagnle" path="res://Sprites/Enemies/Frog/Frog2.png" id="3_l58fq"]
+[ext_resource type="Texture2D" uid="uid://651eotp2lxco" path="res://Sprites/Enemies/Frog/FrogBurnt3.png" id="4_incu3"]
+[ext_resource type="Texture2D" uid="uid://6j2cbwmr8661" path="res://Sprites/Enemies/Frog/FrogBurnt4.png" id="5_dn4hr"]
+[ext_resource type="Texture2D" uid="uid://dtp7qu4ivwxf3" path="res://Sprites/Enemies/Frog/FrogCrushed.png" id="6_8hv4p"]
+[ext_resource type="Texture2D" uid="uid://dykusqvo7itsj" path="res://Sprites/Enemies/Frog/FrogSliced1.png" id="8_g7ykx"]
+[ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="10_2kta1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lsxjw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y6pi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6tho6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_incu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dn4hr")
+}],
+"loop": false,
+"name": &"Burnt",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_8hv4p")
+}],
+"loop": false,
+"name": &"Crushed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qwfq2")
+}],
+"loop": false,
+"name": &"Floor",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_l58fq")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_g7ykx")
+}],
+"loop": false,
+"name": &"Sliced",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_niekg"]
+size = Vector2(16.06, 8.04764)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8m4o2"]
+size = Vector2(16.06, 8.00658)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxutk"]
+size = Vector2(16.6743, 8.68164)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtnre"]
+size = Vector2(13.5442, 2.15544)
+
+[node name="Frog" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 162
+script = ExtResource("1_w6b52")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.04682, -9.67224)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_lsxjw")
+animation = &"Burnt"
+
+[node name="HealthBar" parent="." instance=ExtResource("10_2kta1")]
+offset_left = -2.30704
+offset_top = -11.5505
+offset_right = -2.30704
+offset_bottom = -11.5505
+scale = Vector2(0.07, 0.07)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.415377, -4.02382)
+shape = SubResource("RectangleShape2D_niekg")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-0.368555, -4.04435)
+shape = SubResource("RectangleShape2D_8m4o2")
+debug_color = Color(0.968045, 0, 0.470392, 0.42)
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="HitDetector" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 1056
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
+position = Vector2(-0.409256, -4.01218)
+shape = SubResource("RectangleShape2D_hxutk")
+debug_color = Color(0.306898, 0.627206, 1.92523e-07, 0.42)
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="TopBox" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBox"]
+position = Vector2(-0.550789, -7.83455)
+shape = SubResource("RectangleShape2D_vtnre")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="area_entered" from="HitDetector" to="." method="_on_hit_detector_area_entered"]
+[connection signal="body_entered" from="HitDetector" to="." method="_on_hit_detector_body_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="body_entered" from="TopBox" to="." method="_on_top_box_body_entered"]

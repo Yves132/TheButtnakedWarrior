@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://ea2yhh1t3h1b"]
+
+[ext_resource type="Texture2D" uid="uid://b4xg31a7o23ut" path="res://Sprites/Player/KnightPuffWallJump1.png" id="1_3avw1"]
+[ext_resource type="Texture2D" uid="uid://c4efomaywh3pv" path="res://Sprites/Player/KnightPuffWallJump2.png" id="2_hcnu4"]
+[ext_resource type="Texture2D" uid="uid://da4y5knfxn3kh" path="res://Sprites/Player/KnightPuffWallJump3.png" id="3_o5ygu"]
+[ext_resource type="Script" path="res://Scripts/Particles/dustWallJump.gd" id="4_p3umt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mvq0j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3avw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hcnu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o5ygu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_flwt3"]
+resource_name = "DustWallJump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a0rm3"]
+_data = {
+"DustWallJump": SubResource("Animation_flwt3")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_mvq0j")
+autoplay = "default"
+script = ExtResource("4_p3umt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a0rm3")
+}
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

@@ -1,0 +1,521 @@
+[gd_scene load_steps=6 format=3 uid="uid://dry5x0ua8f06g"]
+
+[ext_resource type="Texture2D" uid="uid://dqt0d8k4vgukv" path="res://Sprites/UI/LevelupScreen/DeathScreenBackground.webp" id="1_0x6mh"]
+[ext_resource type="Script" path="res://Scripts/LevelUp/levelup_screen.gd" id="1_qutfj"]
+[ext_resource type="Texture2D" uid="uid://3u0oqea80mwq" path="res://Sprites/UI/LevelupScreen/WarriorSkill.png" id="2_yj2ho"]
+[ext_resource type="Texture2D" uid="uid://ck71g3biviuo8" path="res://Sprites/UI/PerkLine.png" id="3_0bwsq"]
+[ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="3_vf5j5"]
+
+[node name="LevelupScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qutfj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -144.163
+offset_top = -138.823
+offset_right = 1394.84
+offset_bottom = 888.177
+texture = ExtResource("1_0x6mh")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="WHLine1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(494.34, 233.234)
+rotation = 1.309
+scale = Vector2(0.1, 0.164145)
+texture = ExtResource("3_0bwsq")
+
+[node name="SMLine" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(318.721, 354.83)
+rotation = 0.523598
+scale = Vector2(0.1, 0.124146)
+texture = ExtResource("3_0bwsq")
+
+[node name="QSLine" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(975.873, 350.663)
+rotation = -0.523598
+scale = Vector2(0.1, 0.124146)
+texture = ExtResource("3_0bwsq")
+
+[node name="FCLine" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(331.802, 546.292)
+rotation = -0.523598
+scale = Vector2(0.1, 0.124146)
+texture = ExtResource("3_0bwsq")
+
+[node name="DCLine1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(528.452, 589.766)
+rotation = 1.309
+scale = Vector2(0.1, 0.157)
+texture = ExtResource("3_0bwsq")
+
+[node name="DCLine2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(761.536, 592.144)
+rotation = 1.83259
+scale = Vector2(0.11, 0.173)
+texture = ExtResource("3_0bwsq")
+
+[node name="FWLine" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(956.325, 543.076)
+rotation = 0.523598
+scale = Vector2(0.1, 0.124146)
+texture = ExtResource("3_0bwsq")
+
+[node name="WHLine3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(642.99, 236.802)
+scale = Vector2(0.1, 0.164145)
+texture = ExtResource("3_0bwsq")
+
+[node name="WMLine" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(641.99, 454.689)
+scale = Vector2(-0.103267, 0.0850848)
+texture = ExtResource("3_0bwsq")
+
+[node name="WHLine2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(798.839, 231.98)
+rotation = 1.83259
+scale = Vector2(0.1, 0.164145)
+texture = ExtResource("3_0bwsq")
+
+[node name="WarriorHeart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 32.0
+offset_right = 776.0
+offset_bottom = 296.0
+tooltip_text = "Increases your health by 1 for every perk point spent.
+Max health : 10"
+icon = ExtResource("2_yj2ho")
+flat = true
+
+[node name="Perk Name" type="Label" parent="WarriorHeart"]
+layout_mode = 0
+offset_left = 15.8919
+offset_top = 9.83248
+offset_right = 246.892
+offset_bottom = 32.8325
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "Warrior's Heart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Perk Level" type="Label" parent="WarriorHeart"]
+layout_mode = 0
+offset_left = 53.1875
+offset_top = 240.22
+offset_right = 93.1875
+offset_bottom = 263.22
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WarriorMight" type="Button" parent="."]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 300.0
+offset_right = 840.0
+offset_bottom = 564.0
+scale = Vector2(0.5, 0.5)
+tooltip_text = "Increase your melee DMG by 1 for every perk point spent"
+disabled = true
+icon = ExtResource("2_yj2ho")
+flat = true
+
+[node name="Perk Name" type="Label" parent="WarriorMight"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = 247.0
+offset_bottom = 33.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "Warrior's Might"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Perk Level" type="Label" parent="WarriorMight"]
+layout_mode = 0
+offset_left = 47.7855
+offset_top = 240.22
+offset_right = 87.7855
+offset_bottom = 263.22
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuickStep" type="Button" parent="."]
+layout_mode = 0
+offset_left = 858.387
+offset_top = 203.005
+offset_right = 1122.39
+offset_bottom = 467.005
+scale = Vector2(0.5, 0.5)
+tooltip_text = "Increase the number of dashes for every perk point spent.
+Max Dashes : 5"
+disabled = true
+icon = ExtResource("2_yj2ho")
+flat = true
+
+[node name="Perk Name" type="Label" parent="QuickStep"]
+layout_mode = 0
+offset_left = 15.8919
+offset_top = 9.83248
+offset_right = 246.892
+offset_bottom = 32.8325
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "Quick Step"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Perk Level" type="Label" parent="QuickStep"]
+layout_mode = 0
+offset_left = 61.7855
+offset_top = 240.22
+offset_right = 101.785
+offset_bottom = 263.22
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FlowingWater" type="Button" parent="."]
+layout_mode = 0
+offset_left = 939.637
+offset_top = 383.74
+offset_right = 1203.64
+offset_bottom = 647.74
+scale = Vector2(0.5, 0.5)
+tooltip_text = "Increase your dodge chance for every perk point spent.
+Dodging negates damage.
+Max Dodge Chanche : 30%"
+disabled = true
+icon = ExtResource("2_yj2ho")
+flat = true
+
+[node name="Perk Name" type="Label" parent="FlowingWater"]
+layout_mode = 0
+offset_left = 15.8919
+offset_top = 9.83248
+offset_right = 246.892
+offset_bottom = 32.8325
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "Flowing Water"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Perk Level" type="Label" parent="FlowingWater"]
+layout_mode = 0
+offset_left = -8.2145
+offset_top = 240.22
+offset_right = 31.785
+offset_bottom = 263.22
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeepCuts" type="Button" parent="."]
+layout_mode = 0
+offset_left = 575.722
+offset_top = 477.212
+offset_right = 839.725
+offset_bottom = 741.212
+scale = Vector2(0.5, 0.5)
+tooltip_text = "Increase your Critical Chanche for every perk point spent.
+Critical Hits do Double Damage.
+Max Critical Chanche : 30%"
+disabled = true
+icon = ExtResource("2_yj2ho")
+flat = true
+
+[node name="Perk Name" type="Label" parent="DeepCuts"]
+layout_mode = 0
+offset_left = 15.8919
+offset_top = 9.83248
+offset_right = 246.892
+offset_bottom = 32.8325
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "Deep Cuts"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Perk Level" type="Label" parent="DeepCuts"]
+layout_mode = 0
+offset_left = -8.2145
+offset_top = 240.22
+offset_right = 31.785
+offset_bottom = 263.22
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Waterfall" type="Button" parent="."]
+layout_mode = 0
+offset_left = 819.195
+offset_top = 559.6
+offset_right = 1083.2
+offset_bottom = 823.6
+scale = Vector2(0.5, 0.5)
+tooltip_text = "if you cut the enemy while dashing deal 4 x DMG"
+disabled = true
+icon = ExtResource("2_yj2ho")
+flat = true
+
+[node name="Perk Name" type="Label" parent="Waterfall"]
+layout_mode = 0
+offset_left = 15.8919
+offset_top = 9.83248
+offset_right = 246.892
+offset_bottom = 32.8325
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "Waterfall"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Perk Level" type="Label" parent="Waterfall"]
+layout_mode = 0
+offset_left = 81.7855
+offset_top = 240.22
+offset_right = 121.785
+offset_bottom = 263.22
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeepBurn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 337.7
+offset_top = 561.033
+offset_right = 601.703
+offset_bottom = 825.033
+scale = Vector2(0.5, 0.5)
+tooltip_text = "Your Fireballs set the enemy on fire for 3 seconds, dealing your magic damage over time"
+disabled = true
+icon = ExtResource("2_yj2ho")
+flat = true
+
+[node name="Perk Name" type="Label" parent="DeepBurn"]
+layout_mode = 0
+offset_left = 15.8919
+offset_top = 9.83248
+offset_right = 246.892
+offset_bottom = 32.8325
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "Deep Burn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Perk Level" type="Label" parent="DeepBurn"]
+layout_mode = 0
+offset_left = 81.7855
+offset_top = 240.22
+offset_right = 121.785
+offset_bottom = 263.22
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FocusedChi" type="Button" parent="."]
+layout_mode = 0
+offset_left = 216.926
+offset_top = 386.986
+offset_right = 480.926
+offset_bottom = 650.986
+scale = Vector2(0.5, 0.5)
+tooltip_text = "Increase your magic DMG by 1 for every perk point spent"
+disabled = true
+icon = ExtResource("2_yj2ho")
+flat = true
+
+[node name="Perk Name" type="Label" parent="FocusedChi"]
+layout_mode = 0
+offset_left = 15.8919
+offset_top = 9.83248
+offset_right = 246.892
+offset_bottom = 32.8325
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "Focused CHI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Perk Level" type="Label" parent="FocusedChi"]
+layout_mode = 0
+offset_left = 45.7855
+offset_top = 240.22
+offset_right = 85.7855
+offset_bottom = 263.22
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SharpMind" type="Button" parent="."]
+layout_mode = 0
+offset_left = 304.379
+offset_top = 205.898
+offset_right = 568.379
+offset_bottom = 469.898
+scale = Vector2(0.5, 0.5)
+tooltip_text = "Increase your mana by 1 for every perk point spent.
+Max mana : 5"
+disabled = true
+icon = ExtResource("2_yj2ho")
+flat = true
+
+[node name="Perk Name" type="Label" parent="SharpMind"]
+layout_mode = 0
+offset_left = 15.8919
+offset_top = 9.83248
+offset_right = 246.892
+offset_bottom = 32.8325
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "Sharp Mind"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Perk Level" type="Label" parent="SharpMind"]
+layout_mode = 0
+offset_left = 69.7855
+offset_top = 240.22
+offset_right = 109.785
+offset_bottom = 263.22
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 8.0
+offset_right = 101.0
+offset_bottom = 64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_vf5j5")
+text = "Back"
+flat = true
+
+[node name="Skillpoints" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1024.12
+offset_top = 12.9516
+offset_right = 1064.12
+offset_bottom = 35.9516
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_vf5j5")
+
+[connection signal="pressed" from="WarriorHeart" to="." method="_on_warrior_heart_pressed"]
+[connection signal="pressed" from="WarriorMight" to="." method="_on_warrior_might_pressed"]
+[connection signal="pressed" from="QuickStep" to="." method="_on_quick_step_pressed"]
+[connection signal="pressed" from="FlowingWater" to="." method="_on_flowing_water_pressed"]
+[connection signal="pressed" from="DeepCuts" to="." method="_on_deep_cuts_pressed"]
+[connection signal="pressed" from="Waterfall" to="." method="_on_waterfall_pressed"]
+[connection signal="pressed" from="DeepBurn" to="." method="_on_deep_burn_pressed"]
+[connection signal="pressed" from="FocusedChi" to="." method="_on_focused_chi_pressed"]
+[connection signal="pressed" from="SharpMind" to="." method="_on_sharp_mind_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

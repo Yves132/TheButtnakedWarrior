@@ -1,0 +1,202 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2ta5k5pav6tx"]
+
+[ext_resource type="Texture2D" uid="uid://j73qinx4qvk8" path="res://Sprites/UI/Inventory.png" id="1_eeggi"]
+[ext_resource type="Script" path="res://Scripts/Inventory/inventoryUI.gd" id="1_nsopm"]
+[ext_resource type="Texture2D" uid="uid://o4bo4g80we33" path="res://Sprites/Player/Knight20.png" id="2_2qojp"]
+[ext_resource type="Texture2D" uid="uid://c6dqctd8drobx" path="res://Sprites/Player/Knight Idle 20.png" id="3_sfevd"]
+[ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="4_17fu2"]
+[ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="5_akm4s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_utwdn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2qojp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sfevd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2qojp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1282.0
+offset_bottom = 718.0
+script = ExtResource("1_nsopm")
+
+[node name="Inventory" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 3.0
+offset_right = 1163.0
+offset_bottom = 720.0
+texture = ExtResource("1_eeggi")
+expand_mode = 1
+
+[node name="PlayerPanel" type="Panel" parent="Inventory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0361323
+anchor_top = 0.131353
+anchor_right = 0.0361323
+anchor_bottom = 0.131353
+offset_right = 259.0
+offset_bottom = 544.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" type="AnimatedSprite2D" parent="Inventory/PlayerPanel"]
+position = Vector2(128.264, 127.299)
+sprite_frames = SubResource("SpriteFrames_utwdn")
+autoplay = "default"
+frame_progress = 0.362385
+
+[node name="StatPanel" type="Panel" parent="Inventory"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 349.0
+offset_right = 294.0
+offset_bottom = 636.0
+
+[node name="Stats" type="Label" parent="Inventory/StatPanel"]
+layout_mode = 0
+offset_left = -0.793701
+offset_top = 1.1748
+offset_right = 255.206
+offset_bottom = 32.1748
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("4_17fu2")
+text = "Player Stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Label" parent="Inventory/StatPanel"]
+layout_mode = 0
+offset_left = 1.6189
+offset_top = 40.8598
+offset_right = 257.619
+offset_bottom = 71.8598
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_akm4s")
+text = "Player Stats"
+vertical_alignment = 1
+
+[node name="Stamina" type="Label" parent="Inventory/StatPanel"]
+layout_mode = 0
+offset_left = 2.4126
+offset_top = 73.8141
+offset_right = 258.413
+offset_bottom = 104.814
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_akm4s")
+text = "Player Stats"
+vertical_alignment = 1
+
+[node name="Magic" type="Label" parent="Inventory/StatPanel"]
+layout_mode = 0
+offset_left = 0.825195
+offset_top = 110.293
+offset_right = 256.825
+offset_bottom = 141.293
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_akm4s")
+text = "Player Stats"
+vertical_alignment = 1
+
+[node name="MeleeDmg" type="Label" parent="Inventory/StatPanel"]
+layout_mode = 0
+offset_left = 3.45886
+offset_top = 146.556
+offset_right = 259.459
+offset_bottom = 177.556
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_akm4s")
+text = "Player Stats"
+vertical_alignment = 1
+
+[node name="MagicDmg" type="Label" parent="Inventory/StatPanel"]
+layout_mode = 0
+offset_left = 2.66516
+offset_top = 183.69
+offset_right = 258.665
+offset_bottom = 214.69
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_akm4s")
+text = "Player Stats"
+vertical_alignment = 1
+
+[node name="DodgeChance" type="Label" parent="Inventory/StatPanel"]
+layout_mode = 0
+offset_left = 1.87146
+offset_top = 220.047
+offset_right = 257.871
+offset_bottom = 251.047
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_akm4s")
+text = "Player Stats"
+vertical_alignment = 1
+
+[node name="CritChance" type="Label" parent="Inventory/StatPanel"]
+layout_mode = 0
+offset_left = 2.00226
+offset_top = 256.12
+offset_right = 258.002
+offset_bottom = 287.12
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_akm4s")
+text = "Player Stats"
+vertical_alignment = 1
+
+[node name="ItemPanel" type="Panel" parent="Inventory"]
+layout_mode = 0
+offset_left = 353.0
+offset_top = 106.0
+offset_right = 970.0
+offset_bottom = 606.0
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/ItemPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 5

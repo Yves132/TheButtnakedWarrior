@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://8nip1xxexekq"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/MiniBosses/little_troll.gd" id="1_fxoq4"]
+[ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="2_4jc66"]
+[ext_resource type="Texture2D" uid="uid://p42bfcqwscmg" path="res://Sprites/Enemies/Goblin/Goblin.png" id="3_20vf1"]
+[ext_resource type="Texture2D" uid="uid://cxhpdvefje8pm" path="res://Sprites/Enemies/Goblin/GoblinBurn4.png" id="4_afhnt"]
+[ext_resource type="Texture2D" uid="uid://dj7tul142jl0k" path="res://Sprites/Enemies/Goblin/GoblinBurn2.png" id="5_nwm3e"]
+[ext_resource type="Texture2D" uid="uid://q4svhdlawa1p" path="res://Sprites/Enemies/Goblin/GoblinBurn1.png" id="6_61q5m"]
+
+[sub_resource type="Animation" id="Animation_b77d8"]
+resource_name = "WAAAAGH"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_afhnt"), ExtResource("5_nwm3e"), ExtResource("6_61q5m")]
+}
+
+[sub_resource type="Animation" id="Animation_k32j1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_20vf1")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_17knh"]
+_data = {
+"RESET": SubResource("Animation_k32j1"),
+"WAAAAGH": SubResource("Animation_b77d8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3kv0"]
+size = Vector2(128, 191)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssu1i"]
+size = Vector2(97, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wog4h"]
+size = Vector2(128, 192)
+
+[node name="LittleTroll" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 1186
+script = ExtResource("1_fxoq4")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_4jc66")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_17knh")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_20vf1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j3kv0")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ssu1i")
+debug_color = Color(0.726872, 0, 0.166593, 0.42)
+
+[node name="HitDetector" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 1056
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
+shape = SubResource("RectangleShape2D_wog4h")
+debug_color = Color(3.82639e-06, 0.649194, 0.153579, 0.42)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="area_entered" from="HitDetector" to="." method="_on_hit_detector_area_entered"]
+[connection signal="body_entered" from="HitDetector" to="." method="_on_hit_detector_body_entered"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://du0xro4p2vc3t"]
+
+[ext_resource type="Texture2D" uid="uid://clom1hmcg34xn" path="res://Sprites/Weapons/Longsword ground.png" id="1_8ucju"]
+[ext_resource type="Script" path="res://Scripts/InitialWeapon/WeaponHitbox.gd" id="2_2d1nh"]
+[ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="3_tjsqt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwr58"]
+size = Vector2(80, 440)
+
+[node name="Weapon" type="Node2D"]
+scale = Vector2(0.05, 0.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8ucju")
+
+[node name="WeaponHitbox" type="Area2D" parent="."]
+collision_layer = 512
+input_pickable = false
+script = ExtResource("2_2d1nh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponHitbox"]
+position = Vector2(4.76837e-06, -20)
+shape = SubResource("RectangleShape2D_gwr58")
+
+[node name="Label" type="Label" parent="."]
+z_index = 5
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -165.0
+offset_top = -320.0
+offset_right = 164.0
+offset_bottom = -281.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_tjsqt")
+theme_override_font_sizes/font_size = 100
+text = "[E]  to   interact"
+horizontal_alignment = 1
+vertical_alignment = 1

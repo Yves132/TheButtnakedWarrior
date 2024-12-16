@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo1keuxfqkxmf"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory/InventorySlot/inventory_slot.gd" id="1_4piq6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bk6th"]
+size = Vector2(79.1076, 23.4229)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylo1x"]
+size = Vector2(79.5179, 23.5266)
+
+[node name="InventoryItem" type="Node2D" groups=["Items"]]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_4piq6")
+item_texture = Object(GDScriptNativeClass,"script":null)
+
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.22303, -0.126749)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_bk6th")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 131
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8.07794, 0.00480175)
+shape = SubResource("RectangleShape2D_ylo1x")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

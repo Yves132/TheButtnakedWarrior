@@ -1,0 +1,252 @@
+[gd_scene load_steps=26 format=3 uid="uid://dy3f3265inlsb"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Enemy.gd" id="1_qtv2j"]
+[ext_resource type="Texture2D" uid="uid://q4svhdlawa1p" path="res://Sprites/Enemies/Goblin/GoblinBurn1.png" id="2_5xjvh"]
+[ext_resource type="Texture2D" uid="uid://c2e6j8f15w603" path="res://Sprites/Enemies/Goblin/SquashedGoblin.png" id="2_abxbl"]
+[ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="2_b5hr8"]
+[ext_resource type="Texture2D" uid="uid://p42bfcqwscmg" path="res://Sprites/Enemies/Goblin/Goblin.png" id="2_bo0kt"]
+[ext_resource type="Texture2D" uid="uid://cfbxvobdasmj" path="res://Sprites/Enemies/Goblin/GoblinIdle.png" id="3_3sris"]
+[ext_resource type="Texture2D" uid="uid://dj7tul142jl0k" path="res://Sprites/Enemies/Goblin/GoblinBurn2.png" id="3_p6jlg"]
+[ext_resource type="Texture2D" uid="uid://b6kuu0cw0sbw3" path="res://Sprites/Enemies/Goblin/GoblinSpot.png" id="4_3vh68"]
+[ext_resource type="Texture2D" uid="uid://bogiehveygs82" path="res://Sprites/Enemies/Goblin/GoblinBurn3.png" id="4_mce00"]
+[ext_resource type="Texture2D" uid="uid://cxhpdvefje8pm" path="res://Sprites/Enemies/Goblin/GoblinBurn4.png" id="5_hh8iv"]
+[ext_resource type="Texture2D" uid="uid://co14cgfxi8jy2" path="res://Sprites/Enemies/Goblin/GoblinWalk1.png" id="5_qmy1k"]
+[ext_resource type="Texture2D" uid="uid://ccux2jeo6mpka" path="res://Sprites/Enemies/Goblin/GoblinWalk2.png" id="6_lqwse"]
+[ext_resource type="Texture2D" uid="uid://d28gwkgqaww54" path="res://Sprites/Enemies/Goblin/GoblinHit.png" id="7_xtjr3"]
+[ext_resource type="Texture2D" uid="uid://cldqs5c1maxi2" path="res://Sprites/Enemies/Goblin/Goblin Sliced.png" id="9_xct8q"]
+[ext_resource type="Texture2D" uid="uid://in1gjrehxlxh" path="res://Sprites/Enemies/Goblin/GoblinFire1.png" id="15_gqfg8"]
+[ext_resource type="Texture2D" uid="uid://bj4nf3087qwk1" path="res://Sprites/Enemies/Goblin/GoblinFire2.png" id="16_qekjq"]
+[ext_resource type="Texture2D" uid="uid://sol7b4021uiu" path="res://Sprites/Enemies/Goblin/GoblinFire3.png" id="17_drim4"]
+[ext_resource type="Texture2D" uid="uid://0yycala5grty" path="res://Sprites/Drops/GoblinMeat.png" id="18_qb0h1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o413s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5xjvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p6jlg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mce00")
+}, {
+"duration": 10.0,
+"texture": ExtResource("5_hh8iv")
+}],
+"loop": true,
+"name": &"Burn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_abxbl")
+}],
+"loop": true,
+"name": &"Die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("7_xtjr3")
+}],
+"loop": false,
+"name": &"Hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("2_bo0kt")
+}, {
+"duration": 3.0,
+"texture": ExtResource("3_3sris")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_bo0kt")
+}, {
+"duration": 5.0,
+"texture": ExtResource("9_xct8q")
+}],
+"loop": true,
+"name": &"Slice",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bo0kt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3vh68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bo0kt")
+}],
+"loop": false,
+"name": &"Spot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qmy1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bo0kt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lqwse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bo0kt")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_gqfg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qekjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_drim4")
+}],
+"loop": false,
+"name": &"on_fire",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lxqd"]
+size = Vector2(128, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmtr0"]
+size = Vector2(238, 175)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y45cs"]
+size = Vector2(2456, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uufm4"]
+size = Vector2(116, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfl1s"]
+size = Vector2(128, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4idsc"]
+size = Vector2(127, 194)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 179
+script = ExtResource("1_qtv2j")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_b5hr8")]
+offset_top = -133.0
+offset_bottom = -133.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o413s")
+animation = &"Walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.90735e-06, 64)
+shape = SubResource("RectangleShape2D_5lxqd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
+[node name="Idle_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="SpotTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="HurtTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="floor_checker" type="RayCast2D" parent="."]
+target_position = Vector2(0, 104)
+collision_mask = 130
+
+[node name="side_checker" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="side_checker"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_lmtr0")
+debug_color = Color(0.917647, 0, 0, 0.419608)
+
+[node name="SpotBox" type="Area2D" parent="."]
+collision_layer = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpotBox"]
+position = Vector2(1228, 0)
+shape = SubResource("RectangleShape2D_y45cs")
+debug_color = Color(0.72549, 0.839216, 0.137255, 0.419608)
+
+[node name="top_checker" type="Area2D" parent="."]
+position = Vector2(-1.90735e-06, -96)
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top_checker"]
+position = Vector2(1.36424e-12, 3)
+shape = SubResource("RectangleShape2D_uufm4")
+debug_color = Color(0.898039, 0, 0.764706, 0.419608)
+
+[node name="bottom_checker" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_checker"]
+position = Vector2(0, 88)
+shape = SubResource("RectangleShape2D_tfl1s")
+debug_color = Color(0.886275, 0, 0.803922, 0.419608)
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1024
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_4idsc")
+
+[node name="BurnTimer" type="Timer" parent="."]
+wait_time = 3.1
+one_shot = true
+
+[node name="BurnDMGTimer" type="Timer" parent="."]
+
+[node name="Drop" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 88)
+texture = ExtResource("18_qb0h1")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Idle_timer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="SpotTimer" to="." method="_on_spot_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
+[connection signal="area_entered" from="side_checker" to="." method="_on_side_checker_area_entered"]
+[connection signal="body_entered" from="side_checker" to="." method="_on_side_checker_body_entered"]
+[connection signal="area_entered" from="SpotBox" to="." method="_on_spot_box_area_entered"]
+[connection signal="area_exited" from="SpotBox" to="." method="_on_spot_box_area_exited"]
+[connection signal="area_entered" from="top_checker" to="." method="_on_top_checker_area_entered"]
+[connection signal="area_entered" from="bottom_checker" to="." method="_on_bottom_checker_area_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="BurnTimer" to="." method="_on_burn_timer_timeout"]
+[connection signal="timeout" from="BurnDMGTimer" to="." method="_on_burn_dmg_timer_timeout"]

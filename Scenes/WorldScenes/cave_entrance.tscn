@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0wjity8f11lm"]
+
+[ext_resource type="Texture2D" uid="uid://uisgxrug302a" path="res://Sprites/Interactables/CaveEntrance.png" id="1_rbaoj"]
+[ext_resource type="Script" path="res://Scripts/Interactables/DoorsAndEntrances/cave_entrance.gd" id="1_wg7oc"]
+[ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="3_4wqot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3uty"]
+size = Vector2(254.792, 176.566)
+
+[node name="CaveEntrance" type="Node2D"]
+script = ExtResource("1_wg7oc")
+
+[node name="CaveEntrance" type="Sprite2D" parent="."]
+position = Vector2(1.12799, 0.723145)
+texture = ExtResource("1_rbaoj")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1.12799, 0.723145)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.984863, 39.5598)
+shape = SubResource("RectangleShape2D_c3uty")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+z_index = 5
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -99.0
+offset_top = -110.0
+offset_right = 100.0
+offset_bottom = -84.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_4wqot")
+theme_override_font_sizes/font_size = 25
+text = "[W]  to   enter"
+horizontal_alignment = 1
+vertical_alignment = 1

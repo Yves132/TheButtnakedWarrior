@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3vx4ggp6sm28"]
+
+[ext_resource type="Texture2D" uid="uid://b8gnnq21tgh84" path="res://Sprites/Interactables/ChestClosed.png" id="1_ufnjq"]
+[ext_resource type="Texture2D" uid="uid://danyebnuolq1g" path="res://Sprites/Interactables/ChestOpen.png" id="2_w7d0q"]
+[ext_resource type="Script" path="res://Scripts/Interactables/Chest/ChestHitbox.gd" id="3_v0q1q"]
+[ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="4_jj64l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26yst"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ufnjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_w7d0q")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w7d0q")
+}],
+"loop": true,
+"name": &"already open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87bmd"]
+size = Vector2(224, 128)
+
+[node name="Chest" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_26yst")
+animation = &"Open"
+flip_h = true
+
+[node name="ChestHitbox" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("3_v0q1q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChestHitbox"]
+shape = SubResource("RectangleShape2D_87bmd")
+
+[node name="Label" type="Label" parent="."]
+z_index = 5
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -99.0
+offset_top = -110.0
+offset_right = 100.0
+offset_bottom = -84.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_jj64l")
+theme_override_font_sizes/font_size = 25
+text = "[E]  to   interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="ChestHitbox" method="_on_animated_sprite_2d_animation_finished"]

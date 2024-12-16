@@ -1,0 +1,165 @@
+[gd_scene load_steps=13 format=3 uid="uid://b1tamd5bhoryy"]
+
+[ext_resource type="Texture2D" uid="uid://bha24ulogg4ob" path="res://Sprites/Checkpoint/CheckpointLit.png" id="1_it4tc"]
+[ext_resource type="Script" path="res://Scripts/Checkpoints/checkpoint.gd" id="1_rax0w"]
+[ext_resource type="Texture2D" uid="uid://dyg7xe5hq5vhy" path="res://Sprites/Checkpoint/CheckpointUnlit.png" id="2_kkpak"]
+[ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="4_sft3i"]
+[ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="5_jcbxn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlhb1"]
+size = Vector2(135, 129)
+
+[sub_resource type="Animation" id="Animation_647qj"]
+resource_name = "Lit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_it4tc")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_od07l"]
+_data = {
+"Lit": SubResource("Animation_647qj")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ck2bw"]
+bg_color = Color(0, 0, 0, 0.592157)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbo23"]
+bg_color = Color(0.237539, 0.237539, 0.237539, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmj1p"]
+bg_color = Color(0.301961, 0.301961, 0.301961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3idov"]
+bg_color = Color(0.301961, 0.301961, 0.301961, 1)
+
+[node name="Checkpoint" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_rax0w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_kkpak")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_dlhb1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_od07l")
+}
+
+[node name="Label" type="Label" parent="."]
+z_index = 5
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -99.0
+offset_top = -110.0
+offset_right = 100.0
+offset_bottom = -84.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_sft3i")
+theme_override_font_sizes/font_size = 10
+text = "[E]  to   interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 76.0
+offset_top = -84.0
+offset_right = 226.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ck2bw")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 145.0
+offset_bottom = 33.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("5_jcbxn")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_qbo23")
+text = "Checkpoint"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 48.0
+offset_right = 116.0
+offset_bottom = 82.0
+tooltip_text = "Saves the game"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.568627)
+theme_override_colors/font_hover_color = Color(0.545098, 0.545098, 0.545098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_sft3i")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_kmj1p")
+action_mode = 0
+text = "Rest
+"
+
+[node name="LevelUpButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 96.0
+offset_right = 116.0
+offset_bottom = 130.0
+tooltip_text = "Spend perk points to gain various bonuses"
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.568627)
+theme_override_colors/font_hover_color = Color(0.545098, 0.545098, 0.545098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_sft3i")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_3idov")
+text = "Level Up
+"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="pressed" from="Panel/RestButton" to="." method="_on_rest_button_pressed"]
+[connection signal="pressed" from="Panel/LevelUpButton" to="." method="_on_level_up_button_pressed"]

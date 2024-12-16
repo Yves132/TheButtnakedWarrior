@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgnlgmb1wpndq"]
+
+[ext_resource type="Texture2D" uid="uid://dajohd22nxj4s" path="res://Sprites/Enemies/GoblinArcher/Arrow.png" id="1_ockvq"]
+[ext_resource type="Script" path="res://Scripts/Enemies/arrow.gd" id="1_xn1x3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyks6"]
+size = Vector2(128.036, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0eabk"]
+size = Vector2(160.033, 16.1933)
+
+[node name="Arrow" type="CharacterBody2D"]
+scale = Vector2(0.1, 0.1)
+collision_layer = 0
+collision_mask = 1027
+script = ExtResource("1_xn1x3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ockvq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15.982, 7.99999)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uyks6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.0893688, 8.09664)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_0eabk")
+debug_color = Color(0.983961, 0, 0.348118, 0.42)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

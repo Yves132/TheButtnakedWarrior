@@ -1,0 +1,35 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://da2ruke3vqb1g"]
+
+[ext_resource type="Texture2D" uid="uid://b1u3daryhswu5" path="res://Sprites/Terrain/TerrainTileset20.png" id="1_3lcri"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kfm33"]
+texture = ExtResource("1_3lcri")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1, -8, 0, 8, 0, 8, 8, -8, 8)
+1:0/0/physics_layer_0/polygon_0/one_way = true
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
+2:0/0/physics_layer_0/polygon_0/one_way = true
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
+3:0/0/physics_layer_0/polygon_0/one_way = true
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
+4:0/0/physics_layer_0/polygon_0/one_way = true
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
+5:0/0/physics_layer_0/polygon_0/one_way = true
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 128
+physics_layer_0/collision_mask = 49
+sources/0 = SubResource("TileSetAtlasSource_kfm33")

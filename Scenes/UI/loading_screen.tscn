@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp1jppt56j7qa"]
+
+[ext_resource type="Script" path="res://Scripts/Core/LoadingScreen.gd" id="1_cg53c"]
+[ext_resource type="Texture2D" uid="uid://dqt0d8k4vgukv" path="res://Sprites/UI/LevelupScreen/DeathScreenBackground.webp" id="2_y0duq"]
+[ext_resource type="Texture2D" uid="uid://b5y84kjvwhfdw" path="res://Sprites/UI/SavingIcon.png" id="3_5niu6"]
+[ext_resource type="Texture2D" uid="uid://bck4nore8xegx" path="res://Sprites/UI/SavingIcon2.png" id="4_t3mr1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7u2j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5niu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t3mr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5niu6")
+}],
+"loop": true,
+"name": &"Loading",
+"speed": 3.0
+}]
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cg53c")
+
+[node name="LoadingScreen" type="Sprite2D" parent="."]
+position = Vector2(641.599, 361.743)
+texture = ExtResource("2_y0duq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1191.89, 642.56)
+sprite_frames = SubResource("SpriteFrames_e7u2j")
+animation = &"Loading"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
