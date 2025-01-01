@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://0k3s2k71kem1"]
+[gd_scene load_steps=23 format=3 uid="uid://0k3s2k71kem1"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/bat.gd" id="1_gft11"]
+[ext_resource type="Shader" path="res://Shaders/bat.gdshader" id="2_4e0t4"]
 [ext_resource type="Texture2D" uid="uid://78redeedx276" path="res://Sprites/Enemies/Bat/Bat1.png" id="2_7ajtk"]
 [ext_resource type="Texture2D" uid="uid://dfyni05qharks" path="res://Sprites/Enemies/Bat/BatBurnt1.png" id="2_s6ai8"]
 [ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="3_cnydw"]
@@ -14,6 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://d1dqopducj0bs" path="res://Sprites/Enemies/Bat/BatSliced.png" id="12_tha54"]
 [ext_resource type="Texture2D" uid="uid://cah5utj2c28o" path="res://Sprites/Enemies/Bat/BatSliced2.png" id="12_wus1p"]
 [ext_resource type="Texture2D" uid="uid://dy768rewef2kg" path="res://Sprites/Drops/BatWing.png" id="14_afumt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ysik"]
+shader = ExtResource("2_4e0t4")
+shader_parameter/width = 10.0
+shader_parameter/outline_color = null
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7m201"]
 animations = [{
@@ -86,12 +92,15 @@ radius = 4.21964
 [sub_resource type="CircleShape2D" id="CircleShape2D_jkr3i"]
 radius = 5.60802
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rcg8c"]
+
 [node name="Bat" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 1186
 script = ExtResource("1_gft11")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_5ysik")
 position = Vector2(5.96046e-08, -2.38419e-07)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_7m201")
@@ -132,7 +141,7 @@ debug_color = Color(0.254272, 0.634906, 0, 0.42)
 one_shot = true
 
 [node name="Drop" type="Sprite2D" parent="."]
-visible = false
+material = SubResource("ShaderMaterial_rcg8c")
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("14_afumt")
 

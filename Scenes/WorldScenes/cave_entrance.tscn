@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0wjity8f11lm"]
+[gd_scene load_steps=6 format=3 uid="uid://b0wjity8f11lm"]
 
 [ext_resource type="Texture2D" uid="uid://uisgxrug302a" path="res://Sprites/Interactables/CaveEntrance.png" id="1_rbaoj"]
 [ext_resource type="Script" path="res://Scripts/Interactables/DoorsAndEntrances/cave_entrance.gd" id="1_wg7oc"]
 [ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="3_4wqot"]
+[ext_resource type="PackedScene" uid="uid://d1yu7b1sia373" path="res://Scenes/WorldScenes/scene_transition_animation.tscn" id="4_1qohx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3uty"]
 size = Vector2(254.792, 176.566)
@@ -41,3 +42,5 @@ theme_override_font_sizes/font_size = 25
 text = "[W]  to   enter"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("4_1qohx")]

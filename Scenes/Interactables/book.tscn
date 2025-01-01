@@ -1,11 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw2w6kcrfxmkh"]
+[gd_scene load_steps=8 format=3 uid="uid://bw2w6kcrfxmkh"]
 
 [ext_resource type="Texture2D" uid="uid://df42ul65bkeut" path="res://Sprites/Interactables/BookFireball.png" id="1_byu4i"]
 [ext_resource type="Script" path="res://Scripts/Interactables/Book/Book.gd" id="2_6nc1d"]
+[ext_resource type="Shader" path="res://Shaders/book.gdshader" id="2_slvpg"]
 [ext_resource type="Texture2D" uid="uid://b81ucowrwo3ft" path="res://Sprites/Interactables/Book2.png" id="3_l48m4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_astrn"]
 size = Vector2(192, 97)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cc5gp"]
+shader = ExtResource("2_slvpg")
+shader_parameter/width = 10.0
+shader_parameter/outline_color = null
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i0pfe"]
 animations = [{
@@ -33,6 +39,7 @@ position = Vector2(0, 32.5)
 shape = SubResource("RectangleShape2D_astrn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cc5gp")
 sprite_frames = SubResource("SpriteFrames_i0pfe")
 animation = &"Idle"
 

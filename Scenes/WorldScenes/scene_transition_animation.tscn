@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1yu7b1sia373"]
+
+[sub_resource type="Animation" id="Animation_bjnlj"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1qdk5"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_832j2"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0m8iw"]
+_data = {
+"RESET": SubResource("Animation_1qdk5"),
+"fade_in": SubResource("Animation_bjnlj"),
+"fade_out": SubResource("Animation_832j2")
+}
+
+[node name="SceneTransitionAnimation" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 2560.0
+offset_bottom = 760.0
+scale = Vector2(2, 2)
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0m8iw")
+}

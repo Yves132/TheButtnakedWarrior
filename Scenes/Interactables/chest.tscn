@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3vx4ggp6sm28"]
+[gd_scene load_steps=9 format=3 uid="uid://c3vx4ggp6sm28"]
 
+[ext_resource type="Shader" path="res://Shaders/chest.gdshader" id="1_tdtk1"]
 [ext_resource type="Texture2D" uid="uid://b8gnnq21tgh84" path="res://Sprites/Interactables/ChestClosed.png" id="1_ufnjq"]
 [ext_resource type="Texture2D" uid="uid://danyebnuolq1g" path="res://Sprites/Interactables/ChestOpen.png" id="2_w7d0q"]
 [ext_resource type="Script" path="res://Scripts/Interactables/Chest/ChestHitbox.gd" id="3_v0q1q"]
 [ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="4_jj64l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x7px3"]
+shader = ExtResource("1_tdtk1")
+shader_parameter/width = 10.0
+shader_parameter/outline_color = null
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_26yst"]
 animations = [{
@@ -33,6 +39,7 @@ size = Vector2(224, 128)
 [node name="Chest" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_x7px3")
 sprite_frames = SubResource("SpriteFrames_26yst")
 animation = &"Open"
 flip_h = true

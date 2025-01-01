@@ -19,12 +19,11 @@ func _physics_process(delta):
 		queue_free()
 
 
-func _on_area_2d_area_entered(area):
-	if area.get_parent() is Player:
+func _on_area_2d_body_entered(body):
+	if body is Player:
 		GameManager.lose_health(1)
 		GameManager.player.Hurt(position.x)
 		queue_free()
-
 
 
 func _on_area_2d_2_area_entered(area):

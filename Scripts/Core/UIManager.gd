@@ -7,12 +7,14 @@ var manafull = preload("res://Sprites/UI/ManaFull.png")
 var manaempty = preload("res://Sprites/UI/ManaEmpty.png")
 @onready var pausemenu := $PauseMenu
 @onready var inventory := $Inventory
+@onready var shop := $shop
 @onready var deathscreen := $Panel
 @onready var saving_icon := $SavingIcon
 @onready var playerlevel := $PlayerLevel
 @onready var xptimer := $XPtimer
 @onready var pausemenuOpen = false
 @onready var inventoryopen = false
+@onready var shopopen = false
 @onready var inventory_hotbar = $Inventory_Hotbar
 @onready var levelup_screen = $LevelupScreen
 
@@ -30,15 +32,19 @@ func _ready():
 	
 func _process(delta):
 	if deathscreen.visible == false and levelup_screen.visible == false:
-		if Input.is_action_just_pressed("PauseMenu") and inventory.visible == false:
+		if Input.is_action_just_pressed("PauseMenu") and inventory.visible == false and shopopen == false:
 			pausemenuOpen = true
 			GameManager.pause_play()
 		if Input.is_action_just_pressed("PauseMenu") and inventory.visible == true:
 			inventoryopen = true
 			GameManager.pause_play()
-		if Input.is_action_just_pressed("Inventory") and pausemenu.visible == false:
+		if Input.is_action_just_pressed("Inventory") and pausemenu.visible == false and shopopen == false:
 			inventoryopen = true
 			GameManager.pause_play()
+		if Input.is_action_just_pressed("PauseMenu") and shopopen == true:
+			shopopen = false
+			GameManager.pause_play()
+			
 	if levelup_screen.visible:
 		GameManager.pause_play()
 		#if inventory.visible == true:

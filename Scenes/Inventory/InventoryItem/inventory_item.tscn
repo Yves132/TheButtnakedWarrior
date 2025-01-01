@@ -1,6 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjoo2rga8aolh"]
+[gd_scene load_steps=6 format=3 uid="uid://bjoo2rga8aolh"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/InventoryItem/inventory_item.gd" id="1_35kt1"]
+[ext_resource type="Shader" path="res://Shaders/inventory_item.gdshader" id="2_xj0va"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4885g"]
+shader = ExtResource("2_xj0va")
+shader_parameter/width = 1.0
+shader_parameter/outline_color = null
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akg8c"]
 size = Vector2(79.9895, 24.6325)
@@ -9,12 +15,13 @@ size = Vector2(79.9895, 24.6325)
 size = Vector2(81.6023, 24.8031)
 
 [node name="InventoryItem" type="Node2D" groups=["Items"]]
-position = Vector2(0, 1428.28)
+position = Vector2(0, 19279.9)
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_35kt1")
 is_on_hotbar = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4885g")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8

@@ -1,9 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgnlgmb1wpndq"]
+[gd_scene load_steps=11 format=3 uid="uid://dgnlgmb1wpndq"]
 
 [ext_resource type="Texture2D" uid="uid://dajohd22nxj4s" path="res://Sprites/Enemies/GoblinArcher/Arrow.png" id="1_ockvq"]
 [ext_resource type="Script" path="res://Scripts/Enemies/arrow.gd" id="1_xn1x3"]
+[ext_resource type="Shader" path="res://Shaders/arrow.gdshader" id="2_2nj3f"]
 [ext_resource type="Texture2D" uid="uid://vpdc1pl1dxvm" path="res://Sprites/Enemies/GoblinArcher/ArrowBroken1.png" id="2_ha3bp"]
 [ext_resource type="Texture2D" uid="uid://di7tv4d4ioow7" path="res://Sprites/Enemies/GoblinArcher/ArrowBroken3.png" id="4_trkgj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdcba"]
+shader = ExtResource("2_2nj3f")
+shader_parameter/width = 10.0
+shader_parameter/outline_color = null
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6e2w4"]
 animations = [{
@@ -43,6 +49,7 @@ collision_mask = 1027
 script = ExtResource("1_xn1x3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_qdcba")
 sprite_frames = SubResource("SpriteFrames_6e2w4")
 animation = &"Fly"
 
@@ -69,5 +76,5 @@ shape = SubResource("RectangleShape2D_n4cpu")
 debug_color = Color(2.69532e-06, 0.644433, 0.28099, 0.42)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

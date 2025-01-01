@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://b7kmts5dr3a7"]
+[gd_scene load_steps=31 format=3 uid="uid://b7kmts5dr3a7"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/goblin_archer.gd" id="1_axys0"]
 [ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="2_eidl6"]
+[ext_resource type="Shader" path="res://Shaders/goblin.gdshader" id="3_6melh"]
 [ext_resource type="Texture2D" uid="uid://q4svhdlawa1p" path="res://Sprites/Enemies/Goblin/GoblinBurn1.png" id="3_lxuut"]
 [ext_resource type="Texture2D" uid="uid://dj7tul142jl0k" path="res://Sprites/Enemies/Goblin/GoblinBurn2.png" id="4_jj456"]
 [ext_resource type="Texture2D" uid="uid://bogiehveygs82" path="res://Sprites/Enemies/Goblin/GoblinBurn3.png" id="5_4uwfj"]
@@ -21,6 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://coleewbp1083p" path="res://Sprites/Enemies/GoblinArcher/GoblinArcherFire2.png" id="16_e2yes"]
 [ext_resource type="Texture2D" uid="uid://b4dac60hxau6t" path="res://Sprites/Enemies/GoblinArcher/GoblinArcherFire3.png" id="17_i7x8m"]
 [ext_resource type="Texture2D" uid="uid://0yycala5grty" path="res://Sprites/Drops/GoblinMeat.png" id="21_xdrvx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qhvof"]
+shader = ExtResource("3_6melh")
+shader_parameter/width = 10.0
+shader_parameter/outline_color = null
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_haq4b"]
 animations = [{
@@ -167,6 +173,7 @@ offset_top = -133.0
 offset_bottom = -133.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_qhvof")
 sprite_frames = SubResource("SpriteFrames_haq4b")
 animation = &"Shoot"
 

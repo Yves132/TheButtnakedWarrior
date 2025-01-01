@@ -5,6 +5,7 @@ extends Node
 @export var secret_found = false
 @export var enemies = []
 @export var dead_enemies:Array[bool] = []
+@export var first_boss_defeated = false
 
 @export var world_dic = {
 		"actual_level" = null,
@@ -12,8 +13,7 @@ extends Node
 		"chest_opened" = chest_opened,
 		"secret_found" = secret_found,
 		"enemies" = enemies,
-		"dead_enemies" = dead_enemies,
-		"last_level" = null
+		"first_boss_defeated" = first_boss_defeated
 	}
 	
 #func generate_level(level):

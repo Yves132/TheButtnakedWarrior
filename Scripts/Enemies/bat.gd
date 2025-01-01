@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const COINS = preload("res://Scenes/Coins/CoinDrops.tscn")
 const WINGS = preload("res://Scenes/Inventory/InventoryItem/inventory_item.tscn")
+const BLOOD = preload("res://Scenes/Particles/blood.tscn")
 
 
 @export var speed = 75
@@ -23,6 +24,7 @@ const WINGS = preload("res://Scenes/Inventory/InventoryItem/inventory_item.tscn"
 @onready var sliced = false#used to determine which death anim to play
 @onready var burnt = false#used to determine which death anim to play
 @onready var dead = false#used to determine whther the bat is dead
+@onready var hit = false#used to prevent the player sword from hitting 2 times
 
 
 func _physics_process(delta):
@@ -51,7 +53,8 @@ func _physics_process(delta):
 			velocity.y -= speed * 2.5#rise again and preapre for a second attack
 			spotted = false
 			done = false
-			
+		
+		hit_management()
 		#animations when alive
 		animation_handler()
 		
@@ -81,9 +84,13 @@ func animation_handler():
 	if burnt and dead:
 		sprite.play("Burnt")
 
+func hit_management():
+	if GameManager.player.can_attack:
+			hit = false
+
 func lose_health(dmg):
 	current_health -= dmg#lose health based on player damage
-	GameManager.frame_freeze(0.1, 0.3)
+	GameManager.frame_freeze(0, 0.2)
 	if (sliced or burnt) and current_health <= 0:#if dead by sword
 		dead = true
 		$DeathTimer.start()#used to allow the animation to play
@@ -98,14 +105,16 @@ func _on_spot_box_body_entered(body):#this is used to determine if the player is
 
 func _on_hit_box_body_entered(body):#this is used to determine if bat hit the player
 	if body is Player:
-		GameManager.frame_freeze(0.1, 0.3)
+		GameManager.frame_freeze(0, 0.2)
 		GameManager.lose_health(damage)#calls lose health function for player in gamemanager script
 		GameManager.player.Hurt(myposx)#calls hurt function in player script, used to determine player blinking and immunity
 
 
 func _on_hit_detector_area_entered(area):#this is used to determine if the player hit the bat with sword
-	if area.get_parent() is Player:
+	if area.get_parent() is Player and not hit:
+		hit = true
 		sliced = true
+		bleed()
 		lose_health(PlayerData.player_dic["melee_dmg"])#bat loses helath equal to player melee dmg, stored in playerdata playerdictionary
 
 
@@ -126,10 +135,14 @@ func spawn_wing():#spawn wing which increases playerspeed
 	wing.position.y = position.y
 	wing.item_texture = dropsprite.texture
 	wing.item_name = "Bat Wing"
-	wing.item_effect = "Speed Increase(50)"
+	wing.item_effect = "SPD+(20)"
 	wing.item_type = "Consumable"
 	get_parent().add_child(wing)
 
+func bleed():
+	var blood = BLOOD.instantiate()
+	blood.position = position
+	get_parent().add_child(blood)
 
 func _on_death_timer_timeout():
 	var coinspawntrue = randi() % 3 + 1#random number of coins which spawn

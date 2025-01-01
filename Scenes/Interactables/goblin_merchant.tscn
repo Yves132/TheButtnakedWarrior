@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyclli0bxvryn"]
+
+[ext_resource type="Texture2D" uid="uid://p42bfcqwscmg" path="res://Sprites/Enemies/Goblin/Goblin.png" id="1_d3m7x"]
+[ext_resource type="Script" path="res://Scripts/Interactables/GoblinMerchant/goblin_merchant.gd" id="1_ion7s"]
+[ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="2_hr2nd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sl1gt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk8ge"]
+size = Vector2(56, 20)
+
+[node name="GoblinMerchant" type="Node2D"]
+script = ExtResource("1_ion7s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sl1gt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_d3m7x")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_gk8ge")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -79.0
+offset_top = -51.0
+offset_right = 79.0
+offset_bottom = -28.0
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_hr2nd")
+theme_override_font_sizes/font_size = 10
+text = "E to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

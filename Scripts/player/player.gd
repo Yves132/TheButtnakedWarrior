@@ -52,18 +52,21 @@ var dodged := false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var can_spawn_particle = true
 var landing = false
-
+var regencounter = 0#used for regen effect of item
 
 
 
 func _ready():#called when you start the program
-	#PlayerData.player_dic["skillpoints"] = 10
+	PlayerData.player_dic["skillpoints"] = 100
+	#WorldData.world_dic["first_boss_defeated"] = false#for testing purposes
 	GameManager.player = self #Assigning to the variable "player" in GameManager script this node : "Player"
 	InventoryManager.set_player_reference(self)#sets reference for inventory manager
 	hurtTimer = $HurtTimer
 	HitBox = $HitBox
 	position.x = PlayerData.player_dic["positionx"]
 	position.y = PlayerData.player_dic["positiony"]
+	PlayerData.player_dic["speed"] = PlayerData.speed
+	PlayerData.player_dic["runspeed"] = PlayerData.runspeed
 	#print(position)
 	PlayerData.player_dic["mana"] = PlayerData.player_dic["max_mana"]
 	PlayerData.player_dic["dashes"] = PlayerData.player_dic["max_dashes"]
@@ -403,8 +406,13 @@ func animation_handler():#animations
 		
 	if dead:#plays death animation
 		animations.play("Death")
+		PlayerCamera.zoom.x = 4
+		PlayerCamera.zoom.y = 4
 	if Hit and not dead and not fell:
 		animations.play("Hit")
+		attacking = false
+		jumpattack = false
+		$Weapon.set_collision_layer_value(11, false)
 	if resting:
 		animations.play("resting")
 
@@ -462,6 +470,9 @@ func dash():
 			$DashIframes.start()
 			set_modulate(Color(1,1,1,0.8))
 				
+func regen_health():
+	$Healthregen.start()
+		
 func dust_walk():
 	var DustWalk = DUSTWALK.instantiate()
 	if Input.is_action_pressed("right"):
@@ -527,12 +538,20 @@ func apply_item_effect(item):
 			else:
 				$"MaxHealth!".show()
 				$MaxHealthTimer.start()
-		"Speed Increase(50)":
+		"SPD+(20)":
 			$BuffTimer.start()
-			PlayerData.player_dic["speed"] += 50
-			PlayerData.player_dic["runspeed"] += 50
+			PlayerData.player_dic["speed"] += 20
+			PlayerData.player_dic["runspeed"] += 20
 			InventoryManager.remove_item(item["type"],item["effect"])
-			
+		"Regen Health":
+			if PlayerData.player_dic["health"] < PlayerData.player_dic["max_health"]:
+				PlayerData.player_dic["health"] += 1
+				regen_health()
+				GameManager.uimanager.Update_health()
+				InventoryManager.remove_item(item["type"],item["effect"])
+			else:
+				$"MaxHealth!".show()
+				$MaxHealthTimer.start()
 		#"Slot Boost":
 			#InventoryManager.increase_inventory_size(5)
 			#InventoryManager.remove_item(item["type"],item["effect"])
@@ -566,9 +585,10 @@ func _on_animation_player_animation_finished(anim_name):#signal for waiting end 
 	if anim_name == "Hit":
 		attacking = false
 		walkattack = false
-	
-func _on_fallzone_area_entered(area):
-	if area.get_parent() is Player:#if player touches fallzone (falls off screen)
+		#$Weapon.set_collision_layer_value(11, false)
+
+func _on_fallzone_body_entered(body):
+	if body is Player:
 		fell = true
 		GameManager.lose_health(1)#lose 1 health
 		if PlayerData.player_dic["health"] > 0:
@@ -576,7 +596,6 @@ func _on_fallzone_area_entered(area):
 		set_process_input(false)
 		if PlayerData.player_dic["health"] == 0:
 			GameManager.deathscreen()
-
 #func _on_change_scene_area_entered(area):
 	#if area.get_parent() is Player:
 		#PlayerData.player_dic["positionx"] = PlayerData.positionx
@@ -601,7 +620,6 @@ func bounce():
 func Hurt(posx):
 	if not dodged:
 		if not dead:
-			GameManager.frame_freeze(0.1,0.2)
 			velocity.y = PlayerData.player_dic["jump_height"] * 0.7
 			if posx > position.x:
 				velocity.x = -750
@@ -613,6 +631,7 @@ func Hurt(posx):
 			#Input.action_release("right")
 			set_collision_layer_value(1,false)
 			HitBox.set_collision_layer_value(1,false)
+			GameManager.frame_freeze(0,0.1)
 	dodged = false
 
 func _on_mana_regen_timer_timeout():
@@ -675,3 +694,12 @@ func _on_max_health_timer_timeout():
 func _on_buff_timer_timeout():
 	PlayerData.player_dic["speed"] = PlayerData.speed
 	PlayerData.player_dic["runspeed"] = PlayerData.runspeed
+
+
+func _on_healthregen_timeout():
+	if PlayerData.player_dic["health"] < PlayerData.player_dic["max_health"]:
+		PlayerData.player_dic["health"] += 1
+		GameManager.uimanager.Update_health()
+	regencounter +=1
+	if regencounter == 2:
+		$Healthregen.stop()

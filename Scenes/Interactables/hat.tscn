@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmnrnme3f5sb8"]
+[gd_scene load_steps=7 format=3 uid="uid://bmnrnme3f5sb8"]
 
 [ext_resource type="Texture2D" uid="uid://dep6b86a8n38a" path="res://Sprites/Armors/RattanHat.png" id="1_e3b3g"]
+[ext_resource type="Shader" path="res://Shaders/hat.gdshader" id="1_vog74"]
 [ext_resource type="Script" path="res://Scripts/InitialHat/HatHitbox.gd" id="2_f60au"]
 [ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="3_tcgqa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3rytp"]
+shader = ExtResource("1_vog74")
+shader_parameter/width = 20.0
+shader_parameter/outline_color = null
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbppx"]
 size = Vector2(479, 176)
@@ -10,6 +16,7 @@ size = Vector2(479, 176)
 [node name="Hat" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_3rytp")
 texture = ExtResource("1_e3b3g")
 
 [node name="HatHitbox" type="Area2D" parent="."]

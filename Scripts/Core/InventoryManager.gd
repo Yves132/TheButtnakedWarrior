@@ -4,10 +4,10 @@ extends Node
 var inventory = []
 
 #custom signals
-signal inventory_updated
+signal inventory_updated#emits each time the inventory updates, and sends the signal to InventoryUI script
 
 #scene and node references
-var player_node : Node = null
+var player_node : Node = null#this is the player
 @onready var inventory_slot_scene = preload("res://Scenes/Inventory/InventorySlots/inventory_slot.tscn") 
 
 #hotbar items
@@ -21,28 +21,8 @@ func _ready():
 	#inventory_hotbar.resize(inventory_hotbar_size)#not needed since hotbar is not present
 	#PlayerData.player_dic["inventory_hotbar_array"].resize(inventory_hotbar_size)
 	
-
-# Called every frame. 'delta' is the eldapsed time since the previous frame.
-func save_inventory():
-	for i in range(PlayerData.player_dic["inventory"].size()):
-		PlayerData.player_dic["inventory"][i] = inventory [i]
-		#print(PlayerData.player_dic["inventory"][i], "saved")
-	return true
-	
-#func save_hotbar_inventory():#not needed since hotbar not present
-	#for i in range(PlayerData.player_dic["inventory_hotbar_array"].size()):
-		#PlayerData.player_dic["inventory_hotbar_array"][i] = inventory_hotbar[i]
-		#print(PlayerData.player_dic["inventory_hotbar_array"], "hotbar saved")
-	#return true
-	
-
-func load_inventory():
-	for i in range(inventory.size()):
-		inventory[i] = PlayerData.player_dic["inventory"][i]
-		
-		
 #adds an item to the inventory, returns true if successful
-func add_item(item): #, to_hotbar = false):#just needed if hotbar would be present
+func add_item(item):#called by inventory item script #, to_hotbar = false):#just needed if hotbar would be present
 	#var added_to_hotbar = false
 	
 	#add to hotbar
@@ -51,63 +31,72 @@ func add_item(item): #, to_hotbar = false):#just needed if hotbar would be prese
 		#inventory_updated.emit()
 	#add to inventory
 	#if not added_to_hotbar:
-		for i in range(inventory.size()):
+		for i in range(PlayerData.player_dic["inventory"].size()):#runs through thew whole inventory array in playerdata.playerdic
 			#print(i)
 			#checks if item exists in inventory and matches both type and effect
 			if PlayerData.player_dic["inventory"][i] != null and PlayerData.player_dic["inventory"][i]["type"] == item["type"] and PlayerData.player_dic["inventory"][i]["effect"] == item["effect"]:
-				PlayerData.player_dic["inventory"][i]["quantity"] += item["quantity"]
-				#print(PlayerData.player_dic["inventory"][i])
-				inventory_updated.emit()
+				PlayerData.player_dic["inventory"][i]["quantity"] += item["quantity"]#increase the quantity
+				inventory_updated.emit()#emit the signal to inventory ui
 				return true
-			elif PlayerData.player_dic["inventory"][i] == null:
-				PlayerData.player_dic["inventory"][i] = item
+			elif PlayerData.player_dic["inventory"][i] == null:#if item does not exist yet
+				PlayerData.player_dic["inventory"][i] = item#set the item in inventory array in playerdata script
+				#PlayerData.player_dic["inventory"][i]["quantity"] = item["quantity"]
 				#print(PlayerData.player_dic["inventory"][i])
-				inventory_updated.emit()
+				inventory_updated.emit()#emit the signal to inventory ui
 				return true
 		return false
 		
 	
 	
 #removes an item to the inventory, based on type and effect
-func remove_item(item_type, item_effect):
-	for i in range(PlayerData.player_dic["inventory"].size()):
+func remove_item(item_type, item_effect):#called by inventory item script
+	for i in range(PlayerData.player_dic["inventory"].size()):#runs through thew whole inventory array in playerdata.playerdic
 		if PlayerData.player_dic["inventory"][i] != null and PlayerData.player_dic["inventory"][i]["type"] == item_type and PlayerData.player_dic["inventory"][i]["effect"] == item_effect:
 			#print("PlayerData.player_dic["inventory"]: ", PlayerData.player_dic["inventory"][i]["quantity"])
-			PlayerData.player_dic["inventory"][i]["quantity"] -= 1
-			if PlayerData.player_dic["inventory"][i]["quantity"] <= 0:
-				PlayerData.player_dic["inventory"][i] = null
-				#inventory[i] = inventory[i]
-			inventory_updated.emit()
+			PlayerData.player_dic["inventory"][i]["quantity"] -= 1#decrease the quantity
+			if PlayerData.player_dic["inventory"][i]["quantity"] <= 0:#if it reaches 0 
+				PlayerData.player_dic["inventory"][i] = null#free the array slot
+			inventory_updated.emit()#emit the signal to inventory ui
 			return true
 	return false
 
 #increases inventory size dinamically
-func increase_inventory_size(extra_slots):
+func increase_inventory_size(extra_slots):#used for certain items
 	inventory.resize(inventory.size() + extra_slots)
 	PlayerData.player_dic["inventory"].resize(PlayerData.player_dic["inventory"] + extra_slots)
-	inventory_updated.emit()
+	inventory_updated.emit()#emit the signal to inventory ui
 
 func set_player_reference(player):
-	player_node = player
+	player_node = player#this sets the reference to the actual player, it is set by the player script
 
 func adjust_drop_position(position):
-	var radius = 100
-	var nearby_items = get_tree().get_nodes_in_group("Items")
-	for item in nearby_items:
-		if item.global_position.distance_to(position) < radius:
-			var radius_offset = Vector2(randf_range(-radius, radius), randf_range(-radius, radius))
-			position += radius_offset
+	var radius = 100#drop radius for items
+	var nearby_items = get_tree().get_nodes_in_group("Items")#gets all instantiated items in group Items
+	for item in nearby_items:#checks those items
+		if item.global_position.distance_to(position) < radius:#gets the global position of each and the distance to playerpos
+			#and if it is less than radius
+			var radius_offset = Vector2(randf_range(-radius, radius), randf_range(-radius, radius))#sets an offset 
+			position += radius_offset#the position gets modified by offset
 			break
-	return position
+	return position#returns the modified position
 	
-func drop_item(item_data, drop_position):
-	var item_scene = load(item_data["scene_path"])
-	var item_instance = item_scene.instantiate()
-	item_instance.set_item_data(item_data)
-	drop_position = adjust_drop_position(drop_position)
-	item_instance.global_position = drop_position
-	get_tree().current_scene.add_child(item_instance)
-	
+func drop_item(item_data, drop_position):#this is called by inventoryslot script
+	var item_scene = load(item_data["scene_path"])#gets the item which is being dropped
+	var item_instance = item_scene.instantiate()#instantiates the item
+	item_instance.set_item_data(item_data)#sets the data calling function in inventory item script
+	drop_position = adjust_drop_position(drop_position)#calls the function in this script and gets the position through her
+	item_instance.global_position = drop_position#sets the global position in the scene
+	get_tree().current_scene.add_child(item_instance)#spawns it
+
+
+func swap_inventory_items(index1, index2):#swaps items in inventory based on their index
+	if index1 < 0 or index1 > PlayerData.player_dic["inventory"].size() or index2 < 0 or index2 > PlayerData.player_dic["inventory"].size():#if any given index is not valid
+		return false
+	var temp = PlayerData.player_dic["inventory"][index1]#we store the item we want to swap in a temp variable
+	PlayerData.player_dic["inventory"][index1] = PlayerData.player_dic["inventory"][index2]#we swap items
+	PlayerData.player_dic["inventory"][index2] = temp
+	inventory_updated.emit()#emit the signal to inventory ui
+	return true
 #func add_hotbar_item(item):#irrelevant no hotbar will be present
 	#for i in range(inventory_hotbar_size):
 		#if inventory_hotbar[i] == null:

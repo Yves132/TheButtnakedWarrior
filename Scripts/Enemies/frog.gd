@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const COINS = preload("res://Scenes/Coins/CoinDrops.tscn")#preloading the scene of the coin item is necessary  for instantiation
-
+const BLOOD = preload("res://Scenes/Particles/blood.tscn")
 
 @export var speed = 50
 @export var direction = 1
@@ -21,6 +21,7 @@ const COINS = preload("res://Scenes/Coins/CoinDrops.tscn")#preloading the scene 
 @onready var contact = false#hitbox uses this to determine player contact
 @onready var myposx = position.x#this is passed to the Hurt func in the player script
 @onready var changed = false#it is used to change direction when hitting a wall, but changing it only once per jump
+@onready var hit = false#used to prevent sword from hitting frog 2 times
 
 @onready var sprite = $AnimatedSprite2D
 
@@ -30,17 +31,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 		myposx = position.x#passed to function lose health for player in gamemanager
-		
-		
-		#this whole section is reduntant, had to set deadenemies to false on new scene, otherwise wouldn't spawn them
-		#this doesn't spawn already killed enemies in the current scene if the game was saved
-		for i in WorldData.world_dic["enemies"].size():#runs thorugh the array of enemies in the level
-			if $"." == WorldData.world_dic["enemies"][i] and WorldData.world_dic["dead_enemies"][i] == true:#if this enemy is in the array at i position
-				#and if this enemy is in the dead enemies array at i position 
-				queue_free()#don't spawn it
-				
-				
-		
 		#healthbar management start
 		$HealthBar.update_health(max_health, current_health)
 		if FrogAi.hostile:
@@ -85,12 +75,16 @@ func _physics_process(delta):
 				direction = 1
 		move_and_slide()
 		#movement end
-		
+		hit_management()
 		#animations
 		animation_handler()
 	
 		
-		
+
+func hit_management():
+	if GameManager.player.can_attack:
+			hit = false
+
 func animation_handler():
 	if is_on_floor() and not dead:
 		sprite.play("Floor")
@@ -121,7 +115,9 @@ func _on_hit_box_body_exited(body):#is it still touchin the player?
 		#print("contact")
 
 func _on_hit_detector_area_entered(area):#has the sword hit the frog?
-	if area.get_parent() is Player:
+	if area.get_parent() is Player and not hit:
+		hit = true
+		bleed()
 		sliced = true#this is used to determine death animation
 		FrogAi.hostile = true#this turns ALL frogs hostile by changing a var in a global file
 		lose_health(PlayerData.player_dic["melee_dmg"])#this is taken from the player dictionary in PlayerData
@@ -145,9 +141,9 @@ func _on_top_box_body_entered(body):
 		GameManager.player.bounce()#player bounces on my head
 
 
-func lose_health(damage):#frog loses health equal to player dmg 
-	current_health = current_health - damage
-	GameManager.frame_freeze(0.1,0.3)
+func lose_health(dmg):#frog loses health equal to player dmg 
+	current_health = current_health - dmg
+	GameManager.frame_freeze(0,0.2)
 	if (burnt or sliced or crushed) and current_health <= 0:#killed by fireball or sword or crushed
 		dead = true
 		$HitBox.set_collision_mask_value(1, false)#set this mask layer to false, to prevent damage to player after death of frog
@@ -161,6 +157,10 @@ func spawn_coin():
 	get_parent().add_child(coin)#add it to the tree a.k.a. spawn it
 	
 
+func bleed():
+	var blood = BLOOD.instantiate()
+	blood.position = position
+	get_parent().add_child(blood)
 
 
 func _on_death_timer_timeout():

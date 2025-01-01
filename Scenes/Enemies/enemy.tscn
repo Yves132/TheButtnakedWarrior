@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dy3f3265inlsb"]
+[gd_scene load_steps=28 format=3 uid="uid://dy3f3265inlsb"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Enemy.gd" id="1_qtv2j"]
 [ext_resource type="Texture2D" uid="uid://q4svhdlawa1p" path="res://Sprites/Enemies/Goblin/GoblinBurn1.png" id="2_5xjvh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="2_b5hr8"]
 [ext_resource type="Texture2D" uid="uid://p42bfcqwscmg" path="res://Sprites/Enemies/Goblin/Goblin.png" id="2_bo0kt"]
 [ext_resource type="Texture2D" uid="uid://cfbxvobdasmj" path="res://Sprites/Enemies/Goblin/GoblinIdle.png" id="3_3sris"]
+[ext_resource type="Shader" path="res://Shaders/goblin.gdshader" id="3_cxiqw"]
 [ext_resource type="Texture2D" uid="uid://dj7tul142jl0k" path="res://Sprites/Enemies/Goblin/GoblinBurn2.png" id="3_p6jlg"]
 [ext_resource type="Texture2D" uid="uid://b6kuu0cw0sbw3" path="res://Sprites/Enemies/Goblin/GoblinSpot.png" id="4_3vh68"]
 [ext_resource type="Texture2D" uid="uid://bogiehveygs82" path="res://Sprites/Enemies/Goblin/GoblinBurn3.png" id="4_mce00"]
@@ -18,6 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://bj4nf3087qwk1" path="res://Sprites/Enemies/Goblin/GoblinFire2.png" id="16_qekjq"]
 [ext_resource type="Texture2D" uid="uid://sol7b4021uiu" path="res://Sprites/Enemies/Goblin/GoblinFire3.png" id="17_drim4"]
 [ext_resource type="Texture2D" uid="uid://0yycala5grty" path="res://Sprites/Drops/GoblinMeat.png" id="18_qb0h1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjdax"]
+shader = ExtResource("3_cxiqw")
+shader_parameter/width = 10.0
+shader_parameter/outline_color = null
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o413s"]
 animations = [{
@@ -150,6 +156,7 @@ offset_top = -133.0
 offset_bottom = -133.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_rjdax")
 sprite_frames = SubResource("SpriteFrames_o413s")
 animation = &"Walk"
 

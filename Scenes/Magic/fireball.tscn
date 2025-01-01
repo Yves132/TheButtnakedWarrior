@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dls8owy3v10xw"]
+[gd_scene load_steps=5 format=3 uid="uid://dls8owy3v10xw"]
 
 [ext_resource type="Script" path="res://Scripts/Magic/fireball.gd" id="1_iqf2a"]
-[ext_resource type="Texture2D" uid="uid://c5gbap037mh0a" path="res://Sprites/Magic/Fireball.png" id="1_lraeg"]
-[ext_resource type="Texture2D" uid="uid://bj5uvbe5yvjvv" path="res://Sprites/Magic/Fireball2.png" id="3_eabmp"]
-[ext_resource type="Texture2D" uid="uid://bs5i13un6dkgo" path="res://Sprites/Magic/Fireball3.png" id="4_p40ak"]
+[ext_resource type="PackedScene" uid="uid://doo5fvixeutcu" path="res://Scenes/Particles/fire.tscn" id="5_crwrj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0qkxw"]
 radius = 92.5
@@ -11,36 +9,15 @@ radius = 92.5
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fksfp"]
 size = Vector2(1590, 190)
 
-[sub_resource type="Animation" id="Animation_vco0w"]
-resource_name = "Fireball"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [ExtResource("1_lraeg"), ExtResource("3_eabmp"), ExtResource("4_p40ak")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kpknk"]
-_data = {
-"Fireball": SubResource("Animation_vco0w")
-}
-
 [node name="Fireball" type="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_iqf2a")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_lraeg")
+[node name="Fire" parent="." instance=ExtResource("5_crwrj")]
+position = Vector2(15, 0)
+scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(15, 0)
@@ -59,11 +36,6 @@ shape = SubResource("RectangleShape2D_fksfp")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(10, 0)
 scale = Vector2(7.5, 5)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_kpknk")
-}
 
 [connection signal="body_entered" from="Homing_range" to="." method="_on_homing_range_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

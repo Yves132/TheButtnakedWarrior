@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://voatvlckgfk0"]
+[gd_scene load_steps=10 format=3 uid="uid://voatvlckgfk0"]
 
 [ext_resource type="Script" path="res://Scripts/Coins/CoinDrops.gd" id="1_ajcaj"]
 [ext_resource type="Texture2D" uid="uid://bb6nwdm3li1v2" path="res://Sprites/Coins/Coin1.png" id="1_naa3u"]
+[ext_resource type="Shader" path="res://Shaders/CoinDrops.gdshader" id="2_670ah"]
 [ext_resource type="Texture2D" uid="uid://foec7n1v6cx3" path="res://Sprites/Coins/Coin12.png" id="2_uqin2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ib548"]
@@ -9,6 +10,11 @@ radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wr1hv"]
 radius = 70.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ulm14"]
+shader = ExtResource("2_670ah")
+shader_parameter/width = 10.0
+shader_parameter/outline_color = null
 
 [sub_resource type="Animation" id="Animation_a3elu"]
 resource_name = "idle"
@@ -48,6 +54,7 @@ collision_layer = 8
 shape = SubResource("CircleShape2D_wr1hv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ulm14")
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_naa3u")
 

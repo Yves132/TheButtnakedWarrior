@@ -60,6 +60,5 @@ class_name SaveData
 			"chest_opened" = false,
 			"secret_found" = false,
 			"enemies" = [],
-			"dead_enemies" = [],
-			"last_level" = null
+			"first_boss_defeated" = false
 	}

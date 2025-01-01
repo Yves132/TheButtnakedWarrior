@@ -36,10 +36,10 @@ func activate(): #func called when player touches checkpoint
 	if not spawnpoint:
 		PlayerData.player_dic["health"] = PlayerData.player_dic["max_health"]
 		GameManager.uimanager.Update_health()
-	GameManager.uimanager.saving_icon.show()
-	GameManager.uimanager.saving_icon.play("Saving")
 	#InventoryManager.save_inventory()
 	#InventoryManager.save_hotbar_inventory()
+	GameManager.uimanager.saving_icon.show()
+	GameManager.uimanager.saving_icon.play("Saving")
 	SaveManager.save_game()
 	#print(PlayerData.player_dic["inventory"])
 

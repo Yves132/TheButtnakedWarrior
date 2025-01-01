@@ -1,15 +1,31 @@
-[gd_scene load_steps=13 format=3 uid="uid://8nip1xxexekq"]
+[gd_scene load_steps=36 format=3 uid="uid://8nip1xxexekq"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/MiniBosses/little_troll.gd" id="1_fxoq4"]
 [ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="2_4jc66"]
-[ext_resource type="Texture2D" uid="uid://p42bfcqwscmg" path="res://Sprites/Enemies/Goblin/Goblin.png" id="3_20vf1"]
-[ext_resource type="Texture2D" uid="uid://cxhpdvefje8pm" path="res://Sprites/Enemies/Goblin/GoblinBurn4.png" id="4_afhnt"]
-[ext_resource type="Texture2D" uid="uid://dj7tul142jl0k" path="res://Sprites/Enemies/Goblin/GoblinBurn2.png" id="5_nwm3e"]
-[ext_resource type="Texture2D" uid="uid://q4svhdlawa1p" path="res://Sprites/Enemies/Goblin/GoblinBurn1.png" id="6_61q5m"]
+[ext_resource type="Texture2D" uid="uid://cdqsm1b8pxl55" path="res://Sprites/Enemies/Troll/Troll.png" id="3_4hs15"]
+[ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="3_t2qfc"]
+[ext_resource type="Texture2D" uid="uid://6vf5x6hhh7h2" path="res://Sprites/Enemies/Troll/TrollWAAAAGH.png" id="5_obm1m"]
+[ext_resource type="Texture2D" uid="uid://cyu04n457vb87" path="res://Sprites/Enemies/Troll/Trollwalk1.png" id="6_3eyol"]
+[ext_resource type="Texture2D" uid="uid://cx8as2ltfp854" path="res://Sprites/Enemies/Troll/TrollWalk2.png" id="7_oofin"]
+[ext_resource type="Texture2D" uid="uid://b3xagfttw6edj" path="res://Sprites/Enemies/Troll/TrollBurn1.png" id="8_fgkqv"]
+[ext_resource type="Texture2D" uid="uid://c2gs016xbdgmm" path="res://Sprites/Enemies/Troll/TrollBurn2.png" id="9_yvvni"]
+[ext_resource type="Texture2D" uid="uid://b5v2qaedk3e1s" path="res://Sprites/Enemies/Troll/TrollBurn3.png" id="10_0w4jg"]
+[ext_resource type="Texture2D" uid="uid://tuhwyje0fc45" path="res://Sprites/Enemies/Troll/TrollBurn4.png" id="11_x0614"]
+[ext_resource type="Texture2D" uid="uid://dqk6vj7kle3m7" path="res://Sprites/Enemies/Troll/TrollBurn5.png" id="12_401j3"]
+[ext_resource type="Texture2D" uid="uid://bxxgkd4h5q4ml" path="res://Sprites/Enemies/Troll/TrollBurn6.png" id="13_1bgmg"]
+[ext_resource type="Texture2D" uid="uid://b5bx6cxxi207q" path="res://Sprites/Enemies/Troll/TrollSliced1.png" id="14_t3u6g"]
+[ext_resource type="Texture2D" uid="uid://mcafyjaxsumd" path="res://Sprites/Enemies/Troll/TrollSliced2.png" id="15_qbxma"]
+[ext_resource type="Texture2D" uid="uid://65jp5gke1qr0" path="res://Sprites/Enemies/Troll/TrollSliced3.png" id="16_o7bnt"]
+[ext_resource type="Texture2D" uid="uid://cjsc5b3tj84ef" path="res://Sprites/Enemies/Troll/TrollATKL1.png" id="17_quntu"]
+[ext_resource type="Texture2D" uid="uid://cg3bdqrfjvdwe" path="res://Sprites/Enemies/Troll/TrollATKL2.png" id="18_8r3ps"]
+[ext_resource type="Texture2D" uid="uid://5hgbcff5glgo" path="res://Sprites/Enemies/Troll/TrollATKL3.png" id="19_nfue6"]
+[ext_resource type="Shader" path="res://Shaders/little_troll.gdshader" id="20_eswte"]
+[ext_resource type="Texture2D" uid="uid://lxn48qu250c8" path="res://Sprites/Drops/TrollBlood.png" id="20_u1kmr"]
 
-[sub_resource type="Animation" id="Animation_b77d8"]
-resource_name = "WAAAAGH"
-length = 2.5
+[sub_resource type="Animation" id="Animation_j0ed8"]
+resource_name = "ATKL"
+length = 0.4
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,10 +33,66 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2.46667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("4_afhnt"), ExtResource("5_nwm3e"), ExtResource("6_61q5m")]
+"values": [ExtResource("17_quntu"), ExtResource("18_8r3ps"), ExtResource("19_nfue6"), ExtResource("3_4hs15")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArmR/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-28.8, -30.3017), Vector2(-31.8045, -8.27687), Vector2(-31.8045, 9.74347), Vector2(-15.1167, 12.4132)]
+}
+
+[sub_resource type="Animation" id="Animation_5gisk"]
+resource_name = "ATKR"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("17_quntu"), ExtResource("18_8r3ps"), ExtResource("19_nfue6"), ExtResource("3_4hs15")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArmR/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(27.7662, -29.9064), Vector2(31.716, -8.51643), Vector2(31.716, 10.8606), Vector2(16.2344, 17.7651)]
+}
+
+[sub_resource type="Animation" id="Animation_ma3va"]
+resource_name = "Burn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_fgkqv"), ExtResource("9_yvvni"), ExtResource("10_0w4jg"), ExtResource("11_x0614"), ExtResource("12_401j3"), ExtResource("13_1bgmg")]
 }
 
 [sub_resource type="Animation" id="Animation_k32j1"]
@@ -35,23 +107,99 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_20vf1")]
+"values": [ExtResource("3_4hs15")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArmR/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(47.7147, 24.093)]
+}
+
+[sub_resource type="Animation" id="Animation_b77d8"]
+resource_name = "WAAAAGH"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [ExtResource("3_4hs15"), ExtResource("5_obm1m"), ExtResource("3_4hs15")]
+}
+
+[sub_resource type="Animation" id="Animation_7adl6"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_3eyol"), ExtResource("3_4hs15"), ExtResource("7_oofin"), ExtResource("3_4hs15")]
+}
+
+[sub_resource type="Animation" id="Animation_hcs0a"]
+resource_name = "sliced"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_t3u6g"), ExtResource("15_qbxma"), ExtResource("15_qbxma"), ExtResource("16_o7bnt")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_17knh"]
 _data = {
+"ATKL": SubResource("Animation_j0ed8"),
+"ATKR": SubResource("Animation_5gisk"),
+"Burn": SubResource("Animation_ma3va"),
 "RESET": SubResource("Animation_k32j1"),
-"WAAAAGH": SubResource("Animation_b77d8")
+"WAAAAGH": SubResource("Animation_b77d8"),
+"Walk": SubResource("Animation_7adl6"),
+"sliced": SubResource("Animation_hcs0a")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3kv0"]
-size = Vector2(128, 191)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1x0xg"]
+shader = ExtResource("20_eswte")
+shader_parameter/width = 5.0
+shader_parameter/outline_color = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur8ly"]
+size = Vector2(40.8226, 76.7939)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssu1i"]
-size = Vector2(97, 192)
+size = Vector2(43.5042, 76.8242)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wog4h"]
-size = Vector2(128, 192)
+size = Vector2(46.0866, 79.6748)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xnme"]
+size = Vector2(12.3744, 37.9097)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_larti"]
+size = Vector2(74.4741, 14.8288)
 
 [node name="LittleTroll" type="CharacterBody2D"]
 collision_layer = 16
@@ -59,6 +207,25 @@ collision_mask = 1186
 script = ExtResource("1_fxoq4")
 
 [node name="HealthBar" parent="." instance=ExtResource("2_4jc66")]
+offset_left = -1.0
+offset_top = -47.2835
+offset_right = -1.0
+offset_bottom = -47.2835
+scale = Vector2(0.3, 0.3)
+
+[node name="Name" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_left = -74.3063
+offset_top = -35.7218
+offset_right = 78.6937
+offset_bottom = -12.7218
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_t2qfc")
+text = "Little Troll"
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -66,17 +233,19 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_20vf1")
+material = SubResource("ShaderMaterial_1x0xg")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_4hs15")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_j3kv0")
+position = Vector2(1.07682, 0.146957)
+shape = SubResource("RectangleShape2D_ur8ly")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0.5, 0)
+position = Vector2(1.05692, 0.146957)
 shape = SubResource("RectangleShape2D_ssu1i")
 debug_color = Color(0.726872, 0, 0.166593, 0.42)
 
@@ -85,10 +254,36 @@ collision_layer = 16
 collision_mask = 1056
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
+position = Vector2(1.04592, 0.314913)
 shape = SubResource("RectangleShape2D_wog4h")
 debug_color = Color(3.82639e-06, 0.649194, 0.153579, 0.42)
+
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ArmR" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmR"]
+position = Vector2(47.7147, 24.093)
+shape = SubResource("RectangleShape2D_5xnme")
+
+[node name="ATKarea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ATKarea"]
+position = Vector2(-0.0438347, 32.7697)
+shape = SubResource("RectangleShape2D_larti")
+
+[node name="Drop" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("20_u1kmr")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="area_entered" from="HitDetector" to="." method="_on_hit_detector_area_entered"]
 [connection signal="body_entered" from="HitDetector" to="." method="_on_hit_detector_body_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="body_entered" from="ArmR" to="." method="_on_arm_r_body_entered"]
+[connection signal="body_entered" from="ATKarea" to="." method="_on_at_karea_body_entered"]

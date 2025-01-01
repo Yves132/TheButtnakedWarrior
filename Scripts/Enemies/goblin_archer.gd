@@ -3,6 +3,7 @@ extends CharacterBody2D
 const ARROW = preload("res://Scenes/Enemies/arrow.tscn") 
 const COINS = preload("res://Scenes/Coins/CoinDrops.tscn")
 const MEAT = preload("res://Scenes/Inventory/InventoryItem/inventory_item.tscn")
+const BLOOD = preload("res://Scenes/Particles/blood.tscn")
 
 @export var speed = 50
 @export var direction = 1
@@ -44,9 +45,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	for i in WorldData.world_dic["enemies"].size():
-		if $"." == WorldData.world_dic["enemies"][i] and WorldData.world_dic["dead_enemies"][i] == true:
-			queue_free()
 	myposx = position.x
 	$HealthBar.update_health(max_health, current_health)
 	if not dead and not burn and not sliced:
@@ -92,7 +90,7 @@ func shoot():
 		shooting = false
 		
 func lose_health(dmg):
-	GameManager.frame_freeze(0.1,0.3)
+	GameManager.frame_freeze(0,0.2)
 	Hit = true
 	current_health -= dmg
 	
@@ -146,6 +144,11 @@ func spawn_meat():
 	meat.item_effect = "Heal 1 HP"
 	meat.item_type = "Consumable"
 	get_parent().add_child(meat)
+	
+func bleed():
+	var blood = BLOOD.instantiate()
+	blood.position = position
+	get_parent().add_child(blood)
 
 func _on_timer_timeout():#timer to start idle animation
 	if not on_fire:
@@ -259,6 +262,7 @@ func _on_hit_box_area_entered(area):
 		sprite.play("Hit")
 		if current_health <= 0:
 			sliced = true
+			bleed()
 			$".".set_collision_layer_value(5, false)#no more collision
 			$".".set_collision_mask_value(1, false)
 			$top_checker.set_collision_layer_value(5, false)#no more collision

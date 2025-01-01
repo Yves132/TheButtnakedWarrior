@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://yomc1b05tjfp"]
+[gd_scene load_steps=18 format=3 uid="uid://yomc1b05tjfp"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/frog.gd" id="1_w6b52"]
+[ext_resource type="Shader" path="res://Shaders/frog.gdshader" id="2_c05ms"]
 [ext_resource type="Texture2D" uid="uid://vwxwlpbwgrjb" path="res://Sprites/Enemies/Frog/Frog1.png" id="2_qwfq2"]
 [ext_resource type="Texture2D" uid="uid://dffung0x8m2tk" path="res://Sprites/Enemies/Frog/FrogBurnt1.png" id="2_y6pi1"]
 [ext_resource type="Texture2D" uid="uid://0puuo803nxry" path="res://Sprites/Enemies/Frog/FrogBurnt2.png" id="3_6tho6"]
@@ -10,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://dtp7qu4ivwxf3" path="res://Sprites/Enemies/Frog/FrogCrushed.png" id="6_8hv4p"]
 [ext_resource type="Texture2D" uid="uid://dykusqvo7itsj" path="res://Sprites/Enemies/Frog/FrogSliced1.png" id="8_g7ykx"]
 [ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="10_2kta1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o1q3i"]
+shader = ExtResource("2_c05ms")
+shader_parameter/width = 10.0
+shader_parameter/outline_color = null
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lsxjw"]
 animations = [{
@@ -81,10 +87,11 @@ collision_mask = 162
 script = ExtResource("1_w6b52")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_o1q3i")
 position = Vector2(-2.04682, -9.67224)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_lsxjw")
-animation = &"Burnt"
+animation = &"Floor"
 
 [node name="HealthBar" parent="." instance=ExtResource("10_2kta1")]
 offset_left = -2.30704

@@ -5,13 +5,17 @@ signal collected_coins(int)#declaration of signal
 var paused := false
 var cutscene := false#used to determine if we are in a cutscene
 var BossBattleStart = false#used to determine when the boss battle has started (for animation purposes)
+#var BossDefeated = false#used to determine boss relative behavior
 var CurrentCheckpoint : Checkpoint #Var CurrentCheckpoint is node Chreckpoint (we gave it this name)
 var player : Player #Var player is node Player (we gave it this name)
 var uimanager : UiManager
-
 var crit = false
 
-
+func set_initial_data():
+	PlayerData.player_dic["health"] = PlayerData.max_health
+	PlayerData.player_dic["mana"] = PlayerData.max_mana
+	PlayerData.player_dic["dashes"] = PlayerData.max_dashes
+	WorldData.world_dic["first_boss_defeated"] = WorldData.first_boss_defeated
 
 func Respawn_Player():#respawns player
 	player.dead = false
@@ -21,10 +25,9 @@ func Respawn_Player():#respawns player
 		
 func gain_coins(coins_gained):#func to count gained coins
 	PlayerData.player_dic["Coins"] += coins_gained #coins = coins + coins_gained
-	emit_signal("collected_coins", coins_gained)#emits signal
+	emit_signal("collected_coins", coins_gained)#emits signal, we use this to update ui of coins
 
-func lose_health(lost:int) :#player loses 1 health on hit
-	#print("HERE")
+func lose_health(lost:int) :#player loses health on hit
 	
 	if randi() %100 +1 > PlayerData.player_dic["dodge"]:
 		PlayerData.player_dic["health"] -= lost
@@ -45,9 +48,9 @@ func deathscreen():
 	
 func gain_xp(xp):
 	PlayerData.player_dic["current_xp"] += xp
-	if PlayerData.player_dic["current_xp"] == PlayerData.player_dic["xp_required"]:
+	if PlayerData.player_dic["current_xp"] >= PlayerData.player_dic["xp_required"]:
+		PlayerData.player_dic["current_xp"] = PlayerData.player_dic["current_xp"] - PlayerData.player_dic["xp_required"]
 		level_up()
-		PlayerData.player_dic["current_xp"] = 0
 	uimanager.Update_playerxp()
 	
 func level_up():
@@ -69,11 +72,19 @@ func pause_play():
 		paused = not paused
 		uimanager.inventory.visible = paused
 		uimanager.get_tree().paused = paused
+	if uimanager.levelup_screen.visible == true:
+		uimanager.get_tree().paused = true
+	elif uimanager.levelup_screen.visible == false and uimanager.inventory.visible == false and uimanager.pausemenu.visible == false and uimanager.shopopen == false:
+		uimanager.get_tree().paused = false
+	if uimanager.shopopen == true:
+		uimanager.get_tree().paused = true
+	elif uimanager.shopopen == false and uimanager.inventory.visible == false and uimanager.pausemenu.visible == false and uimanager.levelup_screen.visible == false:
+		uimanager.get_tree().paused = false
 	
 	
 func frame_freeze(timescale, duration):
 	Engine.time_scale = timescale
-	await(player.get_tree().create_timer(duration * timescale).timeout)
+	await(player.get_tree().create_timer(duration, true,false,true).timeout)
 	Engine.time_scale = 1.0
 	
 func resume():
@@ -81,12 +92,8 @@ func resume():
 	pause_play()
 
 func loadgame():
-	FrogAi.hostile = false
 	if WorldData.world_dic["actual_level"] != null:
 		get_tree().change_scene_to_file(WorldData.world_dic["actual_level"])
 	
 func quit():
 	get_tree().quit()
-
-
-	

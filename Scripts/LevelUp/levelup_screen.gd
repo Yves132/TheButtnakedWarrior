@@ -64,6 +64,7 @@ func _on_warrior_heart_pressed():
 		PlayerData.player_dic["health"] = PlayerData.player_dic["max_health"]
 		PlayerData.player_dic["skillpoints"] -=1
 		PlayerData.player_dic["warrior_heart"] = true
+		GameManager.uimanager.Update_health()
 
 
 func _on_warrior_might_pressed():

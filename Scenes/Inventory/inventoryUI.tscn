@@ -1,11 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2ta5k5pav6tx"]
+[gd_scene load_steps=14 format=3 uid="uid://b2ta5k5pav6tx"]
 
 [ext_resource type="Texture2D" uid="uid://j73qinx4qvk8" path="res://Sprites/UI/Inventory.png" id="1_eeggi"]
 [ext_resource type="Script" path="res://Scripts/Inventory/inventoryUI.gd" id="1_nsopm"]
 [ext_resource type="Texture2D" uid="uid://o4bo4g80we33" path="res://Sprites/Player/Knight20.png" id="2_2qojp"]
+[ext_resource type="Shader" path="res://Shaders/inventoryUI.gdshader" id="2_hf7oq"]
 [ext_resource type="Texture2D" uid="uid://c6dqctd8drobx" path="res://Sprites/Player/Knight Idle 20.png" id="3_sfevd"]
 [ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="4_17fu2"]
 [ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="5_akm4s"]
+[ext_resource type="Shader" path="res://Shaders/CoinDrops.gdshader" id="6_i4gqx"]
+[ext_resource type="Texture2D" uid="uid://bb6nwdm3li1v2" path="res://Sprites/Coins/Coin1.png" id="7_bvw5s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nyvmq"]
+shader = ExtResource("2_hf7oq")
+shader_parameter/width = 5.0
+shader_parameter/outline_color = null
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_utwdn"]
 animations = [{
@@ -24,6 +32,14 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_puoi6"]
+shader = ExtResource("6_i4gqx")
+shader_parameter/width = 10.0
+shader_parameter/outline_color = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hv5hl"]
+bg_color = Color(0, 0.745098, 0.533333, 1)
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -32,10 +48,10 @@ offset_bottom = 718.0
 script = ExtResource("1_nsopm")
 
 [node name="Inventory" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_nyvmq")
 layout_mode = 0
-offset_left = 139.0
 offset_top = 3.0
-offset_right = 1163.0
+offset_right = 1280.0
 offset_bottom = 720.0
 texture = ExtResource("1_eeggi")
 expand_mode = 1
@@ -43,10 +59,10 @@ expand_mode = 1
 [node name="PlayerPanel" type="Panel" parent="Inventory"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0361323
-anchor_top = 0.131353
-anchor_right = 0.0361323
-anchor_bottom = 0.131353
+anchor_left = 0.0976862
+anchor_top = 0.13018
+anchor_right = 0.0976862
+anchor_bottom = 0.13018
 offset_right = 259.0
 offset_bottom = 544.0
 size_flags_horizontal = 3
@@ -59,11 +75,37 @@ sprite_frames = SubResource("SpriteFrames_utwdn")
 autoplay = "default"
 frame_progress = 0.362385
 
+[node name="Coins" type="TextureRect" parent="Inventory/PlayerPanel"]
+material = SubResource("ShaderMaterial_puoi6")
+layout_mode = 0
+offset_left = 632.87
+offset_top = 544.0
+offset_right = 697.87
+offset_bottom = 609.0
+texture = ExtResource("7_bvw5s")
+expand_mode = 1
+
+[node name="amount" type="Label" parent="Inventory/PlayerPanel/Coins"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 4.96063
+offset_right = 105.0
+offset_bottom = 59.9606
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_akm4s")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="StatPanel" type="Panel" parent="Inventory"]
 layout_mode = 0
-offset_left = 40.0
+offset_left = 128.0
 offset_top = 349.0
-offset_right = 294.0
+offset_right = 382.0
 offset_bottom = 636.0
 
 [node name="Stats" type="Label" parent="Inventory/StatPanel"]
@@ -179,11 +221,57 @@ theme_override_fonts/font = ExtResource("5_akm4s")
 text = "Player Stats"
 vertical_alignment = 1
 
+[node name="PlayerLevel" type="Label" parent="Inventory/StatPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.44
+offset_top = 166.136
+offset_right = -87.4398
+offset_bottom = 192.136
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("5_akm4s")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Playerxp" type="ProgressBar" parent="Inventory/StatPanel/PlayerLevel"]
+layout_mode = 0
+offset_left = 55.2357
+offset_top = -4.45399
+offset_right = 255.236
+offset_bottom = 25.546
+theme_override_styles/fill = SubResource("StyleBoxFlat_hv5hl")
+rounded = true
+show_percentage = false
+
+[node name="XPInfo" type="Label" parent="Inventory/StatPanel/PlayerLevel"]
+layout_mode = 0
+offset_left = 270.388
+offset_top = -0.0455933
+offset_right = 310.388
+offset_bottom = 22.9544
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("5_akm4s")
+
 [node name="ItemPanel" type="Panel" parent="Inventory"]
 layout_mode = 0
-offset_left = 353.0
+offset_left = 474.0
 offset_top = 106.0
-offset_right = 970.0
+offset_right = 1091.0
 offset_bottom = 606.0
 
 [node name="GridContainer" type="GridContainer" parent="Inventory/ItemPanel"]

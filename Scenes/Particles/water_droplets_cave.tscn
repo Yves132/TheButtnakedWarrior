@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://csmt8nyr8j1yu"]
+
+[ext_resource type="Script" path="res://Scripts/Particles/water_droplets_cave.gd" id="1_rabg6"]
+
+[node name="WaterDropletsCave" type="Node2D"]
+script = ExtResource("1_rabg6")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 15
+lifetime = 5.0
+preprocess = 1.0
+randomness = 0.16
+emission_shape = 3
+emission_rect_extents = Vector2(1280, 1)
+gravity = Vector2(0, 490)
+scale_amount_max = 2.0
+color = Color(0, 0, 1, 1)
