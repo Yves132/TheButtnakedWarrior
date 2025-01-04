@@ -10,6 +10,7 @@ extends Control
 @onready var item_effect = $DetailPanel/ItemEffect
 @onready var usage_panel = $UsagePanel
 @onready var outer_border = $OuterBorder
+@onready var item_cost = $DetailPanel/CoinImg/Cost
 #@onready var assign_button = $UsagePanel/AssignButton
 
 #signals
@@ -48,6 +49,7 @@ func set_item(new_item):#sets the slot to be filled (called from inventory UI sc
 	quantity_label.text =  str(item["quantity"])#sets the quantity
 	item_name.text = str(item["name"])#sets the name
 	item_type.text = str(item["type"])#sets the type
+	item_cost.text = str(item["cost"])
 	if item["effect"] != "":#sets the effect
 		item_effect.text = str(item["effect"])
 	else:

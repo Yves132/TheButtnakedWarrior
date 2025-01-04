@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnh0gbd4g26c5"]
+[gd_scene load_steps=11 format=3 uid="uid://cnh0gbd4g26c5"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/InventorySlot/inventory_slot.gd" id="1_qx2yw"]
 [ext_resource type="Shader" path="res://Shaders/inventory_item.gdshader" id="2_ohvl2"]
 [ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="3_kg4f0"]
+[ext_resource type="Shader" path="res://Shaders/CoinDrops.gdshader" id="4_0pfk1"]
+[ext_resource type="Texture2D" uid="uid://bb6nwdm3li1v2" path="res://Sprites/Coins/Coin1.png" id="5_lkuwi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jbj6a"]
 shader = ExtResource("2_ohvl2")
@@ -10,6 +12,11 @@ shader_parameter/width = 1.0
 shader_parameter/outline_color = null
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wulwn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_shhet"]
+shader = ExtResource("4_0pfk1")
+shader_parameter/width = 10.0
+shader_parameter/outline_color = null
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idv28"]
 
@@ -81,9 +88,9 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_wulwn")
 [node name="DetailPanel" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_top = -75.0
+offset_top = -107.0
 offset_right = 200.0
-offset_bottom = -15.0
+offset_bottom = -11.0
 color = Color(0.807843, 0.611765, 0.521569, 1)
 
 [node name="ItemName" type="Label" parent="DetailPanel"]
@@ -102,9 +109,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 5.0
-offset_top = -11.5
-offset_right = 45.0
-offset_bottom = 11.5
+offset_top = -27.5
+offset_right = 71.0
+offset_bottom = -4.5
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 0.788235)
 theme_override_fonts/font = ExtResource("3_kg4f0")
@@ -117,13 +124,35 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
-offset_top = -23.0
-offset_right = 45.0
+offset_top = -53.0
+offset_right = 104.0
+offset_bottom = -30.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 0.713726)
 theme_override_fonts/font = ExtResource("3_kg4f0")
 theme_override_font_sizes/font_size = 20
 text = "effect"
+
+[node name="CoinImg" type="TextureRect" parent="DetailPanel"]
+material = SubResource("ShaderMaterial_shhet")
+layout_mode = 0
+offset_left = -9.0
+offset_top = 56.0
+offset_right = 38.0
+offset_bottom = 103.0
+texture = ExtResource("5_lkuwi")
+expand_mode = 1
+
+[node name="Cost" type="Label" parent="DetailPanel/CoinImg"]
+layout_mode = 1
+offset_left = 40.0
+offset_top = 14.0
+offset_right = 110.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_kg4f0")
+theme_override_font_sizes/font_size = 20
+text = "Cost"
 
 [node name="UsagePanel" type="ColorRect" parent="."]
 visible = false

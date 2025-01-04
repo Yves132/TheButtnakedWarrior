@@ -131,6 +131,22 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 5
 
+[node name="Label" type="Label" parent="TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = 685.0
+offset_top = 335.0
+offset_right = 1070.0
+offset_bottom = 361.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_w7vys")
+theme_override_font_sizes/font_size = 25
+text = "NOT ENOUGH MONEY!"
+
 [node name="Meat" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(640, 360)

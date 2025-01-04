@@ -6,12 +6,14 @@ const SLOT_PLAYER = preload("res://Scenes/Inventory/InventorySlots/inventory_slo
 @onready var shop_inventory = []
 @onready var player_money = $TextureRect/PlayerInventory/TextureRect/Money
 @onready var player_grid = $TextureRect/PlayerInventory/GridContainer
+@onready var message = $TextureRect/Label
 
 
 @export var item_type = ""
 @export var item_name = ""
 @export var item_texture : Texture
 @export var item_effect = ""
+@export var cost : int
 @export var is_on_hotbar = false#not used right now
 var scene_path : String = "res://Scenes/Inventory/InventoryItem/inventory_item.tscn"#this is the path to this scene
 
@@ -50,19 +52,20 @@ func clear_grid_container_player():
 		player_grid.remove_child(child)#remove it from its children
 		child.queue_free()#delete it
 		
-func check_item(item):
+func check_item(item,amount):
 	if item["effect"] == "Heal 1 HP":
-		add_meat_player(item["quantity"])
+		add_meat_player(amount)
 	if item["effect"] == "SPD+(20)":
-		add_wing_player(item["quantity"])
+		add_wing_player(amount)
 	if item["effect"] == "Regen Health":
-		add_blood_player(item["quantity"])
+		add_blood_player(amount)
 
 func add_meat_player(amount):#this starts adding items to the shop
 	var counter = 0
 	item_type = "Consumable"#we define the properties
 	item_name = "Goblin Meat"
 	item_effect = "Heal 1 HP"
+	cost = 2
 	item_texture = $Meat.texture#set the texture
 	while counter < amount:#get a random number of items
 		var item = {
@@ -72,6 +75,7 @@ func add_meat_player(amount):#this starts adding items to the shop
 			"effect" : item_effect,
 			"texture" : item_texture,
 			"is_on_hotbar" : is_on_hotbar,
+			"cost" : cost,
 			"scene_path" : scene_path
 			}#set the dictionary values
 		add_item_to_player(item)#call this function to add items to the array
@@ -83,6 +87,7 @@ func add_wing_player(amount):#this adds the second type of item
 	item_type = "Consumable"#we define the properties
 	item_name = "Bat Wing"
 	item_effect = "SPD+(20)"
+	cost = 3
 	item_texture = $Wing.texture#set the texture
 	while counter < amount:#get a random number of items
 		var item = {
@@ -92,6 +97,7 @@ func add_wing_player(amount):#this adds the second type of item
 			"effect" : item_effect,
 			"texture" : item_texture,
 			"is_on_hotbar" : is_on_hotbar,
+			"cost" : cost,
 			"scene_path" : scene_path
 			}#set the dictionary values
 		add_item_to_player(item)#call this function to add items to the array
@@ -103,6 +109,7 @@ func add_blood_player(amount):#this adds the third type of item
 	item_type = "Consumable"#we define the properties
 	item_name = "Troll's Blood"
 	item_effect = "Regen Health"
+	cost = 5
 	item_texture = $Blood.texture#set the texture
 	while counter < amount:#get a random number of items
 		var item = {
@@ -112,6 +119,7 @@ func add_blood_player(amount):#this adds the third type of item
 			"effect" : item_effect,
 			"texture" : item_texture,
 			"is_on_hotbar" : is_on_hotbar,
+			"cost" : cost,
 			"scene_path" : scene_path
 			}#set the dictionary values
 		add_item_to_player(item)#call this function to add items to the array
@@ -125,12 +133,27 @@ func add_item_to_player(item):
 			PlayerData.player_dic["inventory"][i]["quantity"] += item["quantity"]
 			InventoryManager.inventory_updated.emit()
 			return true
+	for i in range(PlayerData.player_dic["inventory"].size()):
+		if PlayerData.player_dic["inventory"][i] != null and PlayerData.player_dic["inventory"][i]["type"] == item["type"] and PlayerData.player_dic["inventory"][i]["effect"] == item["effect"]:
+			PlayerData.player_dic["inventory"][i]["quantity"] += item["quantity"]
+			InventoryManager.inventory_updated.emit()
+			return true
 		elif PlayerData.player_dic["inventory"][i] == null:
 			PlayerData.player_dic["inventory"][i] = item
 			InventoryManager.inventory_updated.emit()
 			return true
 	return false
  
+func remove_item_from_player(ItemType, ItemEffect, Amount):
+	for i in PlayerData.player_dic["inventory"].size():
+		if PlayerData.player_dic["inventory"][i] != null and PlayerData.player_dic["inventory"][i]["type"] == ItemType and PlayerData.player_dic["inventory"][i]["effect"] == ItemEffect:
+			PlayerData.player_dic["inventory"][i]["quantity"] -= Amount
+			if PlayerData.player_dic["inventory"][i]["quantity"] <= 0:
+				PlayerData.player_dic["inventory"][i] = null
+			InventoryManager.inventory_updated.emit()
+			return true
+	return false
+
 #SHOP INVENTORY-------------------------------------------------------------------------------------------------------
 
 func populate_shop():
@@ -155,6 +178,7 @@ func add_meat():#this starts adding items to the shop
 	item_type = "Consumable"#we define the properties
 	item_name = "Goblin Meat"
 	item_effect = "Heal 1 HP"
+	cost = 4
 	item_texture = $Meat.texture#set the texture
 	while counter <= randi() %15 + 5:#get a random number of items
 		var item = {
@@ -164,6 +188,7 @@ func add_meat():#this starts adding items to the shop
 			"effect" : item_effect,
 			"texture" : item_texture,
 			"is_on_hotbar" : is_on_hotbar,
+			"cost" : cost,
 			"scene_path" : scene_path
 			}#set the dictionary values
 		add_item_to_shop(item)#call this function to add items to the array
@@ -175,6 +200,7 @@ func add_wing():#this adds the second type of item
 	item_type = "Consumable"#we define the properties
 	item_name = "Bat Wing"
 	item_effect = "SPD+(20)"
+	cost = 6
 	item_texture = $Wing.texture#set the texture
 	while counter <= randi() %10 + 5:#get a random number of items
 		var item = {
@@ -184,6 +210,7 @@ func add_wing():#this adds the second type of item
 			"effect" : item_effect,
 			"texture" : item_texture,
 			"is_on_hotbar" : is_on_hotbar,
+			"cost" : cost,
 			"scene_path" : scene_path
 			}#set the dictionary values
 		add_item_to_shop(item)#call this function to add items to the array
@@ -195,6 +222,7 @@ func add_blood():#this adds the third type of item
 	item_type = "Consumable"#we define the properties
 	item_name = "Troll's Blood"
 	item_effect = "Regen Health"
+	cost = 10
 	item_texture = $Blood.texture#set the texture
 	while counter <= randi() %5 + 1:#get a random number of items
 		var item = {
@@ -204,6 +232,7 @@ func add_blood():#this adds the third type of item
 			"effect" : item_effect,
 			"texture" : item_texture,
 			"is_on_hotbar" : is_on_hotbar,
+			"cost" : cost,
 			"scene_path" : scene_path
 			}#set the dictionary values
 		add_item_to_shop(item)#call this function to add items to the array
@@ -211,6 +240,10 @@ func add_blood():#this adds the third type of item
 	populate_shop()#we populate the grid visually with the items we just put inside
 
 func add_item_to_shop(item):#adds items to the array 
+	for i in range(shop_inventory.size()):#runs the whole array
+		if shop_inventory[i] != null and shop_inventory[i]["type"] == item["type"] and shop_inventory[i]["effect"] == item["effect"]:
+			shop_inventory[i]["quantity"] += item["quantity"]#if the item is already there add quantity
+			return true
 	for i in range(shop_inventory.size()):#runs the whole array
 		if shop_inventory[i] != null and shop_inventory[i]["type"] == item["type"] and shop_inventory[i]["effect"] == item["effect"]:
 			shop_inventory[i]["quantity"] += item["quantity"]#if the item is already there add quantity
@@ -229,3 +262,77 @@ func remove_item_from_shop(ItemType, ItemEffect, Amount):
 				shop_inventory[i] = null
 			return true
 	return false
+	
+func check_item_shop(item,amount):
+	if item["effect"] == "Heal 1 HP":
+		add_meat_from_player(amount)
+	if item["effect"] == "SPD+(20)":
+		add_wing_from_player(amount)
+	if item["effect"] == "Regen Health":
+		add_blood_from_player(amount)
+
+func add_meat_from_player(Amount):#this starts adding items to the shop
+	var counter = 0
+	item_type = "Consumable"#we define the properties
+	item_name = "Goblin Meat"
+	item_effect = "Heal 1 HP"
+	cost = 4
+	item_texture = $Meat.texture#set the texture
+	while counter < Amount:#get a random number of items
+		var item = {
+			"quantity" : 1,
+			"type" : item_type,
+			"name" : item_name,
+			"effect" : item_effect,
+			"texture" : item_texture,
+			"is_on_hotbar" : is_on_hotbar,
+			"cost" : cost,
+			"scene_path" : scene_path
+			}#set the dictionary values
+		add_item_to_shop(item)#call this function to add items to the array
+		counter += 1
+	populate_shop()#we populate the grid visually with the items we just put inside
+
+func add_wing_from_player(Amount):#this adds the second type of item
+	var counter = 0
+	item_type = "Consumable"#we define the properties
+	item_name = "Bat Wing"
+	item_effect = "SPD+(20)"
+	cost = 6
+	item_texture = $Wing.texture#set the texture
+	while counter < Amount:#get a random number of items
+		var item = {
+			"quantity" : 1,
+			"type" : item_type,
+			"name" : item_name,
+			"effect" : item_effect,
+			"texture" : item_texture,
+			"is_on_hotbar" : is_on_hotbar,
+			"cost" : cost,
+			"scene_path" : scene_path
+			}#set the dictionary values
+		add_item_to_shop(item)#call this function to add items to the array
+		counter += 1
+	populate_shop()#we populate the grid visually with the items we just put inside
+
+func add_blood_from_player(Amount):#this adds the third type of item
+	var counter = 0
+	item_type = "Consumable"#we define the properties
+	item_name = "Troll's Blood"
+	item_effect = "Regen Health"
+	cost = 10
+	item_texture = $Blood.texture#set the texture
+	while counter < Amount:#get a random number of items
+		var item = {
+			"quantity" : 1,
+			"type" : item_type,
+			"name" : item_name,
+			"effect" : item_effect,
+			"texture" : item_texture,
+			"is_on_hotbar" : is_on_hotbar,
+			"cost" : cost,
+			"scene_path" : scene_path
+			}#set the dictionary values
+		add_item_to_shop(item)#call this function to add items to the array
+		counter += 1
+	populate_shop()#we populate the grid visually with the items we just put inside

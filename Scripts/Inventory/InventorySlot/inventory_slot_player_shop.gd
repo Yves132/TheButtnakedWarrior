@@ -9,6 +9,9 @@ extends Control
 @onready var item_type = $DetailPanel/ItemType
 @onready var item_effect = $DetailPanel/ItemEffect
 @onready var outer_border = $OuterBorder
+@onready var item_cost = $DetailPanel/CoinImg/Cost
+@onready var usage_panel = $UsagePanel
+@onready var quantity_panel = $QuantityPanel
 
 
 #slot item
@@ -19,6 +22,7 @@ var is_assigned = false
 
 func _on_item_button_mouse_entered():#if the mouse is on the slot show info
 	if item != null:
+		usage_panel.visible = false
 		details_panel.visible = true
 
 
@@ -38,6 +42,7 @@ func set_item(new_item):#sets the slot to be filled (called from inventory UI sc
 	quantity_label.text =  str(item["quantity"])#sets the quantity
 	item_name.text = str(item["name"])#sets the name
 	item_type.text = str(item["type"])#sets the type
+	item_cost.text = str(item["cost"])
 	if item["effect"] != "":#sets the effect
 		item_effect.text = str(item["effect"])
 	else:
@@ -45,3 +50,37 @@ func set_item(new_item):#sets the slot to be filled (called from inventory UI sc
 	#update_assignment_status()
 	#print(PlayerData.inventory_dic)
 	
+
+func _on_item_button_gui_input(event):
+	if event is InputEventMouseButton:#if it's a mouse input from the buttons
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():#if left click has been pressed
+			if item != null:
+				usage_panel.visible = !usage_panel.visible
+
+func _on_sell_button_pressed():
+	details_panel.hide()
+	quantity_panel.show()
+	if item != null:
+		$QuantityPanel/HSlider.min_value = 1
+		$QuantityPanel/HSlider.max_value = item["quantity"]
+	
+	
+
+
+func _on_h_slider_value_changed(value):
+	$QuantityPanel/Quantity.text = str(value)
+
+
+func _on_confirm_button_pressed():
+	var total_gain = $QuantityPanel/HSlider.value * item["cost"]
+	PlayerData.player_dic["Coins"] += total_gain
+	GameManager.uimanager.shop.check_item_shop(item, $QuantityPanel/HSlider.value)
+	GameManager.uimanager.shop.remove_item_from_player(item["type"], item["effect"],$QuantityPanel/HSlider.value)
+	GameManager.uimanager.shop.populate_inventory()
+	quantity_panel.hide()
+	usage_panel.hide()
+
+
+func _on_cancel_button_pressed():
+	quantity_panel.hide()
+	usage_panel.hide()

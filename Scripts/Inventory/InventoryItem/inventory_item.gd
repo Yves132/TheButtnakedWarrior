@@ -8,6 +8,7 @@ extends Node2D
 @export var item_texture : Texture
 @export var item_effect = ""
 @export var is_on_hotbar = false#not used right now
+@export var cost : int
 var scene_path : String = "res://Scenes/Inventory/InventoryItem/inventory_item.tscn"#this is the path to this scene
 #it will be used in enemies script to spawn items
 
@@ -39,6 +40,7 @@ func pickup_item():#this function picks up items
 		"effect" : item_effect,
 		"texture" : item_texture,
 		"is_on_hotbar" : is_on_hotbar,
+		"cost" : cost,
 		"scene_path" : scene_path
 	}#set the dictionary values
 	#print(item)
@@ -51,6 +53,7 @@ func set_item_data(data):#called by inventorymanager in function dropitem
 	item_name = data["name"]
 	item_effect = data["effect"]
 	item_texture = data["texture"]
+	cost = data["cost"]
 
 
 func _on_area_2d_body_entered(body):

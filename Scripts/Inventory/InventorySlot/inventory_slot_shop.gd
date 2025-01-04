@@ -11,6 +11,7 @@ extends Control
 @onready var usage_panel = $UsagePanel
 @onready var outer_border = $OuterBorder
 @onready var quantity_panel = $QuantityPanel
+@onready var item_cost = $DetailPanel/CoinImg/Cost
 #@onready var assign_button = $UsagePanel/AssignButton
 
 #slot item
@@ -47,6 +48,7 @@ func set_item(new_item):#sets the slot to be filled (called from inventory UI sc
 	quantity_label.text =  str(item["quantity"])#sets the quantity
 	item_name.text = str(item["name"])#sets the name
 	item_type.text = str(item["type"])#sets the type
+	item_cost.text = str(item["cost"])
 	if item["effect"] != "":#sets the effect
 		item_effect.text = str(item["effect"])
 	else:
@@ -64,11 +66,18 @@ func _on_buy_button_pressed():
 		
 	
 func _on_confirm_button_pressed():
-	GameManager.uimanager.shop.check_item(item)
-	GameManager.uimanager.shop.remove_item_from_shop(item["type"], item["effect"],item["quantity"])
-	GameManager.uimanager.shop.populate_shop()
-	quantity_panel.hide()
-	usage_panel.hide()
+	var total_cost = $QuantityPanel/HSlider.value * item["cost"]
+	if PlayerData.player_dic["Coins"] >= total_cost:
+		PlayerData.player_dic["Coins"] -= total_cost
+		GameManager.uimanager.shop.check_item(item, $QuantityPanel/HSlider.value)
+		GameManager.uimanager.shop.remove_item_from_shop(item["type"], item["effect"],$QuantityPanel/HSlider.value)
+		GameManager.uimanager.shop.populate_shop()
+		quantity_panel.hide()
+		usage_panel.hide()
+	else:
+		GameManager.uimanager.shop.message.show()
+		await get_tree().create_timer(0.5).timeout
+		GameManager.uimanager.shop.message.hide()
 	
 
 func _on_cancel_button_pressed():

@@ -210,7 +210,7 @@ func _physics_process(delta):
 			if landing == true:
 				dust_jump()
 				landing = false
-			if Input.is_action_just_pressed("Dash") and can_dash and PlayerData.player_dic["dashes"] > 0 and (Input.is_action_pressed("left") or Input.is_action_pressed("right")):
+			if Input.is_action_just_pressed("Dash") and can_dash and PlayerData.player_dic["dashes"] > 0 and (Input.is_action_pressed("left") or Input.is_action_pressed("right")) and velocity.x != 0:
 				dust_dash()
 			
 			fire()

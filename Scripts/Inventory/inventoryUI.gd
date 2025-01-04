@@ -49,7 +49,7 @@ func _on_drag_end():
 	dragged_slot = null
 
 func get_slot_under_mouse() -> Control:#this function returns the slot in which we want to drop the item
-	print("got it")
+	#print("got it")
 	var mouse_position = get_global_mouse_position()#get the global position of mouse
 	for slot in grid_container.get_children():#go through the inventory slots
 		var slot_rect = Rect2(slot.global_position, slot.size)#get the current slot's position and area

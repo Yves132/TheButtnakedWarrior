@@ -137,6 +137,7 @@ func spawn_wing():#spawn wing which increases playerspeed
 	wing.item_name = "Bat Wing"
 	wing.item_effect = "SPD+(20)"
 	wing.item_type = "Consumable"
+	wing.cost = 3
 	get_parent().add_child(wing)
 
 func bleed():

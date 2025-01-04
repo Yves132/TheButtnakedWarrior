@@ -38,6 +38,13 @@ func add_item(item):#called by inventory item script #, to_hotbar = false):#just
 				PlayerData.player_dic["inventory"][i]["quantity"] += item["quantity"]#increase the quantity
 				inventory_updated.emit()#emit the signal to inventory ui
 				return true
+		for i in range(PlayerData.player_dic["inventory"].size()):#runs through thew whole inventory array in playerdata.playerdic
+			#print(i)
+			#checks if item exists in inventory and matches both type and effect
+			if PlayerData.player_dic["inventory"][i] != null and PlayerData.player_dic["inventory"][i]["type"] == item["type"] and PlayerData.player_dic["inventory"][i]["effect"] == item["effect"]:
+				PlayerData.player_dic["inventory"][i]["quantity"] += item["quantity"]#increase the quantity
+				inventory_updated.emit()#emit the signal to inventory ui
+				return true
 			elif PlayerData.player_dic["inventory"][i] == null:#if item does not exist yet
 				PlayerData.player_dic["inventory"][i] = item#set the item in inventory array in playerdata script
 				#PlayerData.player_dic["inventory"][i]["quantity"] = item["quantity"]

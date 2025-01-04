@@ -244,6 +244,7 @@ func spawn_meat():
 	meat.item_name = "Goblin Meat"
 	meat.item_effect = "Heal 1 HP"
 	meat.item_type = "Consumable"
+	meat.cost = 2
 	get_parent().add_child(meat)
 
 func bleed():

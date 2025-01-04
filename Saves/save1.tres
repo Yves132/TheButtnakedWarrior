@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="SaveData" load_steps=4 format=3]
+[gd_resource type="Resource" script_class="SaveData" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Core/SaveData.gd" id="1_aijnu"]
-[ext_resource type="Texture2D" path="res://Sprites/Drops/GoblinMeat.png" id="1_prcl6"]
-[ext_resource type="Texture2D" path="res://Sprites/Drops/BatWing.png" id="2_ys6g8"]
+[ext_resource type="Script" path="res://Scripts/Core/SaveData.gd" id="1_dd8yu"]
+[ext_resource type="Texture2D" path="res://Sprites/Drops/GoblinMeat.png" id="1_nng67"]
 
 [resource]
-script = ExtResource("1_aijnu")
+script = ExtResource("1_dd8yu")
 inventory_dic = {
 "effect": null,
 "name": null,
@@ -15,61 +14,54 @@ inventory_dic = {
 "type": null
 }
 player_dic = {
-"Coins": 56,
-"crit_chance": 30,
-"current_xp": 9,
+"Coins": 68,
+"crit_chance": 0,
+"current_xp": 5.0,
 "dash_speed": 800,
-"dashes": 5,
-"deep_burn": true,
-"deep_cuts": true,
-"dodge": 30,
-"flowing_water": true,
-"focused_chi": true,
+"dashes": 1,
+"deep_burn": false,
+"deep_cuts": false,
+"dodge": 5,
+"flowing_water": false,
+"focused_chi": false,
 "has_hat": true,
 "has_spell": true,
 "has_weapon": true,
 "hat_found": true,
-"health": 7,
+"health": 1,
 "inventory": [{
+"cost": 2,
 "effect": "Heal 1 HP",
 "is_on_hotbar": null,
 "name": "Goblin Meat",
-"quantity": 3,
+"quantity": 2,
 "scene_path": "res://Scenes/Inventory/InventoryItem/inventory_item.tscn",
-"texture": ExtResource("1_prcl6"),
+"texture": ExtResource("1_nng67"),
 "type": "Consumable"
-}, {
-"effect": "SPD+(20)",
-"is_on_hotbar": null,
-"name": "Bat Wing",
-"quantity": 1,
-"scene_path": "res://Scenes/Inventory/InventoryItem/inventory_item.tscn",
-"texture": ExtResource("2_ys6g8"),
-"type": "Consumable"
-}, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+}, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
 "inventory_hotbar_array": [],
 "jump_height": -300.0,
-"last_positionx": 2355.39,
-"last_positiony": 692.687,
-"magic_dmg": 2,
-"mana": 5,
-"max_dashes": 5,
-"max_health": 10,
-"max_mana": 5,
-"melee_dmg": 3,
-"player_level": 2,
+"last_positionx": 2379.32,
+"last_positiony": 692.658,
+"magic_dmg": 1,
+"mana": 1,
+"max_dashes": 1,
+"max_health": 3,
+"max_mana": 1,
+"melee_dmg": 2,
+"player_level": 3,
 "positionx": 11.0,
 "positiony": 693.0,
-"quick_step": true,
+"quick_step": false,
 "runspeed": 260.0,
-"sharp_mind": true,
+"sharp_mind": false,
 "skillpoints": 100,
 "speed": 200.0,
-"warrior_heart": true,
-"warrior_might": true,
-"waterfall": true,
+"warrior_heart": false,
+"warrior_might": false,
+"waterfall": false,
 "weapon_found": true,
-"xp_required": 15.0
+"xp_required": 22.5
 }
 world_dic = {
 "actual_level": "res://Scenes/WorldScenes/goblin_hills_cave.tscn",

@@ -170,6 +170,7 @@ func spawn_blood():
 	trollblood.item_name = "Troll's Blood"
 	trollblood.item_effect = "Regen Health"
 	trollblood.item_type = "Consumable"
+	trollblood.cost = 5
 	get_parent().add_child(trollblood)
 	
 func bleed():
