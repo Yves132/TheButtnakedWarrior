@@ -49,32 +49,32 @@ size = Vector2(97.6523, 193.716)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ss5a"]
 shader = ExtResource("4_vquk7")
 shader_parameter/width = 7.0
-shader_parameter/outline_color = null
+shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mxtxb"]
 shader = ExtResource("6_e0r1r")
 shader_parameter/width = 20.0
-shader_parameter/outline_color = null
+shader_parameter/outline_color = Color(0, 0, 0, 0.588235)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6k104"]
 shader = ExtResource("8_i8yo1")
 shader_parameter/width = 10.0
-shader_parameter/outline_color = null
+shader_parameter/outline_color = Color(0, 0, 0, 0.588235)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y7t3j"]
 shader = ExtResource("8_i8yo1")
 shader_parameter/width = 10.0
-shader_parameter/outline_color = null
+shader_parameter/outline_color = Color(0, 0, 0, 0.588235)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lfbh3"]
 shader = ExtResource("8_i8yo1")
 shader_parameter/width = 10.0
-shader_parameter/outline_color = null
+shader_parameter/outline_color = Color(0, 0, 0, 0.588235)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wxpct"]
 shader = ExtResource("8_i8yo1")
 shader_parameter/width = 10.0
-shader_parameter/outline_color = null
+shader_parameter/outline_color = Color(0, 0, 0, 0.588235)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i10s3"]
 size = Vector2(96.7791, 196.928)

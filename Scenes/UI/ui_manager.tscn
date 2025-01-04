@@ -222,7 +222,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -154.0
-offset_top = -118.0
+offset_top = -159.0
 offset_right = 250.0
 offset_bottom = 225.0
 grow_horizontal = 2
@@ -232,11 +232,26 @@ expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
 layout_mode = 0
-offset_left = 79.0
-offset_top = 19.0
-offset_right = 329.0
-offset_bottom = 322.0
+offset_left = 56.0
+offset_top = 39.0
+offset_right = 345.0
+offset_bottom = 351.0
 alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="InventoryButton" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("13_1m8h7")
+theme_override_font_sizes/font_size = 30
+text = "INVENTORY"
+flat = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
@@ -251,6 +266,21 @@ theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("13_1m8h7")
 theme_override_font_sizes/font_size = 30
 text = "RESUME"
+flat = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MenuButton" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("13_1m8h7")
+theme_override_font_sizes/font_size = 30
+text = "MAIN MENU"
 flat = true
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="PauseMenu/VBoxContainer"]
@@ -325,26 +355,47 @@ theme_override_font_sizes/font_size = 25
 text = "Main Menu"
 flat = true
 
+[node name="QuitButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 537.0
+offset_right = 785.0
+offset_bottom = 629.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.592157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("13_1m8h7")
+theme_override_font_sizes/font_size = 25
+text = "Quit"
+flat = true
+
 [node name="XPtimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="shop" parent="." instance=ExtResource("11_hhe3s")]
 visible = false
 anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 190.0
-offset_top = 32.0
-offset_right = 190.0
-offset_bottom = 32.0
+offset_left = -654.294
+offset_top = -357.736
+offset_right = 645.706
+offset_bottom = 362.264
+grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.7, 0.7)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [connection signal="animation_finished" from="SavingIcon" to="." method="_on_saving_icon_animation_finished"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer2/InventoryButton" to="." method="_on_inventory_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer5/MenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer4/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Panel/RespawnButton" to="." method="_on_respawn_button_pressed"]
 [connection signal="pressed" from="Panel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="timeout" from="XPtimer" to="." method="_on_x_ptimer_timeout"]

@@ -88,9 +88,9 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_wulwn")
 [node name="DetailPanel" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_top = -107.0
+offset_top = -97.0
 offset_right = 200.0
-offset_bottom = -11.0
+offset_bottom = -1.0
 color = Color(0.807843, 0.611765, 0.521569, 1)
 
 [node name="ItemName" type="Label" parent="DetailPanel"]

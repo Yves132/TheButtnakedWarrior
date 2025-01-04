@@ -23,6 +23,7 @@ var is_assigned = false
 func _on_item_button_mouse_entered():#if the mouse is on the slot show info
 	if item != null:
 		usage_panel.visible = false
+		quantity_panel.visible = false
 		details_panel.visible = true
 
 

@@ -1,13 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://chm8puhhex6gt"]
+[gd_scene load_steps=12 format=3 uid="uid://chm8puhhex6gt"]
 
 [ext_resource type="Texture2D" uid="uid://j73qinx4qvk8" path="res://Sprites/UI/Inventory.png" id="1_2fpni"]
 [ext_resource type="Script" path="res://Scripts/Inventory/Shop/shop.gd" id="1_a4kjm"]
+[ext_resource type="Shader" path="res://Shaders/inventoryUI.gdshader" id="2_6ko78"]
 [ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="2_w7vys"]
 [ext_resource type="Texture2D" uid="uid://0yycala5grty" path="res://Sprites/Drops/GoblinMeat.png" id="3_wvhuo"]
 [ext_resource type="Shader" path="res://Shaders/CoinDrops.gdshader" id="4_81ouc"]
 [ext_resource type="Texture2D" uid="uid://dy768rewef2kg" path="res://Sprites/Drops/BatWing.png" id="4_lrpq6"]
 [ext_resource type="Texture2D" uid="uid://lxn48qu250c8" path="res://Sprites/Drops/TrollBlood.png" id="5_45m6l"]
 [ext_resource type="Texture2D" uid="uid://bb6nwdm3li1v2" path="res://Sprites/Coins/Coin1.png" id="5_al4ql"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ab3i4"]
+shader = ExtResource("2_6ko78")
+shader_parameter/width = 5.0
+shader_parameter/outline_color = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kmx26"]
 shader = ExtResource("4_81ouc")
@@ -16,46 +22,42 @@ shader_parameter/outline_color = null
 
 [node name="shop" type="Control"]
 layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -128.0
-offset_top = -72.0
-offset_right = -128.0
-offset_bottom = -72.0
-grow_horizontal = 2
-scale = Vector2(0.2, 0.2)
+anchors_preset = 0
+offset_right = 1300.0
+offset_bottom = 720.0
 script = ExtResource("1_a4kjm")
-metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ab3i4")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1135.0
-offset_top = -405.0
-offset_right = 640.0
-offset_bottom = 360.0
+anchors_preset = -1
+anchor_left = 7.69043e-05
+anchor_top = 0.00049998
+anchor_right = 0.0416154
+anchor_bottom = 0.00049998
+offset_left = -0.0999756
+offset_top = -0.359997
+offset_right = 1263.9
+offset_bottom = 716.64
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_2fpni")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerInventory" type="Panel" parent="TextureRect"]
 layout_mode = 1
-offset_left = 115.0
-offset_top = 95.0
-offset_right = 785.0
-offset_bottom = 645.0
+offset_left = 88.0
+offset_top = 116.0
+offset_right = 569.0
+offset_bottom = 570.0
 
 [node name="Player" type="Label" parent="TextureRect/PlayerInventory"]
 layout_mode = 0
-offset_top = -44.0
-offset_right = 80.0
-offset_bottom = -21.0
+offset_left = -12.0
+offset_top = -88.0
+offset_right = 188.0
+offset_bottom = -47.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -66,31 +68,36 @@ theme_override_font_sizes/font_size = 40
 text = "Player"
 
 [node name="GridContainer" type="GridContainer" parent="TextureRect/PlayerInventory"]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 20.0
-offset_right = 655.0
-offset_bottom = 530.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.024948
+anchor_top = 0.0462555
+anchor_right = -0.024948
+anchor_bottom = 0.0462555
+offset_right = 556.0
+offset_bottom = 521.0
+scale = Vector2(0.8, 0.8)
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/PlayerInventory"]
 material = SubResource("ShaderMaterial_kmx26")
 layout_mode = 0
-offset_left = -35.0
-offset_top = 550.0
-offset_right = 75.0
-offset_bottom = 670.0
+offset_left = -28.0
+offset_top = 501.0
+offset_right = 46.0
+offset_bottom = 582.0
 texture = ExtResource("5_al4ql")
 expand_mode = 1
 
 [node name="Money" type="Label" parent="TextureRect/PlayerInventory/TextureRect"]
 layout_mode = 0
-offset_left = 110.0
-offset_top = 40.0
-offset_right = 150.0
-offset_bottom = 81.0
+offset_left = 69.0
+offset_top = 21.0
+offset_right = 109.0
+offset_bottom = 62.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -101,17 +108,16 @@ theme_override_font_sizes/font_size = 40
 
 [node name="GoblinInventory" type="Panel" parent="TextureRect"]
 layout_mode = 0
-offset_left = 950.0
-offset_top = 95.0001
-offset_right = 1620.0
-offset_bottom = 645.0
+offset_left = 717.0
+offset_top = 116.0
+offset_right = 1198.0
+offset_bottom = 570.0
 
 [node name="Goblin" type="Label" parent="TextureRect/GoblinInventory"]
 layout_mode = 0
-offset_left = 185.0
-offset_top = -45.0001
-offset_right = 674.0
-offset_bottom = -4.00006
+offset_top = -88.0
+offset_right = 489.0
+offset_bottom = -47.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -122,11 +128,17 @@ theme_override_font_sizes/font_size = 40
 text = "Goblin Merchant"
 
 [node name="GridContainer" type="GridContainer" parent="TextureRect/GoblinInventory"]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 20.0
-offset_right = 655.0
-offset_bottom = 530.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.035
+anchor_top = 0.046
+anchor_right = -0.035
+anchor_bottom = 0.046
+offset_left = -0.164999
+offset_top = 0.115993
+offset_right = 555.835
+offset_bottom = 521.116
+scale = Vector2(0.8, 0.8)
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 5

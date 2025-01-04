@@ -112,3 +112,10 @@ func _on_saving_icon_animation_finished():
 
 func _on_x_ptimer_timeout():
 	$PlayerLevel.hide()
+
+
+func _on_inventory_button_pressed():
+	pausemenuOpen = true
+	GameManager.pause_play()
+	inventoryopen = true
+	GameManager.pause_play()

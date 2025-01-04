@@ -43,13 +43,15 @@ bg_color = Color(0, 0.745098, 0.533333, 1)
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1282.0
-offset_bottom = 718.0
+offset_left = -27.0
+offset_right = 1273.0
+offset_bottom = 720.0
 script = ExtResource("1_nsopm")
 
 [node name="Inventory" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_nyvmq")
 layout_mode = 0
+offset_left = 16.0
 offset_top = 3.0
 offset_right = 1280.0
 offset_bottom = 720.0
@@ -60,9 +62,9 @@ expand_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0976862
-anchor_top = 0.13018
+anchor_top = 0.116233
 anchor_right = 0.0976862
-anchor_bottom = 0.13018
+anchor_bottom = 0.116233
 offset_right = 259.0
 offset_bottom = 544.0
 size_flags_horizontal = 3
@@ -104,9 +106,9 @@ vertical_alignment = 1
 [node name="StatPanel" type="Panel" parent="Inventory"]
 layout_mode = 0
 offset_left = 128.0
-offset_top = 349.0
+offset_top = 337.0
 offset_right = 382.0
-offset_bottom = 636.0
+offset_bottom = 624.0
 
 [node name="Stats" type="Label" parent="Inventory/StatPanel"]
 layout_mode = 0

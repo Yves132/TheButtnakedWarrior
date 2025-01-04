@@ -53,6 +53,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var can_spawn_particle = true
 var landing = false
 var regencounter = 0#used for regen effect of item
+var near_wall_jump = false
 
 
 
@@ -176,6 +177,7 @@ func _physics_process(delta):
 			 ##Handle jump.
 			if Input.is_action_just_pressed("jump"):
 				velocity.y = PlayerData.player_dic["jump_height"]
+			jump_near_wall()
 			
 			##handle the acceleration/deceleration.
 			if Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
@@ -197,11 +199,11 @@ func _physics_process(delta):
 				can_spawn_particle = false
 			if Input.is_action_just_released("right") or Input.is_action_just_released("left") or Input.is_action_just_released("run"):
 				can_spawn_particle = true
-			if ((Input.is_action_pressed("right") or Input.is_action_pressed("left")) and can_spawn_particle == true) and not Input.is_action_pressed("run"):
+			if ((Input.is_action_pressed("right") or Input.is_action_pressed("left")) and can_spawn_particle == true) and not Input.is_action_pressed("run") and velocity.x != 0:
 				can_spawn_particle = false
 				$DustTimerW.start()
 				dust_walk()
-			if ((Input.is_action_pressed("right") or Input.is_action_pressed("left")) and can_spawn_particle == true) and Input.is_action_pressed("run"):
+			if ((Input.is_action_pressed("right") or Input.is_action_pressed("left")) and can_spawn_particle == true) and Input.is_action_pressed("run") and velocity.x != 0:
 				can_spawn_particle = false
 				$DustTimerR.start()
 				dust_run()
@@ -323,8 +325,14 @@ func set_direction():
 func is_near_wall():
 	return $WallChecker.is_colliding()
 
+func jump_near_wall():
+	if is_on_floor() and is_on_wall() and Input.is_action_just_pressed("jump"):
+		near_wall_jump = true
+		await get_tree().create_timer(0.3).timeout
+		near_wall_jump = false
+
 func should_wall_slide() -> bool:
-	if is_near_wall() and not is_on_floor():
+	if is_near_wall() and not is_on_floor() and not near_wall_jump:
 		return true
 	else:
 		return false
@@ -620,6 +628,7 @@ func bounce():
 func Hurt(posx):
 	if not dodged:
 		if not dead:
+			GameManager.frame_freeze(0,0.1)
 			velocity.y = PlayerData.player_dic["jump_height"] * 0.7
 			if posx > position.x:
 				velocity.x = -750
@@ -631,7 +640,6 @@ func Hurt(posx):
 			#Input.action_release("right")
 			set_collision_layer_value(1,false)
 			HitBox.set_collision_layer_value(1,false)
-			GameManager.frame_freeze(0,0.1)
 	dodged = false
 
 func _on_mana_regen_timer_timeout():

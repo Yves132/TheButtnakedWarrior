@@ -90,9 +90,9 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_wulwn")
 [node name="DetailPanel" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_top = -107.0
+offset_top = -99.0
 offset_right = 200.0
-offset_bottom = -9.0
+offset_bottom = -1.0
 color = Color(0.807843, 0.611765, 0.521569, 1)
 
 [node name="ItemName" type="Label" parent="DetailPanel"]
@@ -159,9 +159,10 @@ text = "Cost"
 [node name="UsagePanel" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -130.0
-offset_top = 47.0
-offset_bottom = 75.0
+offset_left = -5.0
+offset_top = 38.0
+offset_right = 125.0
+offset_bottom = 66.0
 color = Color(0.807843, 0.611765, 0.521569, 1)
 
 [node name="BuyButton" type="Button" parent="UsagePanel"]
@@ -186,9 +187,10 @@ text = "Buy"
 [node name="QuantityPanel" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -130.0
-offset_top = 76.0
-offset_bottom = 135.0
+offset_left = -5.0
+offset_top = 67.0
+offset_right = 125.0
+offset_bottom = 126.0
 color = Color(0.807843, 0.611765, 0.521569, 1)
 
 [node name="HSlider" type="HSlider" parent="QuantityPanel"]
