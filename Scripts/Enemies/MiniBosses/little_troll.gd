@@ -4,6 +4,7 @@ extends CharacterBody2D
 const COINS = preload("res://Scenes/Coins/CoinDrops.tscn")
 const TROLLBLOOD = preload("res://Scenes/Inventory/InventoryItem/inventory_item.tscn")
 const BLOOD = preload("res://Scenes/Particles/big_blood.tscn")
+const EXPLOSION = preload("res://Scenes/Particles/explosion_fire.tscn")
 
 
 @export var max_health = 10
@@ -135,7 +136,8 @@ func _on_hit_detector_body_entered(body):#detecting if player hit with fireball
 	if body is Fireball:
 		burnt = true#it is used to determine cause of death for troll in losehealth func
 		lose_health(PlayerData.player_dic["magic_dmg"])#troll loses health equal to magic damage in playerdictionary
-		GameManager.frame_freeze(0,0.2)
+		#GameManager.frame_freeze(0,frame_freeze_time)
+		spawn_explosion()
 		body.queue_free()#delete fireball
 
 
@@ -144,7 +146,7 @@ func _on_hit_detector_area_entered(area):#detecting if player hit with sword
 		hit = true
 		sliced = true#it is used to determine cause of death for troll in losehealth func
 		lose_health(PlayerData.player_dic["melee_dmg"])#troll loses health equal to melee damage in playerdictionary
-		GameManager.frame_freeze(0,0.2)
+		#GameManager.frame_freeze(0,frame_freeze_time)
 
 
 func _on_animation_player_animation_finished(anim_name):
@@ -177,6 +179,12 @@ func bleed():
 	var blood = BLOOD.instantiate()
 	blood.position = position
 	get_parent().add_child(blood)
+	
+
+func spawn_explosion():
+	var explosion = EXPLOSION.instantiate()
+	explosion.position = position
+	get_parent().add_child(explosion)
 
 func _on_death_timer_timeout():
 	var coinspawntrue = randi() %20 + 5#random number of coins to spawn

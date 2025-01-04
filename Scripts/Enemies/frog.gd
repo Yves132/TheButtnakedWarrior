@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const COINS = preload("res://Scenes/Coins/CoinDrops.tscn")#preloading the scene of the coin item is necessary  for instantiation
 const BLOOD = preload("res://Scenes/Particles/blood.tscn")
+const EXPLOSION = preload("res://Scenes/Particles/explosion_fire.tscn")
 
 @export var speed = 50
 @export var direction = 1
@@ -126,6 +127,7 @@ func _on_hit_detector_area_entered(area):#has the sword hit the frog?
 
 func _on_hit_detector_body_entered(body):#has the fireball hit the frog?
 	if body is Fireball:
+		spawn_explosion()
 		body.queue_free()
 		burnt = true#this is used to determine death animation
 		FrogAi.hostile = true#this turns ALL frogs hostile by changing a var in a global file
@@ -143,7 +145,7 @@ func _on_top_box_body_entered(body):
 
 func lose_health(dmg):#frog loses health equal to player dmg 
 	current_health = current_health - dmg
-	GameManager.frame_freeze(0,0.2)
+	#GameManager.frame_freeze(0,0.2)
 	if (burnt or sliced or crushed) and current_health <= 0:#killed by fireball or sword or crushed
 		dead = true
 		$HitBox.set_collision_mask_value(1, false)#set this mask layer to false, to prevent damage to player after death of frog
@@ -162,6 +164,10 @@ func bleed():
 	blood.position = position
 	get_parent().add_child(blood)
 
+func spawn_explosion():
+	var explosion = EXPLOSION.instantiate()
+	explosion.position = position
+	get_parent().add_child(explosion)
 
 func _on_death_timer_timeout():
 	var coinspawntrue = randi() %2 +1  #random for how many coins will spawn

@@ -13,14 +13,14 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_gkj7l"]
-offsets = PackedFloat32Array(0, 0.178295, 0.356589, 0.488372)
-colors = PackedColorArray(0.801263, 4.23551e-06, 2.88785e-07, 1, 0.694118, 0.180392, 0.0117647, 1, 1, 1, 0, 1, 1, 1, 0, 0)
+offsets = PackedFloat32Array(0, 0.170543, 0.379845, 0.627907, 0.875969)
+colors = PackedColorArray(0.801263, 4.23551e-06, 2.88785e-07, 1, 1, 1, 1, 0.470588, 0.694118, 0.180392, 0.0117647, 1, 1, 1, 0, 1, 1, 1, 1, 0)
 
 [node name="Fire" type="Node2D"]
 script = ExtResource("1_tj7i7")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-amount = 5000
+amount = 100
 lifetime = 0.2
 lifetime_randomness = 1.0
 emission_shape = 2
@@ -30,7 +30,7 @@ initial_velocity_max = 10.0
 radial_accel_min = -100.0
 radial_accel_max = -90.0
 radial_accel_curve = SubResource("Curve_n82vv")
-scale_amount_min = 0.5
-scale_amount_max = 2.0
+scale_amount_min = 2.0
+scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_d0x8u")
 color_ramp = SubResource("Gradient_gkj7l")

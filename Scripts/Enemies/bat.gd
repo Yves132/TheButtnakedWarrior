@@ -3,6 +3,7 @@ extends CharacterBody2D
 const COINS = preload("res://Scenes/Coins/CoinDrops.tscn")
 const WINGS = preload("res://Scenes/Inventory/InventoryItem/inventory_item.tscn")
 const BLOOD = preload("res://Scenes/Particles/blood.tscn")
+const EXPLOSION = preload("res://Scenes/Particles/explosion_fire.tscn")
 
 
 @export var speed = 75
@@ -90,7 +91,7 @@ func hit_management():
 
 func lose_health(dmg):
 	current_health -= dmg#lose health based on player damage
-	GameManager.frame_freeze(0, 0.2)
+	GameManager.frame_freeze(0, 0.1)
 	if (sliced or burnt) and current_health <= 0:#if dead by sword
 		dead = true
 		$DeathTimer.start()#used to allow the animation to play
@@ -105,7 +106,7 @@ func _on_spot_box_body_entered(body):#this is used to determine if the player is
 
 func _on_hit_box_body_entered(body):#this is used to determine if bat hit the player
 	if body is Player:
-		GameManager.frame_freeze(0, 0.2)
+		#GameManager.frame_freeze(0, 0.2)
 		GameManager.lose_health(damage)#calls lose health function for player in gamemanager script
 		GameManager.player.Hurt(myposx)#calls hurt function in player script, used to determine player blinking and immunity
 
@@ -122,6 +123,7 @@ func _on_hit_detector_body_entered(body):#this is used to determine if the playe
 	if body is Fireball:
 		burnt = true
 		lose_health(PlayerData.player_dic["magic_dmg"])#bat loses helath equal to player magic dmg, stored in playerdata playerdictionary
+		spawn_explosion()
 		body.queue_free()#delete fireball
 
 func spawn_coin():
@@ -144,6 +146,11 @@ func bleed():
 	var blood = BLOOD.instantiate()
 	blood.position = position
 	get_parent().add_child(blood)
+
+func spawn_explosion():
+	var explosion = EXPLOSION.instantiate()
+	explosion.position = position
+	get_parent().add_child(explosion)
 
 func _on_death_timer_timeout():
 	var coinspawntrue = randi() % 3 + 1#random number of coins which spawn

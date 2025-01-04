@@ -4,6 +4,7 @@ class_name Enemy
 const COINS = preload("res://Scenes/Coins/CoinDrops.tscn")
 const MEAT = preload("res://Scenes/Inventory/InventoryItem/inventory_item.tscn")
 const BLOOD = preload("res://Scenes/Particles/blood.tscn")
+const EXPLOSION = preload("res://Scenes/Particles/explosion_fire.tscn")
 
 @export var speed = 50
 @export var direction = 1
@@ -76,7 +77,7 @@ func _physics_process(delta):
 	
 
 func lose_health(dmg):
-	GameManager.frame_freeze(0,0.2)
+	#GameManager.frame_freeze(0,0.1)
 	Hit = true
 	current_health -= dmg
 
@@ -135,6 +136,7 @@ func _on_side_checker_body_entered(body):
 		if body is Fireball:
 			lose_health(PlayerData.player_dic["magic_dmg"])
 			Hurt(GameManager.player.Playerposx)
+			spawn_explosion()
 			body.queue_free()
 			sprite.play("Hit")
 			if PlayerData.player_dic["deep_burn"] == true:
@@ -251,6 +253,11 @@ func bleed():
 	var blood = BLOOD.instantiate()
 	blood.position = position
 	get_parent().add_child(blood)
+
+func spawn_explosion():
+	var explosion = EXPLOSION.instantiate()
+	explosion.position = position
+	get_parent().add_child(explosion)
 
 func _on_hurt_timer_timeout():
 	Hit = false

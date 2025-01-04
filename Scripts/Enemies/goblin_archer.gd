@@ -4,6 +4,7 @@ const ARROW = preload("res://Scenes/Enemies/arrow.tscn")
 const COINS = preload("res://Scenes/Coins/CoinDrops.tscn")
 const MEAT = preload("res://Scenes/Inventory/InventoryItem/inventory_item.tscn")
 const BLOOD = preload("res://Scenes/Particles/blood.tscn")
+const EXPLOSION = preload("res://Scenes/Particles/explosion_fire.tscn")
 
 @export var speed = 50
 @export var direction = 1
@@ -90,7 +91,6 @@ func shoot():
 		shooting = false
 		
 func lose_health(dmg):
-	GameManager.frame_freeze(0,0.2)
 	Hit = true
 	current_health -= dmg
 	
@@ -150,6 +150,11 @@ func bleed():
 	var blood = BLOOD.instantiate()
 	blood.position = position
 	get_parent().add_child(blood)
+	
+func spawn_explosion():
+	var explosion = EXPLOSION.instantiate()
+	explosion.position = position
+	get_parent().add_child(explosion)
 
 func _on_timer_timeout():#timer to start idle animation
 	if not on_fire:
@@ -178,6 +183,7 @@ func _on_side_checker_body_entered(body):
 		if body is Fireball:#is player on top of me
 			lose_health(PlayerData.player_dic["magic_dmg"])
 			Hurt(GameManager.player.Playerposx)
+			spawn_explosion()
 			body.queue_free()
 			sprite.play("Hit")
 			if PlayerData.player_dic["deep_burn"] == true:
