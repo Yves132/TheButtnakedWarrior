@@ -326,13 +326,13 @@ func is_near_wall():
 	return $WallChecker.is_colliding()
 
 func jump_near_wall():
-	if is_on_floor() and is_on_wall() and Input.is_action_just_pressed("jump"):
+	if is_on_floor() and is_on_wall() and Input.is_action_pressed("jump"):
 		near_wall_jump = true
 		await get_tree().create_timer(0.3).timeout
 		near_wall_jump = false
 
 func should_wall_slide() -> bool:
-	if is_near_wall() and not is_on_floor() and not near_wall_jump:
+	if is_on_wall() and not is_on_floor() and not near_wall_jump:
 		return true
 	else:
 		return false
