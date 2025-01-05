@@ -24,6 +24,7 @@ const DUSTDASH = preload("res://Scenes/Particles/DustDash.tscn")
 @onready var crittimer = $CritTimer
 @onready var interact_ui = $Interact_ui
 @onready var PlayerCamera = $Camera2D
+@onready var sword_swing_particles = $SwordSwingPart
 
 var ladder_checker := false #is player on ladder
 var climbing := false #is player climbing

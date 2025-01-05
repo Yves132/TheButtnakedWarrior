@@ -34,7 +34,7 @@ player_dic = {
 "last_positionx": 2365.57,
 "last_positiony": 692.718,
 "magic_dmg": 1,
-"mana": 0,
+"mana": 1,
 "max_dashes": 1,
 "max_health": 3,
 "max_mana": 1,

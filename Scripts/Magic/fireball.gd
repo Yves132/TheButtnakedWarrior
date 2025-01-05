@@ -22,11 +22,11 @@ func _physics_process(delta):
 		#look_at(target_enemy.global_position)
 		#position = position.move_toward(target_enemy.global_position,100 * delta)
 		if is_on_wall():
-			add_child(explosion)
+			get_parent().add_child(explosion)
 			await get_tree().create_timer(0.2).timeout
 			queue_free()
 		if velocity.x == 0:
-			add_child(explosion)
+			get_parent().add_child(explosion)
 			await get_tree().create_timer(0.2).timeout
 			queue_free()
 		move_and_slide()
