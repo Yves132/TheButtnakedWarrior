@@ -137,7 +137,7 @@ func _on_hit_detector_body_entered(body):#detecting if player hit with fireball
 		burnt = true#it is used to determine cause of death for troll in losehealth func
 		lose_health(PlayerData.player_dic["magic_dmg"])#troll loses health equal to magic damage in playerdictionary
 		#GameManager.frame_freeze(0,frame_freeze_time)
-		spawn_explosion()
+		spawn_explosion(body.position)
 		body.queue_free()#delete fireball
 
 
@@ -181,9 +181,9 @@ func bleed():
 	get_parent().add_child(blood)
 	
 
-func spawn_explosion():
+func spawn_explosion(pos):
 	var explosion = EXPLOSION.instantiate()
-	explosion.position = position
+	explosion.position = pos
 	get_parent().add_child(explosion)
 
 func _on_death_timer_timeout():

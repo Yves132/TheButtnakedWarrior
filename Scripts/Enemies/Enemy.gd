@@ -136,7 +136,7 @@ func _on_side_checker_body_entered(body):
 		if body is Fireball:
 			lose_health(PlayerData.player_dic["magic_dmg"])
 			Hurt(GameManager.player.Playerposx)
-			spawn_explosion()
+			spawn_explosion(body.position)
 			body.queue_free()
 			sprite.play("Hit")
 			if PlayerData.player_dic["deep_burn"] == true:
@@ -254,9 +254,9 @@ func bleed():
 	blood.position = position
 	get_parent().add_child(blood)
 
-func spawn_explosion():
+func spawn_explosion(pos):
 	var explosion = EXPLOSION.instantiate()
-	explosion.position = position
+	explosion.position = pos
 	get_parent().add_child(explosion)
 
 func _on_hurt_timer_timeout():

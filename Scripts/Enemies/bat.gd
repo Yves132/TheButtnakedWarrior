@@ -123,7 +123,7 @@ func _on_hit_detector_body_entered(body):#this is used to determine if the playe
 	if body is Fireball:
 		burnt = true
 		lose_health(PlayerData.player_dic["magic_dmg"])#bat loses helath equal to player magic dmg, stored in playerdata playerdictionary
-		spawn_explosion()
+		spawn_explosion(body.position)
 		body.queue_free()#delete fireball
 
 func spawn_coin():
@@ -147,9 +147,9 @@ func bleed():
 	blood.position = position
 	get_parent().add_child(blood)
 
-func spawn_explosion():
+func spawn_explosion(pos):
 	var explosion = EXPLOSION.instantiate()
-	explosion.position = position
+	explosion.position = pos
 	get_parent().add_child(explosion)
 
 func _on_death_timer_timeout():

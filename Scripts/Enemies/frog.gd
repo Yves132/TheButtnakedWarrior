@@ -127,7 +127,7 @@ func _on_hit_detector_area_entered(area):#has the sword hit the frog?
 
 func _on_hit_detector_body_entered(body):#has the fireball hit the frog?
 	if body is Fireball:
-		spawn_explosion()
+		spawn_explosion(body.position)
 		body.queue_free()
 		burnt = true#this is used to determine death animation
 		FrogAi.hostile = true#this turns ALL frogs hostile by changing a var in a global file
@@ -164,9 +164,9 @@ func bleed():
 	blood.position = position
 	get_parent().add_child(blood)
 
-func spawn_explosion():
+func spawn_explosion(pos):
 	var explosion = EXPLOSION.instantiate()
-	explosion.position = position
+	explosion.position = pos
 	get_parent().add_child(explosion)
 
 func _on_death_timer_timeout():
