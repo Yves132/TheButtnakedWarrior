@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="SaveData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SaveData" load_steps=3 format=3]
 
+[ext_resource type="Texture2D" path="res://Sprites/Drops/GoblinMeat.png" id="1_td8ns"]
 [ext_resource type="Script" path="res://Scripts/Core/SaveData.gd" id="1_u5xoo"]
 
 [resource]
@@ -13,7 +14,7 @@ inventory_dic = {
 "type": null
 }
 player_dic = {
-"Coins": 10,
+"Coins": 43,
 "crit_chance": 0,
 "current_xp": 8,
 "dash_speed": 800,
@@ -27,21 +28,30 @@ player_dic = {
 "has_spell": true,
 "has_weapon": true,
 "hat_found": true,
-"health": 2,
-"inventory": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+"health": 3,
+"inventory": [{
+"cost": 2,
+"effect": "Heal 1 HP",
+"is_on_hotbar": null,
+"name": "Goblin Meat",
+"quantity": 3,
+"scene_path": "res://Scenes/Inventory/InventoryItem/inventory_item.tscn",
+"texture": ExtResource("1_td8ns"),
+"type": "Consumable"
+}, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
 "inventory_hotbar_array": [],
 "jump_height": -300.0,
-"last_positionx": 2365.57,
-"last_positiony": 692.718,
+"last_positionx": 2368.85,
+"last_positiony": 692.658,
 "magic_dmg": 1,
 "mana": 1,
 "max_dashes": 1,
 "max_health": 3,
 "max_mana": 1,
 "melee_dmg": 2,
-"player_level": 1,
-"positionx": 11.0,
-"positiony": 693.0,
+"player_level": 2,
+"positionx": 847.0,
+"positiony": 600.0,
 "quick_step": false,
 "runspeed": 260.0,
 "sharp_mind": false,
@@ -51,10 +61,10 @@ player_dic = {
 "warrior_might": false,
 "waterfall": false,
 "weapon_found": true,
-"xp_required": 10
+"xp_required": 15.0
 }
 world_dic = {
-"actual_level": "res://Scenes/WorldScenes/goblin_hills_cave.tscn",
+"actual_level": "res://Scenes/WorldScenes/GoblinHills.tscn",
 "checkpoint_active": true,
 "chest_opened": true,
 "enemies": [],

@@ -7,13 +7,13 @@ const EXPLOSION = preload("res://Scenes/Particles/explosion_fire.tscn")
 const SPEED = 400
 var direction = 1
 var target_enemy
-var explosion = EXPLOSION.instantiate()
+var exploded_on_wall = false
+var exploded_when_stuck = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	velocity.x = SPEED * direction
-	explosion.position = position
-	explosion.scale = Vector2(4,4)
 	#add_child(explosion)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -21,11 +21,20 @@ func _physics_process(delta):
 		##print("following")
 		#look_at(target_enemy.global_position)
 		#position = position.move_toward(target_enemy.global_position,100 * delta)
-		if is_on_wall():
+		if is_on_wall() and not exploded_on_wall:
+			exploded_on_wall = true
+			exploded_when_stuck = true
+			var explosion = EXPLOSION.instantiate()
+			explosion.position = position
+			#explosion.scale = Vector2(4,4)
 			get_parent().add_child(explosion)
 			await get_tree().create_timer(0.2).timeout
 			queue_free()
-		if velocity.x == 0:
+		if velocity.x == 0 and not exploded_when_stuck:
+			exploded_when_stuck = true
+			var explosion = EXPLOSION.instantiate()
+			explosion.position = position
+			#explosion.scale = Vector2(4,4)
 			get_parent().add_child(explosion)
 			await get_tree().create_timer(0.2).timeout
 			queue_free()

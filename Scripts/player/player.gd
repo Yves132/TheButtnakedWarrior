@@ -216,8 +216,10 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("Dash") and can_dash and PlayerData.player_dic["dashes"] > 0 and (Input.is_action_pressed("left") or Input.is_action_pressed("right")) and velocity.x != 0:
 				dust_dash()
 			
-			fire()
-			melee()
+			if Input.is_action_pressed("Magic") and not Input.is_action_pressed("Melee"):
+				fire()
+			if Input.is_action_pressed("Melee") and not Input.is_action_pressed("Magic"):
+				melee()
 			dash()
 			
 			if should_climb_ladder():
@@ -248,8 +250,10 @@ func _physics_process(delta):
 			else:
 				velocity.x = move_toward(velocity.x, 0, 100)
 			velocity.y += gravity * delta
-			fire()
-			melee()
+			if Input.is_action_pressed("Magic") and not Input.is_action_pressed("Melee"):
+				fire()
+			if Input.is_action_pressed("Melee") and not Input.is_action_pressed("Magic"):
+				melee()
 
 		if climbing: #climbing mechanics
 			#print("climbing")
