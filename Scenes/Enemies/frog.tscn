@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://yomc1b05tjfp"]
+[gd_scene load_steps=19 format=3 uid="uid://yomc1b05tjfp"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/frog.gd" id="1_w6b52"]
 [ext_resource type="Shader" path="res://Shaders/frog.gdshader" id="2_c05ms"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dtp7qu4ivwxf3" path="res://Sprites/Enemies/Frog/FrogCrushed.png" id="6_8hv4p"]
 [ext_resource type="Texture2D" uid="uid://dykusqvo7itsj" path="res://Sprites/Enemies/Frog/FrogSliced1.png" id="8_g7ykx"]
 [ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="10_2kta1"]
+[ext_resource type="Texture2D" uid="uid://0yycala5grty" path="res://Sprites/Drops/GoblinMeat.png" id="12_26xsv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o1q3i"]
 shader = ExtResource("2_c05ms")
@@ -135,6 +136,10 @@ collision_layer = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopBox"]
 position = Vector2(-0.550789, -7.83455)
 shape = SubResource("RectangleShape2D_vtnre")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("12_26xsv")
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]

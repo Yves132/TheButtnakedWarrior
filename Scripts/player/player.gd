@@ -24,7 +24,6 @@ const DUSTDASH = preload("res://Scenes/Particles/DustDash.tscn")
 @onready var crittimer = $CritTimer
 @onready var interact_ui = $Interact_ui
 @onready var PlayerCamera = $Camera2D
-@onready var sword_swing_particles = $SwordSwingPart
 
 var ladder_checker := false #is player on ladder
 var climbing := false #is player climbing
@@ -59,7 +58,7 @@ var near_wall_jump = false
 
 
 func _ready():#called when you start the program
-	PlayerData.player_dic["skillpoints"] = 100
+	#PlayerData.player_dic["skillpoints"] = 100
 	#WorldData.world_dic["first_boss_defeated"] = false#for testing purposes
 	GameManager.player = self #Assigning to the variable "player" in GameManager script this node : "Player"
 	InventoryManager.set_player_reference(self)#sets reference for inventory manager

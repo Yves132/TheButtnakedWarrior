@@ -3,6 +3,7 @@ extends CharacterBody2D
 const COINS = preload("res://Scenes/Coins/CoinDrops.tscn")#preloading the scene of the coin item is necessary  for instantiation
 const BLOOD = preload("res://Scenes/Particles/blood.tscn")
 const EXPLOSION = preload("res://Scenes/Particles/explosion_fire.tscn")
+const LEGS = preload("res://Scenes/Inventory/InventoryItem/inventory_item.tscn")
 
 @export var speed = 50
 @export var direction = 1
@@ -25,6 +26,7 @@ const EXPLOSION = preload("res://Scenes/Particles/explosion_fire.tscn")
 @onready var hit = false#used to prevent sword from hitting frog 2 times
 
 @onready var sprite = $AnimatedSprite2D
+@onready var drop_sprite = $Sprite2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -158,6 +160,15 @@ func spawn_coin():
 	coin.position = position#set it's position to frog's position
 	get_parent().add_child(coin)#add it to the tree a.k.a. spawn it
 	
+func spawn_legs():
+	var legs = LEGS.instantiate()
+	legs.position = position
+	legs.item_texture = drop_sprite.texture
+	legs.item_name = "Frog Leg"
+	legs.item_effect = "JMP+(20)"
+	legs.item_type = "Consumable"
+	legs.cost = 3
+	get_parent().add_child(legs)
 
 func bleed():
 	var blood = BLOOD.instantiate()
@@ -172,8 +183,10 @@ func spawn_explosion(pos):
 func _on_death_timer_timeout():
 	var coinspawntrue = randi() %2 +1  #random for how many coins will spawn
 	var counter = 0#counting how many coins have spawned
+	var legspawntrue = randi() % 30 +1
 	while counter < coinspawntrue:
 		spawn_coin()#runs function to spawn coins
 		counter +=1
+	
 	queue_free()#delete it
 	GameManager.gain_xp(1)#calls a function in a global file (gamemanager) that allows the player to gain xp and updates it visually

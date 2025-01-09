@@ -118,6 +118,7 @@ func lose_health(dmg):
 		dead = true
 		if sliced:
 			bleed()
+		$HitBox.set_collision_mask_value(1, false)
 		$DeathTimer.start()
 	animation_handler()
 
@@ -127,7 +128,6 @@ func _on_hit_box_body_entered(body):#detecting if troll hit player with body
 			damage = PlayerData.player_dic["health"]#setting damage equal to playerhealth
 		GameManager.lose_health(damage)#call function in globalscript gamemanager to make player lose health
 		GameManager.player.Hurt(myposx)#call function in player script through gamemanager reference to hurt player
-		GameManager.frame_freeze(0,0.2)
 		if PlayerData.player_dic["health"] == 0:#if player dies
 			GameManager.BossBattleStart = false#we reset this variable to prevent the boss from wandering when not in battle
 		
@@ -157,7 +157,7 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "ATKR" or anim_name == "ATKL":
 		attack = false
 		counter += 1
-		print(counter)
+		#print(counter)
 
 func spawn_coin():
 	var coin = COINS.instantiate()#instantiate coin scene
@@ -214,6 +214,5 @@ func _on_arm_r_body_entered(body):
 			damage = PlayerData.player_dic["health"]#setting damage equal to playerhealth
 		GameManager.lose_health(damage)#call function in globalscript gamemanager to make player lose health
 		GameManager.player.Hurt(myposx)#call function in player script through gamemanager reference to hurt player
-		GameManager.frame_freeze(0,0.2)
 		if PlayerData.player_dic["health"] == 0:#if player dies
 			GameManager.BossBattleStart = false#we reset this variable to prevent the boss from wandering when not in battle

@@ -52,9 +52,9 @@ func boss_fight_manager(delta):
 			$BossFightStart/Blocker.set_collision_layer_value(2, false)#disable wall bossfight
 
 func cave_manager():
-	if cave_level_entrance != null:
+	if cave_level_entrance != null and not scene_transition_animation.is_playing():
 		if cave_level_entrance.overlaps_area(GameManager.player.HitBox):
-			if Input.is_action_just_pressed("up"):
+			if Input.is_action_just_pressed("up") and cave_level_entrance.level != null:
 				scene_transition_animation.play("fade_in")
 				await scene_transition_animation.animation_finished
 				get_tree().change_scene_to_file(cave_level_entrance.level)
@@ -63,9 +63,9 @@ func cave_manager():
 				PlayerData.player_dic["positionx"] = PlayerData.positionx
 				PlayerData.player_dic["positiony"] = PlayerData.positiony
 	
-	if cave_level_exit != null:
+	if cave_level_exit != null and not scene_transition_animation.is_playing():
 		if cave_level_exit.overlaps_area(GameManager.player.HitBox):
-			if Input.is_action_just_pressed("up"):
+			if Input.is_action_just_pressed("up") and cave_level_exit.level != null:
 				scene_transition_animation.play("fade_in")
 				await scene_transition_animation.animation_finished
 				get_tree().change_scene_to_file(cave_level_exit.level)

@@ -2178,7 +2178,7 @@ texture = ExtResource("4_1os25")
 
 [node name="PlayerNaked" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_1ss5a")
-texture = ExtResource("28_morn2")
+texture = ExtResource("10_ntwk8")
 
 [node name="Hat" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_mxtxb")
@@ -2219,7 +2219,7 @@ texture = ExtResource("6_ihxxl")
 
 [node name="UNFWeaponV1" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(87.6827, -21.9219)
+position = Vector2(87.7306, -22.0317)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("8_q13ou")
 
