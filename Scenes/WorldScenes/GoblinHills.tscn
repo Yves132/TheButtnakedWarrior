@@ -228,21 +228,24 @@ script = ExtResource("19_ikgrj")
 [node name="Label" type="Label" parent="Tutorial"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 576.0
+offset_top = 532.0
 offset_right = 197.0
-offset_bottom = 633.0
+offset_bottom = 613.0
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("14_2w55b")
 theme_override_font_sizes/font_size = 10
-text = "Use W A S D 
-or 
-Arrows to move"
+text = "1. Accept Everything
+Just The Way It Is:
+
+W A S D  / Arrows
+to move"
 horizontal_alignment = 1
 
 [node name="First" type="Area2D" parent="Tutorial/Label"]
+position = Vector2(0, 45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial/Label/First"]
 position = Vector2(95, 71)
@@ -298,17 +301,16 @@ shape = SubResource("RectangleShape2D_c1dl7")
 [node name="Label2" type="Label" parent="Tutorial"]
 layout_mode = 0
 offset_left = 7.0
-offset_top = 619.0
+offset_top = 618.0
 offset_right = 196.0
-offset_bottom = 676.0
+offset_bottom = 675.0
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("14_2w55b")
 theme_override_font_sizes/font_size = 10
-text = "Press
-SPACEBAR
+text = "SPACEBAR
 to jump"
 horizontal_alignment = 1
 
@@ -553,6 +555,7 @@ debug_color = Color(0.65098, 1, 0, 0.419608)
 [node name="UIManager" parent="." instance=ExtResource("22_8ai56")]
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("32_dy583")]
+visible = false
 z_index = 2
 
 [node name="Checkpoint" parent="." instance=ExtResource("13_fuini")]

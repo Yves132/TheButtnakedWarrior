@@ -183,10 +183,11 @@ func spawn_explosion(pos):
 func _on_death_timer_timeout():
 	var coinspawntrue = randi() %2 +1  #random for how many coins will spawn
 	var counter = 0#counting how many coins have spawned
-	var legspawntrue = randi() % 30 +1
+	var legspawnchance = randi() % 100 +1
 	while counter < coinspawntrue:
 		spawn_coin()#runs function to spawn coins
 		counter +=1
-	
+	if legspawnchance < 100:
+		spawn_legs()
 	queue_free()#delete it
 	GameManager.gain_xp(1)#calls a function in a global file (gamemanager) that allows the player to gain xp and updates it visually

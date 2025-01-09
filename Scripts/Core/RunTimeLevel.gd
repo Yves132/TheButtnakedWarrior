@@ -28,7 +28,7 @@ func _ready():
 	GameManager.uimanager.saving_icon.show()
 	GameManager.uimanager.saving_icon.play("Saving")
 	SaveManager.save_game()#saves the game whenever we change scene
-
+	
 func data_setter():#we set here things that must be set to standard values when entering the scene
 	if path2d != null:
 		camera.enabled = false#disables scene camera on ready
@@ -41,15 +41,23 @@ func _process(delta):
 		
 		
 func boss_fight_manager(delta):
-	if GameManager.cutscene:
+	if GameManager.cutscene and not WorldData.world_dic["first_boss_defeated"]:
 		if path2d != null:
 			$Path2D/PathFollow2D.progress_ratio += delta#start to move the camera towards boss
-	if WorldData.world_dic["first_boss_defeated"]:#when the boss is defeted
+	if WorldData.world_dic["first_boss_defeated"] and GameManager.cutscene:
+		bossfightstart.monitoring = false#disable area monitoring for bossbattle
+		bossfightstart.set_collision_mask_value(1, false)
+		$BossFightStart/Blocker.set_collision_layer_value(2, false)#disable wall bossfight
+		camera.enabled = false#disable camera
+		$GoblinMerchant/Path2D/PathFollow2D/Camera2D.enabled = true
+		
+		
+	if WorldData.world_dic["first_boss_defeated"] and not GameManager.cutscene:#when the boss is defeated
 		if path2d != null and bossfightstart != null:
-			camera.enabled = false#disable camera
-			GameManager.player.PlayerCamera.enabled = true#enable playercamera
 			bossfightstart.monitoring = false#disable area monitoring for bossbattle
-			$BossFightStart/Blocker.set_collision_layer_value(2, false)#disable wall bossfight
+			bossfightstart.set_collision_mask_value(1, false)
+			$GoblinMerchant/Path2D/PathFollow2D/Camera2D.enabled = false
+			GameManager.player.PlayerCamera.enabled = true#enable playercamera
 
 func cave_manager():
 	if cave_level_entrance != null and not scene_transition_animation.is_playing():
@@ -84,6 +92,7 @@ func _on_change_scene_area_entered(area):
 
 func _on_boss_fight_start_area_exited(area):
 	if area.get_parent() is Player:
+		print("here")
 		GameManager.player.PlayerCamera.enabled = false#disable player camera, we do it thorugh gamemanager reference to player
 		camera.enabled = true#enable boss battle camera
 		GameManager.cutscene = true#set cutscene to true in gamemanager global script so we know we are in a cutscene

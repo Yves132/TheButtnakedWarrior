@@ -198,6 +198,7 @@ func _on_death_timer_timeout():
 	GameManager.gain_xp(5)
 	queue_free()
 	GameManager.BossBattleStart = false#we set this variable in gamemanager script to false, so bossbattle logic stops
+	GameManager.cutscene = true
 	WorldData.world_dic["first_boss_defeated"] = true#we set this so even on loadgame the boss does not spawn
 	GameManager.uimanager.saving_icon.show()
 	GameManager.uimanager.saving_icon.play("Saving")

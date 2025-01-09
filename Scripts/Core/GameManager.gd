@@ -6,16 +6,43 @@ var paused := false
 var cutscene := false#used to determine if we are in a cutscene
 var BossBattleStart = false#used to determine when the boss battle has started (for animation purposes)
 #var BossDefeated = false#used to determine boss relative behavior
-var CurrentCheckpoint : Checkpoint #Var CurrentCheckpoint is node Chreckpoint (we gave it this name)
+var CurrentCheckpoint : Checkpoint #Var CurrentCheckpoint is node Checkpoint (we gave it this name)
 var player : Player #Var player is node Player (we gave it this name)
 var uimanager : UiManager
 var crit = false
 
 func set_initial_data():
+	
+	PlayerData.player_dic["positionx"] = PlayerData.positionx
+	PlayerData.player_dic["positiony"] = PlayerData.positiony
 	PlayerData.player_dic["health"] = PlayerData.max_health
 	PlayerData.player_dic["mana"] = PlayerData.max_mana
 	PlayerData.player_dic["dashes"] = PlayerData.max_dashes
+	PlayerData.player_dic["weapon_found"] = PlayerData.weapon_found
+	PlayerData.player_dic["has_weapon"] = PlayerData.has_weapon
+	PlayerData.player_dic["hat_found"] = PlayerData.hat_found
+	PlayerData.player_dic["has_hat"] = PlayerData.has_hat
+	PlayerData.player_dic["has_spell"] = PlayerData.has_spell
+	PlayerData.player_dic["Coins"] = PlayerData.coins
+	PlayerData.player_dic["current_xp"] = PlayerData.current_xp
+	PlayerData.player_dic["inventory"] = PlayerData.inventory
+	PlayerData.player_dic["warrior_heart"] = PlayerData.warrior_heart
+	PlayerData.player_dic["sharp_mind"] = PlayerData.sharp_mind
+	PlayerData.player_dic["quick_step"] = PlayerData.quick_step
+	PlayerData.player_dic["dodge"] = PlayerData.dodge
+	PlayerData.player_dic["warrior_might"] = PlayerData.warrior_might
+	PlayerData.player_dic["crit_chance"] = PlayerData.crit_chance
+	PlayerData.player_dic["flowing_water"] = PlayerData.flowing_water
+	PlayerData.player_dic["deep_cuts"] = PlayerData.deep_cuts
+	PlayerData.player_dic["waterfall"] = PlayerData.waterfall
+	PlayerData.player_dic["focused_chi"] = PlayerData.focused_chi
+	PlayerData.player_dic["deep_burn"] = PlayerData.deep_burn
+	PlayerData.player_dic["xp_required"] = PlayerData.xp_required
+	PlayerData.player_dic["player_level"] = PlayerData.player_level
+	PlayerData.player_dic["skillpoints"] = PlayerData.skillpoints
 	WorldData.world_dic["first_boss_defeated"] = WorldData.first_boss_defeated
+	WorldData.world_dic["checkpoint_active"] = WorldData.checkpoint_active
+	WorldData.world_dic["chest_opened"] = WorldData.chest_opened
 
 func Respawn_Player():#respawns player
 	player.dead = false

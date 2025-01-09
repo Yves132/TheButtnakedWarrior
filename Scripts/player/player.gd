@@ -336,7 +336,7 @@ func jump_near_wall():
 		near_wall_jump = false
 
 func should_wall_slide() -> bool:
-	if is_on_wall() and not is_on_floor() and not near_wall_jump:
+	if is_near_wall() and not is_on_floor() and not near_wall_jump:
 		return true
 	else:
 		return false
@@ -564,6 +564,11 @@ func apply_item_effect(item):
 			else:
 				$"MaxHealth!".show()
 				$MaxHealthTimer.start()
+		"JMP+(20)":
+			PlayerData.player_dic["jump_height"] -= 20
+			InventoryManager.remove_item(item["type"],item["effect"])
+			await get_tree().create_timer(20).timeout
+			PlayerData.player_dic["jump_height"] = PlayerData.jump_height
 		#"Slot Boost":
 			#InventoryManager.increase_inventory_size(5)
 			#InventoryManager.remove_item(item["type"],item["effect"])
