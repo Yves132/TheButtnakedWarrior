@@ -162,7 +162,8 @@ func spawn_coin():
 	
 func spawn_legs():
 	var legs = LEGS.instantiate()
-	legs.position = position
+	legs.position.x = position.x
+	legs.position.y = position.y - 10
 	legs.item_texture = drop_sprite.texture
 	legs.item_name = "Frog Leg"
 	legs.item_effect = "JMP+(20)"

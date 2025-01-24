@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	$VBoxContainer/HBoxContainer/NewGame.grab_focus()
+
 func _on_quit_pressed():
 	GameManager.quit()
 

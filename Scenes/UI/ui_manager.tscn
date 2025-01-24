@@ -214,7 +214,6 @@ show_percentage = false
 visible = false
 
 [node name="PauseMenu" type="TextureRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_5jamf")
 anchors_preset = 8
 anchor_left = 0.5
@@ -245,6 +244,10 @@ alignment = 1
 [node name="InventoryButton" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer4/QuitButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/ResumeButton")
+focus_next = NodePath("../../HBoxContainer/ResumeButton")
+focus_previous = NodePath("../../HBoxContainer4/QuitButton")
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
@@ -260,6 +263,10 @@ alignment = 1
 [node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer2/InventoryButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer5/MenuButton")
+focus_next = NodePath("../../HBoxContainer5/MenuButton")
+focus_previous = NodePath("../../HBoxContainer2/InventoryButton")
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
@@ -275,6 +282,10 @@ alignment = 1
 [node name="MenuButton" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer5"]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer/ResumeButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer4/QuitButton")
+focus_next = NodePath("../../HBoxContainer4/QuitButton")
+focus_previous = NodePath("../../HBoxContainer/ResumeButton")
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
@@ -290,6 +301,10 @@ alignment = 1
 [node name="QuitButton" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer5/MenuButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/InventoryButton")
+focus_next = NodePath("../../HBoxContainer2/InventoryButton")
+focus_previous = NodePath("../../HBoxContainer5/MenuButton")
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15

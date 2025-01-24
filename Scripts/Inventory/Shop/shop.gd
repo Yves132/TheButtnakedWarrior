@@ -59,6 +59,8 @@ func check_item(item,amount):
 		add_wing_player(amount)
 	if item["effect"] == "Regen Health":
 		add_blood_player(amount)
+	if item["effect"] == "JMP+(20)":
+		add_leg_to_player(amount)
 
 func add_meat_player(amount):#this starts adding items to the shop
 	var counter = 0
@@ -126,6 +128,28 @@ func add_blood_player(amount):#this adds the third type of item
 		counter += 1
 	populate_inventory()
 	
+
+func add_leg_to_player(amount):#this adds the fourth type of item
+	var counter = 0
+	item_type = "Consumable"#we define the properties
+	item_name = "Frog Leg"
+	item_effect = "JMP+(20)"
+	cost = 3
+	item_texture = $Leg.texture#set the texture
+	while counter < amount:#get a random number of items
+		var item = {
+			"quantity" : 1,
+			"type" : item_type,
+			"name" : item_name,
+			"effect" : item_effect,
+			"texture" : item_texture,
+			"is_on_hotbar" : is_on_hotbar,
+			"cost" : cost,
+			"scene_path" : scene_path
+			}#set the dictionary values
+		add_item_to_player(item)#call this function to add items to the array
+		counter += 1
+	populate_inventory()
 
 func add_item_to_player(item):
 	for i in range(PlayerData.player_dic["inventory"].size()):
@@ -215,7 +239,30 @@ func add_wing():#this adds the second type of item
 			}#set the dictionary values
 		add_item_to_shop(item)#call this function to add items to the array
 		counter += 1
+	add_leg()#we add the third type of item
+
+func add_leg():
+	var counter = 0
+	item_type = "Consumable"#we define the properties
+	item_name = "Frog Leg"
+	item_effect = "JMP+(20)"
+	cost = 6
+	item_texture = $Leg.texture#set the texture
+	while counter <= randi() %10 + 5:#get a random number of items
+		var item = {
+			"quantity" : 1,
+			"type" : item_type,
+			"name" : item_name,
+			"effect" : item_effect,
+			"texture" : item_texture,
+			"is_on_hotbar" : is_on_hotbar,
+			"cost" : cost,
+			"scene_path" : scene_path
+			}#set the dictionary values
+		add_item_to_shop(item)#call this function to add items to the array
+		counter += 1
 	add_blood()#we add the third type of item
+	
 
 func add_blood():#this adds the third type of item
 	var counter = 0
@@ -270,6 +317,8 @@ func check_item_shop(item,amount):
 		add_wing_from_player(amount)
 	if item["effect"] == "Regen Health":
 		add_blood_from_player(amount)
+	if item["effect"] == "JMP+(20)":
+		add_leg_from_player(amount)
 
 func add_meat_from_player(Amount):#this starts adding items to the shop
 	var counter = 0
@@ -322,6 +371,28 @@ func add_blood_from_player(Amount):#this adds the third type of item
 	item_effect = "Regen Health"
 	cost = 10
 	item_texture = $Blood.texture#set the texture
+	while counter < Amount:#get a random number of items
+		var item = {
+			"quantity" : 1,
+			"type" : item_type,
+			"name" : item_name,
+			"effect" : item_effect,
+			"texture" : item_texture,
+			"is_on_hotbar" : is_on_hotbar,
+			"cost" : cost,
+			"scene_path" : scene_path
+			}#set the dictionary values
+		add_item_to_shop(item)#call this function to add items to the array
+		counter += 1
+	populate_shop()#we populate the grid visually with the items we just put inside
+	
+func add_leg_from_player(Amount):
+	var counter = 0
+	item_type = "Consumable"#we define the properties
+	item_name = "Frog Leg"
+	item_effect = "JMP+(20)"
+	cost = 6
+	item_texture = $Leg.texture#set the texture
 	while counter < Amount:#get a random number of items
 		var item = {
 			"quantity" : 1,

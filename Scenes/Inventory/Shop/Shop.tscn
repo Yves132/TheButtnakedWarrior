@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://chm8puhhex6gt"]
+[gd_scene load_steps=19 format=3 uid="uid://chm8puhhex6gt"]
 
 [ext_resource type="Texture2D" uid="uid://j73qinx4qvk8" path="res://Sprites/UI/Inventory.png" id="1_2fpni"]
 [ext_resource type="Script" path="res://Scripts/Inventory/Shop/shop.gd" id="1_a4kjm"]
@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dy768rewef2kg" path="res://Sprites/Drops/BatWing.png" id="4_lrpq6"]
 [ext_resource type="Texture2D" uid="uid://lxn48qu250c8" path="res://Sprites/Drops/TrollBlood.png" id="5_45m6l"]
 [ext_resource type="Texture2D" uid="uid://bb6nwdm3li1v2" path="res://Sprites/Coins/Coin1.png" id="5_al4ql"]
+[ext_resource type="Shader" path="res://Shaders/player.gdshader" id="7_82gqh"]
+[ext_resource type="Texture2D" uid="uid://o4bo4g80we33" path="res://Sprites/Player/Knight20.png" id="8_jmd6g"]
+[ext_resource type="Shader" path="res://Shaders/goblin.gdshader" id="9_7hcul"]
+[ext_resource type="Texture2D" uid="uid://biobsktec5fm8" path="res://Sprites/Enemies/GoblinMerchant/GoblinMerchant1.png" id="10_5q7xx"]
+[ext_resource type="Texture2D" uid="uid://cg7xo47sf50a" path="res://Sprites/Drops/FrogLeg.png" id="14_cn43j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ab3i4"]
 shader = ExtResource("2_6ko78")
@@ -17,6 +22,16 @@ shader_parameter/outline_color = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kmx26"]
 shader = ExtResource("4_81ouc")
+shader_parameter/width = 10.0
+shader_parameter/outline_color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4bjaf"]
+shader = ExtResource("7_82gqh")
+shader_parameter/width = 5.0
+shader_parameter/outline_color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ilvnk"]
+shader = ExtResource("9_7hcul")
 shader_parameter/width = 10.0
 shader_parameter/outline_color = null
 
@@ -85,9 +100,9 @@ metadata/_edit_use_anchors_ = true
 [node name="TextureRect" type="TextureRect" parent="TextureRect/PlayerInventory"]
 material = SubResource("ShaderMaterial_kmx26")
 layout_mode = 0
-offset_left = -28.0
+offset_left = 192.0
 offset_top = 501.0
-offset_right = 46.0
+offset_right = 266.0
 offset_bottom = 582.0
 texture = ExtResource("5_al4ql")
 expand_mode = 1
@@ -159,6 +174,19 @@ theme_override_fonts/font = ExtResource("2_w7vys")
 theme_override_font_sizes/font_size = 25
 text = "NOT ENOUGH MONEY!"
 
+[node name="Player" type="Sprite2D" parent="TextureRect"]
+material = SubResource("ShaderMaterial_4bjaf")
+position = Vector2(174, 774)
+scale = Vector2(2, 2)
+texture = ExtResource("8_jmd6g")
+
+[node name="Merchant" type="Sprite2D" parent="TextureRect"]
+material = SubResource("ShaderMaterial_ilvnk")
+position = Vector2(1090, 731)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_5q7xx")
+flip_h = true
+
 [node name="Meat" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(640, 360)
@@ -176,3 +204,9 @@ visible = false
 position = Vector2(640, 360)
 scale = Vector2(5, 5)
 texture = ExtResource("5_45m6l")
+
+[node name="Leg" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(5, 5)
+texture = ExtResource("14_cn43j")

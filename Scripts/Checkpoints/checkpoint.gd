@@ -6,6 +6,7 @@ class_name Checkpoint #giving this class a name so we can call it from other scr
 var player_on_checkpoint
 
 func _ready():
+	$Panel/RestButton.grab_focus()
 	if spawnpoint == true :
 		GameManager.CurrentCheckpoint = self
 		

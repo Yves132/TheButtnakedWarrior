@@ -110,6 +110,10 @@ alignment = 1
 
 [node name="NewGame" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer3/Quit")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/LoadGame")
+focus_next = NodePath("../../HBoxContainer2/LoadGame")
+focus_previous = NodePath("../../HBoxContainer3/Quit")
 mouse_default_cursor_shape = 2
 theme_override_colors/font_hover_color = Color(1, 1, 1, 0.52549)
 theme_override_colors/font_pressed_color = Color(0.411765, 0, 0, 1)
@@ -127,6 +131,10 @@ alignment = 1
 
 [node name="LoadGame" type="Button" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer/NewGame")
+focus_neighbor_bottom = NodePath("../../HBoxContainer3/Quit")
+focus_next = NodePath("../../HBoxContainer3/Quit")
+focus_previous = NodePath("../../HBoxContainer/NewGame")
 mouse_default_cursor_shape = 2
 theme_override_colors/font_disabled_color = Color(0.277528, 0.277528, 0.277528, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 0.52549)
@@ -146,6 +154,10 @@ alignment = 1
 
 [node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer3"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer2/LoadGame")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/NewGame")
+focus_next = NodePath("../../HBoxContainer/NewGame")
+focus_previous = NodePath("../../HBoxContainer2/LoadGame")
 mouse_default_cursor_shape = 2
 theme_override_colors/font_hover_color = Color(1, 1, 1, 0.52549)
 theme_override_colors/font_pressed_color = Color(0.411765, 0, 0, 1)

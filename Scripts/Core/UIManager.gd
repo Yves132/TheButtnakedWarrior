@@ -35,6 +35,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("PauseMenu") and inventory.visible == false and shopopen == false:
 			pausemenuOpen = true
 			GameManager.pause_play()
+			$PauseMenu/VBoxContainer/HBoxContainer2/InventoryButton.grab_focus()
 		if Input.is_action_just_pressed("PauseMenu") and inventory.visible == true:
 			inventoryopen = true
 			GameManager.pause_play()
