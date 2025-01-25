@@ -169,6 +169,9 @@ text = "Quit"
 flat = true
 
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/NewGame" to="." method="_on_new_game_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/LoadGame" to="." method="_on_load_game_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer3/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/Quit" to="." method="_on_quit_pressed"]

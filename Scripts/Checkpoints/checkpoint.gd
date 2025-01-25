@@ -6,7 +6,7 @@ class_name Checkpoint #giving this class a name so we can call it from other scr
 var player_on_checkpoint
 
 func _ready():
-	$Panel/RestButton.grab_focus()
+	#$Panel/RestButton.grab_focus()
 	if spawnpoint == true :
 		GameManager.CurrentCheckpoint = self
 		
@@ -20,6 +20,7 @@ func _process(delta):
 		$Label.show()
 		if Input.is_action_just_pressed("interact"):
 			$Panel.show()
+			$Panel/RestButton.grab_focus()
 			WorldData.world_dic["checkpoint_active"] = true
 			PlayerData.player_dic["positionx"] = position.x
 			PlayerData.player_dic["positiony"] = position.y
@@ -33,6 +34,7 @@ func _process(delta):
 		
 
 func activate(): #func called when player touches checkpoint
+	
 	GameManager.CurrentCheckpoint = self #Assigning to the variable "CurrentCheckpoint" in GameManager script this node : "Checkpoint"
 	if not spawnpoint:
 		PlayerData.player_dic["health"] = PlayerData.player_dic["max_health"]
@@ -61,3 +63,11 @@ func _on_rest_button_pressed():
 
 func _on_level_up_button_pressed():
 	GameManager.uimanager.levelup_screen.show()
+
+
+func _on_rest_button_mouse_entered():
+	$Panel/RestButton.grab_focus()
+
+
+func _on_level_up_button_mouse_entered():
+	$Panel/LevelUpButton.grab_focus()

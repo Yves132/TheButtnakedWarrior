@@ -21,6 +21,7 @@ var is_assigned = false
 
 
 func _on_item_button_mouse_entered():#if the mouse is on the slot show info
+	$ItemButton.grab_focus()
 	if item != null:
 		usage_panel.visible = false
 		quantity_panel.visible = false
@@ -53,8 +54,8 @@ func set_item(new_item):#sets the slot to be filled (called from inventory UI sc
 	
 
 func _on_item_button_gui_input(event):
-	if event is InputEventMouseButton:#if it's a mouse input from the buttons
-		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():#if left click has been pressed
+	if event is InputEventMouseButton or event is InputEventJoypadButton:#if it's a mouse input from the buttons
+		if (event.button_index == MOUSE_BUTTON_LEFT or event.button_index == JOY_BUTTON_A) and event.is_pressed():#if left click has been pressed
 			if item != null:
 				usage_panel.visible = !usage_panel.visible
 

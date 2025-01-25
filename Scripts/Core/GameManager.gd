@@ -2,6 +2,8 @@ extends Node
 #we have put this in autoload so it runs all the game
 signal collected_coins(int)#declaration of signal
 
+
+
 var paused := false
 var cutscene := false#used to determine if we are in a cutscene
 var BossBattleStart = false#used to determine when the boss battle has started (for animation purposes)
@@ -10,6 +12,7 @@ var CurrentCheckpoint : Checkpoint #Var CurrentCheckpoint is node Checkpoint (we
 var player : Player #Var player is node Player (we gave it this name)
 var uimanager : UiManager
 var crit = false
+
 
 func set_initial_data():
 	

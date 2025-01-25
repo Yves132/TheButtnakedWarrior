@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 class_name UiManager#class name
+
 var player : Player#variable player is of type Player (classname of player)
 #var HeartFull = preload("res://Sprites/UI/UI5Heart.png")#this is how you load images, you need to store them in a var
 var manafull = preload("res://Sprites/UI/ManaFull.png")
@@ -29,7 +30,7 @@ func _ready():
 	$CoinDisplay.text = str(PlayerData.player_dic["Coins"])
 	
 	#updateUI()
-	
+
 func _process(delta):
 	if deathscreen.visible == false and levelup_screen.visible == false:
 		if Input.is_action_just_pressed("PauseMenu") and inventory.visible == false and shopopen == false:
@@ -120,3 +121,36 @@ func _on_inventory_button_pressed():
 	GameManager.pause_play()
 	inventoryopen = true
 	GameManager.pause_play()
+
+
+func _on_levelup_screen_visibility_changed():
+	$LevelupScreen/WarriorHeart.grab_focus()
+
+
+func _on_panel_visibility_changed():
+	$Panel/RespawnButton.grab_focus()
+
+
+func _on_respawn_button_mouse_entered():
+	$Panel/RespawnButton.grab_focus()
+
+
+func _on_main_menu_button_mouse_entered():
+	$Panel/MainMenuButton.grab_focus()
+
+
+func _on_quit_button_mouse_entered():
+	$Panel/QuitButton.grab_focus()
+	$PauseMenu/VBoxContainer/HBoxContainer4/QuitButton.grab_focus()
+
+
+func _on_inventory_button_mouse_entered():
+	$PauseMenu/VBoxContainer/HBoxContainer2/InventoryButton.grab_focus()
+
+
+func _on_resume_button_mouse_entered():
+	$PauseMenu/VBoxContainer/HBoxContainer/ResumeButton.grab_focus()
+
+
+func _on_menu_button_mouse_entered():
+	$PauseMenu/VBoxContainer/HBoxContainer5/MenuButton.grab_focus()

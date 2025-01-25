@@ -41,6 +41,7 @@ shader_parameter/outline_color = null
 bg_color = Color(0, 0.745098, 0.533333, 1)
 
 [node name="Control" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -27.0

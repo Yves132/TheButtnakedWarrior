@@ -1,5 +1,7 @@
 extends Control
 
+const mouse_speed = 600
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -7,6 +9,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var right_stick_vector = Input.get_vector("Cursor left", "Cursor right", "Cursor up", "Cursor down")
+	get_viewport().warp_mouse(round(get_global_mouse_position() + right_stick_vector * mouse_speed * delta))
+	
 	if Input.is_action_just_pressed("PauseMenu"):
 		GameManager.uimanager.levelup_screen.hide()
 		GameManager.pause_play()
@@ -135,3 +140,43 @@ func _on_deep_burn_pressed():
 		if PlayerData.player_dic["skillpoints"] > 0:
 			PlayerData.player_dic["deep_burn"] = true
 			PlayerData.player_dic["skillpoints"] -=1
+
+
+func _on_warrior_heart_mouse_entered():
+	$WarriorHeart.grab_focus()
+
+
+func _on_warrior_might_mouse_entered():
+	$WarriorMight.grab_focus()
+
+
+func _on_quick_step_mouse_entered():
+	$QuickStep.grab_focus()
+
+
+func _on_flowing_water_mouse_entered():
+	$FlowingWater.grab_focus()
+
+
+func _on_deep_cuts_mouse_entered():
+	$DeepCuts.grab_focus()
+
+
+func _on_waterfall_mouse_entered():
+	$Waterfall.grab_focus()
+
+
+func _on_deep_burn_mouse_entered():
+	$DeepBurn.grab_focus()
+
+
+func _on_focused_chi_mouse_entered():
+	$FocusedChi.grab_focus()
+
+
+func _on_sharp_mind_mouse_entered():
+	$SharpMind.grab_focus()
+
+
+func _on_back_button_mouse_entered():
+	$BackButton.grab_focus()

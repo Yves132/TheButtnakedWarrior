@@ -509,13 +509,23 @@ theme_override_constants/line_spacing = 5
 theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("3_vf5j5")
 
+[connection signal="mouse_entered" from="WarriorHeart" to="." method="_on_warrior_heart_mouse_entered"]
 [connection signal="pressed" from="WarriorHeart" to="." method="_on_warrior_heart_pressed"]
+[connection signal="mouse_entered" from="WarriorMight" to="." method="_on_warrior_might_mouse_entered"]
 [connection signal="pressed" from="WarriorMight" to="." method="_on_warrior_might_pressed"]
+[connection signal="mouse_entered" from="QuickStep" to="." method="_on_quick_step_mouse_entered"]
 [connection signal="pressed" from="QuickStep" to="." method="_on_quick_step_pressed"]
+[connection signal="mouse_entered" from="FlowingWater" to="." method="_on_flowing_water_mouse_entered"]
 [connection signal="pressed" from="FlowingWater" to="." method="_on_flowing_water_pressed"]
+[connection signal="mouse_entered" from="DeepCuts" to="." method="_on_deep_cuts_mouse_entered"]
 [connection signal="pressed" from="DeepCuts" to="." method="_on_deep_cuts_pressed"]
+[connection signal="mouse_entered" from="Waterfall" to="." method="_on_waterfall_mouse_entered"]
 [connection signal="pressed" from="Waterfall" to="." method="_on_waterfall_pressed"]
+[connection signal="mouse_entered" from="DeepBurn" to="." method="_on_deep_burn_mouse_entered"]
 [connection signal="pressed" from="DeepBurn" to="." method="_on_deep_burn_pressed"]
+[connection signal="mouse_entered" from="FocusedChi" to="." method="_on_focused_chi_mouse_entered"]
 [connection signal="pressed" from="FocusedChi" to="." method="_on_focused_chi_pressed"]
+[connection signal="mouse_entered" from="SharpMind" to="." method="_on_sharp_mind_mouse_entered"]
 [connection signal="pressed" from="SharpMind" to="." method="_on_sharp_mind_pressed"]
+[connection signal="mouse_entered" from="BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

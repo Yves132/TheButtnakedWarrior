@@ -155,7 +155,6 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="Inventory" parent="." instance=ExtResource("12_t7o42")]
-visible = false
 
 [node name="HeartsFull" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_8f3js")
@@ -214,6 +213,7 @@ show_percentage = false
 visible = false
 
 [node name="PauseMenu" type="TextureRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_5jamf")
 anchors_preset = 8
 anchor_left = 0.5
@@ -406,11 +406,19 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [connection signal="animation_finished" from="SavingIcon" to="." method="_on_saving_icon_animation_finished"]
+[connection signal="mouse_entered" from="PauseMenu/VBoxContainer/HBoxContainer2/InventoryButton" to="." method="_on_inventory_button_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer2/InventoryButton" to="." method="_on_inventory_button_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/VBoxContainer/HBoxContainer/ResumeButton" to="." method="_on_resume_button_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/VBoxContainer/HBoxContainer5/MenuButton" to="." method="_on_menu_button_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer5/MenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer4/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="visibility_changed" from="LevelupScreen" to="." method="_on_levelup_screen_visibility_changed"]
+[connection signal="visibility_changed" from="Panel" to="." method="_on_panel_visibility_changed"]
+[connection signal="mouse_entered" from="Panel/RespawnButton" to="." method="_on_respawn_button_mouse_entered"]
 [connection signal="pressed" from="Panel/RespawnButton" to="." method="_on_respawn_button_pressed"]
+[connection signal="mouse_entered" from="Panel/MainMenuButton" to="." method="_on_main_menu_button_mouse_entered"]
 [connection signal="pressed" from="Panel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="mouse_entered" from="Panel/QuitButton" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="timeout" from="XPtimer" to="." method="_on_x_ptimer_timeout"]
