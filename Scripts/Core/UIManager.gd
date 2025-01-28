@@ -18,6 +18,7 @@ var manaempty = preload("res://Sprites/UI/ManaEmpty.png")
 @onready var shopopen = false
 @onready var inventory_hotbar = $Inventory_Hotbar
 @onready var levelup_screen = $LevelupScreen
+@onready var input_settings = $InputSettings
 
 
 func _ready():
@@ -46,6 +47,9 @@ func _process(delta):
 		if Input.is_action_just_pressed("PauseMenu") and shopopen == true:
 			shopopen = false
 			GameManager.pause_play()
+		if Input.is_action_just_pressed("PauseMenu") and input_settings.visible == true:
+			input_settings.hide()
+			GameManager.pause_play()
 			
 	if levelup_screen.visible:
 		GameManager.pause_play()
@@ -53,6 +57,9 @@ func _process(delta):
 			#inventory_hotbar.hide()
 		#else:
 			#inventory_hotbar.show()
+	if input_settings.visible:
+		GameManager.pause_play()
+		
 		
 
 
@@ -87,10 +94,10 @@ func Update_playerlevel():
 	$PlayerLevel.text = str(PlayerData.player_dic["player_level"])
 	
 
-	
-func _on_resume_button_pressed():
-	GameManager.resume()
-
+func _on_settings_button_pressed():
+	pausemenuOpen = true
+	GameManager.pause_play()
+	$InputSettings.show()
 
 func _on_quit_button_pressed():
 	GameManager.quit()
@@ -141,7 +148,6 @@ func _on_main_menu_button_mouse_entered():
 
 func _on_quit_button_mouse_entered():
 	$Panel/QuitButton.grab_focus()
-	$PauseMenu/VBoxContainer/HBoxContainer4/QuitButton.grab_focus()
 
 
 func _on_inventory_button_mouse_entered():
@@ -154,3 +160,7 @@ func _on_resume_button_mouse_entered():
 
 func _on_menu_button_mouse_entered():
 	$PauseMenu/VBoxContainer/HBoxContainer5/MenuButton.grab_focus()
+
+
+func _on_pause_menu_quit_button_mouse_entered():
+	$PauseMenu/VBoxContainer/HBoxContainer4/QuitButton.grab_focus()

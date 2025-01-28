@@ -10,13 +10,13 @@ func _ready():
 func _process(delta):
 	if not PlayerData.player_dic["weapon_found"]:
 		if overlaps_area(GameManager.player.HitBox):
-			$"../Label".show()
+			$"../KeyboardLabel".show()
 			if Input.is_action_pressed("interact"):
 				PlayerData.player_dic["weapon_found"] = true
 				PlayerData.player_dic["has_weapon"] = true
 				$"..".queue_free()
 		else:
-			$"../Label".hide()
+			$"../KeyboardLabel".hide()
 	else:
 		$"..".queue_free()
 	

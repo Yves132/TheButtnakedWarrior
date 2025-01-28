@@ -12,10 +12,21 @@ var CurrentCheckpoint : Checkpoint #Var CurrentCheckpoint is node Checkpoint (we
 var player : Player #Var player is node Player (we gave it this name)
 var uimanager : UiManager
 var crit = false
+var joypaddetected = false
+var keyboarddetected = false
 
+func _input(event):
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		joypaddetected = true
+		keyboarddetected = false
+		#print("joypaddetected")
+	if event is InputEventKey or event is InputEventMouseButton:
+		joypaddetected = false
+		keyboarddetected = true
+		#print("keyboarddetected")
 
 func set_initial_data():
-	
+	#uimanager.input_settings._on_reset_button_pressed()
 	PlayerData.player_dic["positionx"] = PlayerData.positionx
 	PlayerData.player_dic["positiony"] = PlayerData.positiony
 	PlayerData.player_dic["health"] = PlayerData.max_health
@@ -104,13 +115,16 @@ func pause_play():
 		uimanager.get_tree().paused = paused
 	if uimanager.levelup_screen.visible == true:
 		uimanager.get_tree().paused = true
-	elif uimanager.levelup_screen.visible == false and uimanager.inventory.visible == false and uimanager.pausemenu.visible == false and uimanager.shopopen == false:
+	elif uimanager.levelup_screen.visible == false and uimanager.inventory.visible == false and uimanager.pausemenu.visible == false and uimanager.shopopen == false and uimanager.input_settings.visible == false:
 		uimanager.get_tree().paused = false
 	if uimanager.shopopen == true:
 		uimanager.get_tree().paused = true
-	elif uimanager.shopopen == false and uimanager.inventory.visible == false and uimanager.pausemenu.visible == false and uimanager.levelup_screen.visible == false:
+	elif uimanager.shopopen == false and uimanager.inventory.visible == false and uimanager.pausemenu.visible == false and uimanager.levelup_screen.visible == false and uimanager.input_settings.visible == false:
 		uimanager.get_tree().paused = false
-	
+	if uimanager.input_settings.visible:
+		uimanager.get_tree().paused = true
+	elif uimanager.levelup_screen.visible == false and uimanager.inventory.visible == false and uimanager.pausemenu.visible == false and uimanager.shopopen == false and uimanager.input_settings.visible == false:
+		uimanager.get_tree().paused = false
 	
 func frame_freeze(timescale, duration):
 	Engine.time_scale = timescale

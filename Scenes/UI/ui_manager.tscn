@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dh2faf0wtebff"]
+[gd_scene load_steps=31 format=3 uid="uid://dh2faf0wtebff"]
 
 [ext_resource type="Script" path="res://Scripts/Core/UIManager.gd" id="1_8od5i"]
 [ext_resource type="Texture2D" uid="uid://b5y84kjvwhfdw" path="res://Sprites/UI/SavingIcon.png" id="2_ok00t"]
@@ -19,6 +19,7 @@
 [ext_resource type="Shader" path="res://Shaders/ui_manager.gdshader" id="14_r47jh"]
 [ext_resource type="Texture2D" uid="uid://j73qinx4qvk8" path="res://Sprites/UI/Inventory.png" id="14_x8ypa"]
 [ext_resource type="PackedScene" uid="uid://dry5x0ua8f06g" path="res://Scenes/UI/levelup_screen.tscn" id="16_o75sv"]
+[ext_resource type="PackedScene" uid="uid://gepfu372cr2f" path="res://Scenes/UI/InputSettings/input_settings.tscn" id="20_vdh20"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qxwor"]
 animations = [{
@@ -155,6 +156,7 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="Inventory" parent="." instance=ExtResource("12_t7o42")]
+focus_mode = 2
 
 [node name="HeartsFull" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_8f3js")
@@ -213,7 +215,6 @@ show_percentage = false
 visible = false
 
 [node name="PauseMenu" type="TextureRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_5jamf")
 anchors_preset = 8
 anchor_left = 0.5
@@ -245,8 +246,8 @@ alignment = 1
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../HBoxContainer4/QuitButton")
-focus_neighbor_bottom = NodePath("../../HBoxContainer/ResumeButton")
-focus_next = NodePath("../../HBoxContainer/ResumeButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/SettingsButton")
+focus_next = NodePath("../../HBoxContainer/SettingsButton")
 focus_previous = NodePath("../../HBoxContainer4/QuitButton")
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -260,7 +261,7 @@ flat = true
 layout_mode = 2
 alignment = 1
 
-[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer"]
+[node name="SettingsButton" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../HBoxContainer2/InventoryButton")
@@ -272,7 +273,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("13_1m8h7")
 theme_override_font_sizes/font_size = 30
-text = "RESUME"
+text = "SETTINGS"
 flat = true
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="PauseMenu/VBoxContainer"]
@@ -282,10 +283,10 @@ alignment = 1
 [node name="MenuButton" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer5"]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
-focus_neighbor_top = NodePath("../../HBoxContainer/ResumeButton")
+focus_neighbor_top = NodePath("../../HBoxContainer/SettingsButton")
 focus_neighbor_bottom = NodePath("../../HBoxContainer4/QuitButton")
 focus_next = NodePath("../../HBoxContainer4/QuitButton")
-focus_previous = NodePath("../../HBoxContainer/ResumeButton")
+focus_previous = NodePath("../../HBoxContainer/SettingsButton")
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
@@ -405,13 +406,17 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="InputSettings" parent="." instance=ExtResource("20_vdh20")]
+visible = false
+
 [connection signal="animation_finished" from="SavingIcon" to="." method="_on_saving_icon_animation_finished"]
 [connection signal="mouse_entered" from="PauseMenu/VBoxContainer/HBoxContainer2/InventoryButton" to="." method="_on_inventory_button_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer2/InventoryButton" to="." method="_on_inventory_button_pressed"]
-[connection signal="mouse_entered" from="PauseMenu/VBoxContainer/HBoxContainer/ResumeButton" to="." method="_on_resume_button_mouse_entered"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_resume_button_mouse_entered"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="mouse_entered" from="PauseMenu/VBoxContainer/HBoxContainer5/MenuButton" to="." method="_on_menu_button_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer5/MenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/VBoxContainer/HBoxContainer4/QuitButton" to="." method="_on_pause_menu_quit_button_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer4/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="visibility_changed" from="LevelupScreen" to="." method="_on_levelup_screen_visibility_changed"]
 [connection signal="visibility_changed" from="Panel" to="." method="_on_panel_visibility_changed"]

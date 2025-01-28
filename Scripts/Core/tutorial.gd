@@ -1,13 +1,18 @@
 extends Control
 
-@onready var first = $Label/First
-@onready var second = $Label8/Second
-@onready var third = $Label10/Third
-@onready var fourth = $Label2/Fourth
-@onready var fifth = $Label3/Fifth
-@onready var sixth = $Label4/Sixth
-@onready var seventh = $Label5/Seventh
-@onready var eighth = $Label6/Eighth
+@onready var MovementK = $KeyboardLabel/First
+@onready var MovementJ = $JoypadLabel/First
+@onready var RunK = $KeyboardLabel2/Second
+@onready var RunJ = $JoypadLabel2/Second
+@onready var SwordK = $KeyboardLabel3/Third
+@onready var SwordJ = $JoypadLabel3/Third
+@onready var Shrine = $ShrineLabel/Fifth
+@onready var LaddersK = $KeyboardLabel4/Sixth
+@onready var LaddersJ = $JoypadLabel4/Sixth
+@onready var WallJumpK = $KeyboardLabel5/Seventh
+@onready var WallJumpJ = $JoypadLabel5/Seventh
+@onready var MagicK = $KeyboardLabel6/Eighth
+@onready var MagicJ = $JoypadLabel6/Eighth
 @onready var ninth = $Label9/Ninth
 @onready var tenth = $Label7/Tenth
 
@@ -19,38 +24,76 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if first.overlaps_body(GameManager.player):
-		$Label.show()
+	if MovementJ.overlaps_body(GameManager.player) or MovementK.overlaps_body(GameManager.player):
+		if GameManager.keyboarddetected:
+			$KeyboardLabel.show()
+			$JoypadLabel.hide()
+		if GameManager.joypaddetected:
+			$JoypadLabel.show()
+			$KeyboardLabel.hide()
 	else:
-		$Label.hide()
-	if second.overlaps_body(GameManager.player):
-		$Label8.show()
+		$KeyboardLabel.hide()
+		$JoypadLabel.hide()
+		
+	if RunK.overlaps_body(GameManager.player) or RunJ.overlaps_body(GameManager.player):
+		if GameManager.keyboarddetected:
+			$KeyboardLabel2.show()
+			$JoypadLabel2.hide()
+		if GameManager.joypaddetected:
+			$JoypadLabel2.show()
+			$KeyboardLabel2.hide()
 	else:
-		$Label8.hide()
-	if third.overlaps_body(GameManager.player):
-		$Label10.show()
+		$KeyboardLabel2.hide()
+		$JoypadLabel2.hide()
+		
+	if SwordK.overlaps_body(GameManager.player) or SwordJ.overlaps_body(GameManager.player):
+		if GameManager.keyboarddetected:
+			$KeyboardLabel3.show()
+			$JoypadLabel3.hide()
+		if GameManager.joypaddetected:
+			$JoypadLabel3.show()
+			$KeyboardLabel3.hide()
 	else:
-		$Label10.hide()
-	if fourth.overlaps_body(GameManager.player):
-		$Label2.show()
+		$KeyboardLabel3.hide()
+		$JoypadLabel3.hide()
+		
+	if Shrine.overlaps_body(GameManager.player):
+		$ShrineLabel.show()
 	else:
-		$Label2.hide()
-	if fifth.overlaps_body(GameManager.player):
-		$Label3.show()
+		$ShrineLabel.hide()
+		
+	if LaddersK.overlaps_body(GameManager.player) or LaddersJ.overlaps_body(GameManager.player):
+		if GameManager.keyboarddetected:
+			$KeyboardLabel4.show()
+			$JoypadLabel4.hide()
+		if GameManager.joypaddetected:
+			$JoypadLabel4.show()
+			$KeyboardLabel4.hide()
 	else:
-		$Label3.hide()
-	if sixth.overlaps_body(GameManager.player):
-		$Label4.show()
+		$JoypadLabel4.hide()
+		$KeyboardLabel4.hide()
+		
+	if WallJumpK.overlaps_body(GameManager.player) or WallJumpJ.overlaps_body(GameManager.player):
+		if GameManager.keyboarddetected:
+			$KeyboardLabel5.show()
+			$JoypadLabel5.hide()
+		if GameManager.joypaddetected:
+			$JoypadLabel5.show()
+			$KeyboardLabel5.hide()
 	else:
-		$Label4.hide()
-	if seventh.overlaps_body(GameManager.player):
-		$Label5.show()
+		$JoypadLabel5.hide()
+		$KeyboardLabel5.hide()
+		
+	if MagicK.overlaps_body(GameManager.player) or MagicJ.overlaps_body(GameManager.player):
+		if GameManager.keyboarddetected:
+			$KeyboardLabel6.show()
+			$JoypadLabel6.hide()
+		if GameManager.joypaddetected:
+			$JoypadLabel6.show()
+			$KeyboardLabel6.hide()
 	else:
-		$Label5.hide()
-	if eighth.overlaps_body(GameManager.player):
-		$Label6.show()
-	else:
-		$Label6.hide()
+		$KeyboardLabel6.hide()
+		$JoypadLabel6.hide()
 	if ninth.overlaps_body(GameManager.player):
 		$Label9.show()
 	else:

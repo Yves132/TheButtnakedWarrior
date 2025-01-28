@@ -18,7 +18,19 @@ extends Control
 var item = null
 var is_assigned = false
 
+func _ready():
+	$ItemButton.grab_focus()
 
+func _process(delta):
+	if $QuantityPanel/HSlider.has_focus():
+		if Input.is_action_just_pressed("JoystickLClick"):
+			$QuantityPanel/HSlider.value -= 1
+		if Input.is_action_just_pressed("JoystickRClick"):
+			$QuantityPanel/HSlider.value += 1
+		if Input.is_action_just_pressed("JoystickLBumper"):
+			$QuantityPanel/HSlider.value = $QuantityPanel/HSlider.min_value
+		if Input.is_action_just_pressed("JoystickRBumper"):
+			$QuantityPanel/HSlider.value = $QuantityPanel/HSlider.max_value
 
 func _on_item_button_mouse_entered():#if the mouse is on the slot show info
 	$ItemButton.grab_focus()
@@ -55,9 +67,12 @@ func set_item(new_item):#sets the slot to be filled (called from inventory UI sc
 
 func _on_item_button_gui_input(event):
 	if event is InputEventMouseButton or event is InputEventJoypadButton:#if it's a mouse input from the buttons
+		$ItemButton.grab_focus()
 		if (event.button_index == MOUSE_BUTTON_LEFT or event.button_index == JOY_BUTTON_A) and event.is_pressed():#if left click has been pressed
 			if item != null:
 				usage_panel.visible = !usage_panel.visible
+				if usage_panel.visible:
+					$UsagePanel/SellButton.grab_focus()
 
 func _on_sell_button_pressed():
 	details_panel.hide()
@@ -65,8 +80,7 @@ func _on_sell_button_pressed():
 	if item != null:
 		$QuantityPanel/HSlider.min_value = 1
 		$QuantityPanel/HSlider.max_value = item["quantity"]
-	
-	
+		
 
 
 func _on_h_slider_value_changed(value):
@@ -86,3 +100,23 @@ func _on_confirm_button_pressed():
 func _on_cancel_button_pressed():
 	quantity_panel.hide()
 	usage_panel.hide()
+	$ItemButton.grab_focus()
+
+
+func _on_sell_button_mouse_entered():
+	$UsagePanel/SellButton.grab_focus()
+	#$ItemButton.release_focus()
+
+
+func _on_confirm_button_mouse_entered():
+	$QuantityPanel/ConfirmButton.grab_focus()
+
+
+func _on_cancel_button_mouse_entered():
+	$QuantityPanel/CancelButton.grab_focus()
+
+
+
+
+func _on_item_button_focus_entered():
+	usage_panel.visible = true
