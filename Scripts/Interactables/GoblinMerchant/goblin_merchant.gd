@@ -47,6 +47,7 @@ func orientation():#handles sprite orientation based on player's
 
 func _on_area_2d_area_entered(area):
 	if area.get_parent() is Player:
+		text.text = str(ConfigFileHandler.config.get_value("Keybinding","interact"))+" to interact"
 		text.show()
 
 

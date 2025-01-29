@@ -17,6 +17,7 @@ func _ready():
 func _process(delta):
 	#print(WorldData.world_dic["actual_level"])
 	if player_on_checkpoint:
+		$Label.text = str(ConfigFileHandler.config.get_value("Keybinding","interact"))+" to interact"
 		$Label.show()
 		if Input.is_action_just_pressed("interact"):
 			$Panel.show()

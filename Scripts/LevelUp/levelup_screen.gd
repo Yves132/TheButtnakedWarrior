@@ -32,30 +32,76 @@ func _process(delta):
 	$"DeepCuts/Perk Level".text = "Crit Chance: " + str(PlayerData.player_dic["crit_chance"]) +"%"
 	$Skillpoints.text = "Skillpoints: " + str(PlayerData.player_dic["skillpoints"])
 	if PlayerData.player_dic["warrior_heart"] == true:
+		$WarriorHeart/Container/Skill.taken = true
 		$WarriorMight.disabled = false
+		$WarriorMight/Container/Skill.available = true
 		$SharpMind.disabled = false
+		$SharpMind/Container/Skill.available = true
 		$QuickStep.disabled = false
+		$QuickStep/Container/Skill.available = true
 		$WHLine1.visible=true
 		$WHLine2.visible=true
 		$WHLine3.visible=true
+	elif PlayerData.player_dic["warrior_heart"] == false:
+		$WarriorHeart/Container/Skill.available = true
+		$WarriorMight/Container/Skill.unavailable = true
+		$QuickStep/Container/Skill.unavailable = true
+		$SharpMind/Container/Skill.unavailable = true
+
 	if PlayerData.player_dic["sharp_mind"] == true:
+		$SharpMind/Container/Skill.taken = true
 		$FocusedChi.disabled = false
+		$FocusedChi/Container/Skill.available = true
 		$SMLine.visible = true
+	elif PlayerData.player_dic["sharp_mind"] == false:
+		$FocusedChi/Container/Skill.unavailable = true
+
 	if PlayerData.player_dic["quick_step"] == true:
+		$QuickStep/Container/Skill.taken = true
 		$FlowingWater.disabled = false
+		$FlowingWater/Container/Skill.available = true
 		$QSLine.visible = true
+	elif  PlayerData.player_dic["quick_step"] == false:
+		$FlowingWater/Container/Skill.unavailable = true
+
 	if PlayerData.player_dic["warrior_might"] == true:
+		$WarriorMight/Container/Skill.taken = true
 		$DeepCuts.disabled = false
+		$DeepCuts/Container/Skill.available = true
 		$WMLine.visible = true
+	elif PlayerData.player_dic["warrior_might"] == false:
+		$DeepCuts/Container/Skill.unavailable = true
+	
+	if PlayerData.player_dic["deep_cuts"] == true:
+		$DeepCuts/Container/Skill.taken = true
+	
+	if PlayerData.player_dic["flowing_water"] == true:
+		$FlowingWater/Container/Skill.taken = true
+	
+	if PlayerData.player_dic["focused_chi"] == true:
+		$FocusedChi/Container/Skill.taken = true
+	
 	if PlayerData.player_dic["deep_cuts"] == true and PlayerData.player_dic["flowing_water"] == true:
 		$Waterfall.disabled = false
+		$Waterfall/Container/Skill.available = true
 		$FWLine.visible = true
 		$DCLine2.visible = true
+	elif  PlayerData.player_dic["deep_cuts"] == false or PlayerData.player_dic["flowing_water"] == false:
+		$Waterfall/Container/Skill.unavailable = true
+	
+	if PlayerData.player_dic["waterfall"] == true:
+		$Waterfall/Container/Skill.taken = true
+
 	if PlayerData.player_dic["deep_cuts"] == true and PlayerData.player_dic["focused_chi"] == true:
 		$DeepBurn.disabled = false
+		$DeepBurn/Container/Skill.available = true
 		$FCLine.visible = true
 		$DCLine1.visible = true
+	elif PlayerData.player_dic["deep_cuts"] == false or PlayerData.player_dic["focused_chi"] == false:
+		$DeepBurn/Container/Skill.unavailable = true
 		
+	if PlayerData.player_dic["deep_burn"] == true:
+		$DeepBurn/Container/Skill.taken = true
 		
 
 func _on_back_button_pressed():

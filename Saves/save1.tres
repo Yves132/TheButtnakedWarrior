@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="SaveData" load_steps=2 format=3 uid="uid://dch852jdeblky"]
+[gd_resource type="Resource" script_class="SaveData" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Core/SaveData.gd" id="1_qmf02"]
+[ext_resource type="Script" path="res://Scripts/Core/SaveData.gd" id="1_3jnna"]
 
 [resource]
-script = ExtResource("1_qmf02")
+script = ExtResource("1_3jnna")
 inventory_dic = {
 "effect": null,
 "name": null,
@@ -23,10 +23,10 @@ player_dic = {
 "dodge": 5,
 "flowing_water": false,
 "focused_chi": false,
-"has_hat": false,
+"has_hat": true,
 "has_spell": false,
-"has_weapon": false,
-"hat_found": false,
+"has_weapon": true,
+"hat_found": true,
 "health": 3,
 "inventory": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
 "inventory_hotbar_array": [],
@@ -40,22 +40,22 @@ player_dic = {
 "max_mana": 1,
 "melee_dmg": 2,
 "player_level": 1,
-"positionx": 11.0,
-"positiony": 693.0,
+"positionx": 847.0,
+"positiony": 600.0,
 "quick_step": false,
 "runspeed": 260.0,
 "sharp_mind": false,
-"skillpoints": 0,
+"skillpoints": 100,
 "speed": 200.0,
 "warrior_heart": false,
 "warrior_might": false,
 "waterfall": false,
-"weapon_found": false,
+"weapon_found": true,
 "xp_required": 10
 }
 world_dic = {
 "actual_level": "res://Scenes/WorldScenes/GoblinHills.tscn",
-"checkpoint_active": false,
+"checkpoint_active": true,
 "chest_opened": false,
 "enemies": [],
 "first_boss_defeated": false,

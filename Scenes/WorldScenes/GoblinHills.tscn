@@ -348,6 +348,7 @@ position = Vector2(55, -4)
 shape = SubResource("RectangleShape2D_wqxp1")
 
 [node name="JoypadLabel2" type="Label" parent="Tutorial"]
+visible = false
 layout_mode = 0
 offset_left = 435.0
 offset_top = 656.0
@@ -401,6 +402,7 @@ position = Vector2(88, 91)
 shape = SubResource("RectangleShape2D_c1dl7")
 
 [node name="JoypadLabel3" type="Label" parent="Tutorial"]
+visible = false
 layout_mode = 0
 offset_left = 488.0
 offset_top = 471.0
@@ -483,6 +485,7 @@ position = Vector2(54, 121)
 shape = SubResource("RectangleShape2D_jvlod")
 
 [node name="JoypadLabel4" type="Label" parent="Tutorial"]
+visible = false
 layout_mode = 0
 offset_left = 616.0
 offset_top = 562.0
@@ -553,6 +556,7 @@ position = Vector2(141, 147)
 shape = SubResource("RectangleShape2D_3t0ve")
 
 [node name="JoypadLabel5" type="Label" parent="Tutorial"]
+visible = false
 layout_mode = 0
 offset_left = 1147.0
 offset_top = 532.0

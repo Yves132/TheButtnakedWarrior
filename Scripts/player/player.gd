@@ -58,7 +58,7 @@ var near_wall_jump = false
 
 
 func _ready():#called when you start the program
-	#PlayerData.player_dic["skillpoints"] = 100
+	PlayerData.player_dic["skillpoints"] = 100
 	#WorldData.world_dic["first_boss_defeated"] = false#for testing purposes
 	GameManager.player = self #Assigning to the variable "player" in GameManager script this node : "Player"
 	InventoryManager.set_player_reference(self)#sets reference for inventory manager

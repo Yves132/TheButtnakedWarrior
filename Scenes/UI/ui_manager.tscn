@@ -215,6 +215,7 @@ show_percentage = false
 visible = false
 
 [node name="PauseMenu" type="TextureRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_5jamf")
 anchors_preset = 8
 anchor_left = 0.5

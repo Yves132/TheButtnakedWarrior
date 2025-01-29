@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6djawuh5yink"]
+
+[ext_resource type="PackedScene" uid="uid://gps3rqvboeb0" path="res://Scenes/UI/InputSettings/Keyboardbindings.tscn" id="1_tm7vr"]
+
+[node name="PanelContainer" instance=ExtResource("1_tm7vr")]

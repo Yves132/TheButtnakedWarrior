@@ -16,9 +16,9 @@ var joypaddetected = false
 var keyboarddetected = false
 
 func _input(event):
-	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		joypaddetected = true
-		keyboarddetected = false
+	#if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		#joypaddetected = true
+		#keyboarddetected = false
 		#print("joypaddetected")
 	if event is InputEventKey or event is InputEventMouseButton:
 		joypaddetected = false

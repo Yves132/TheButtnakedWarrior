@@ -155,7 +155,7 @@ func _on_inventory_button_mouse_entered():
 
 
 func _on_resume_button_mouse_entered():
-	$PauseMenu/VBoxContainer/HBoxContainer/ResumeButton.grab_focus()
+	$PauseMenu/VBoxContainer/HBoxContainer/SettingsButton.grab_focus()
 
 
 func _on_menu_button_mouse_entered():

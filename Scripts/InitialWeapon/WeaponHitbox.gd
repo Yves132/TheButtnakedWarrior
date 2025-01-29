@@ -10,6 +10,7 @@ func _ready():
 func _process(delta):
 	if not PlayerData.player_dic["weapon_found"]:
 		if overlaps_area(GameManager.player.HitBox):
+			$"../KeyboardLabel".text = str(ConfigFileHandler.config.get_value("Keybinding","interact"))+" to interact"
 			$"../KeyboardLabel".show()
 			if Input.is_action_pressed("interact"):
 				PlayerData.player_dic["weapon_found"] = true

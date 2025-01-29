@@ -101,6 +101,7 @@ func _on_boss_fight_start_area_exited(area):
 
 func _on_cave_entrance_area_entered(area):
 	if area.get_parent() is Player:
+		$CaveEntrance/Label.text = str(ConfigFileHandler.config.get_value("Keybinding","up"))+" to enter"
 		$CaveEntrance/Label.show()
 
 
@@ -111,6 +112,7 @@ func _on_cave_entrance_area_exited(area):
 
 func _on_cave_exit_area_entered(area):
 	if area.get_parent() is Player:
+		$CaveExit/Label.text = str(ConfigFileHandler.config.get_value("Keybinding","up"))+" to exit"
 		$CaveExit/Label.show()
 
 

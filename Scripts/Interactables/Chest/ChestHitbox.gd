@@ -12,6 +12,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if overlaps_area(GameManager.player.HitBox) and not WorldData.world_dic["chest_opened"]:
+		$"../Label".text = str(ConfigFileHandler.config.get_value("Keybinding","interact"))+" to interact"
 		$"../Label".show()
 		if Input.is_action_pressed("interact") and not WorldData.world_dic["chest_opened"]:
 			$"../AnimatedSprite2D".play("Open")

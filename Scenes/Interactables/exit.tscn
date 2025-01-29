@@ -38,4 +38,5 @@ theme_override_font_sizes/font_size = 40
 text = "[W] to exit"
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("4_ck7q1")]
+visible = false
 position = Vector2(-177, -192)

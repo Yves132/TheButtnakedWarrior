@@ -26,6 +26,10 @@ func _ready():
 func _process(delta):
 	if MovementJ.overlaps_body(GameManager.player) or MovementK.overlaps_body(GameManager.player):
 		if GameManager.keyboarddetected:
+			$KeyboardLabel.text ="1. Accept Everything 
+				Just The Way It Is:
+				"+str(ConfigFileHandler.config.get_value("Keybinding","up"))+" "+str(ConfigFileHandler.config.get_value("Keybinding","left"))+" "+str(ConfigFileHandler.config.get_value("Keybinding","down")) +" "+str(ConfigFileHandler.config.get_value("Keybinding","right"))+"
+				to move"
 			$KeyboardLabel.show()
 			$JoypadLabel.hide()
 		if GameManager.joypaddetected:
@@ -37,6 +41,7 @@ func _process(delta):
 		
 	if RunK.overlaps_body(GameManager.player) or RunJ.overlaps_body(GameManager.player):
 		if GameManager.keyboarddetected:
+			$KeyboardLabel2.text = str(ConfigFileHandler.config.get_value("Keybinding", "run"))+" to run"
 			$KeyboardLabel2.show()
 			$JoypadLabel2.hide()
 		if GameManager.joypaddetected:
@@ -48,6 +53,8 @@ func _process(delta):
 		
 	if SwordK.overlaps_body(GameManager.player) or SwordJ.overlaps_body(GameManager.player):
 		if GameManager.keyboarddetected:
+			$KeyboardLabel3.text = "use your sword with "+str(ConfigFileHandler.config.get_value("Keybinding", "Melee"))+"
+			to kill enemies"
 			$KeyboardLabel3.show()
 			$JoypadLabel3.hide()
 		if GameManager.joypaddetected:
@@ -64,6 +71,7 @@ func _process(delta):
 		
 	if LaddersK.overlaps_body(GameManager.player) or LaddersJ.overlaps_body(GameManager.player):
 		if GameManager.keyboarddetected:
+			$KeyboardLabel4.text = str(ConfigFileHandler.config.get_value("Keybinding","up"))+" "+str(ConfigFileHandler.config.get_value("Keybinding","down"))+" to use ladders"
 			$KeyboardLabel4.show()
 			$JoypadLabel4.hide()
 		if GameManager.joypaddetected:
@@ -75,6 +83,13 @@ func _process(delta):
 		
 	if WallJumpK.overlaps_body(GameManager.player) or WallJumpJ.overlaps_body(GameManager.player):
 		if GameManager.keyboarddetected:
+			$KeyboardLabel5.text = "keep "+str(ConfigFileHandler.config.get_value("Keybinding","jump"))+"
+			pressed 
+			and
+			press
+			"+str(ConfigFileHandler.config.get_value("Keybinding","left"))+" or "+str(ConfigFileHandler.config.get_value("Keybinding","right"))+"
+			to
+			wall jump"
 			$KeyboardLabel5.show()
 			$JoypadLabel5.hide()
 		if GameManager.joypaddetected:
@@ -86,6 +101,8 @@ func _process(delta):
 		
 	if MagicK.overlaps_body(GameManager.player) or MagicJ.overlaps_body(GameManager.player):
 		if GameManager.keyboarddetected:
+			$KeyboardLabel6.text = str(ConfigFileHandler.config.get_value("Keybinding","Magic"))+" to use the
+			firebolt"
 			$KeyboardLabel6.show()
 			$JoypadLabel6.hide()
 		if GameManager.joypaddetected:

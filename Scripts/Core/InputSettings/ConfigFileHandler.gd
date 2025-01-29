@@ -16,6 +16,17 @@ func _ready():
 		config.set_value("Keybinding", "Inventory", "I")
 		config.set_value("Keybinding", "Melee", "mouse_1")
 		config.set_value("Keybinding", "Magic", "mouse_2")
+		config.set_value("JoypadBinding", "joyup", "Left Stick Up")
+		config.set_value("JoypadBinding", "joyleft", "Left Stick Left")
+		config.set_value("JoypadBinding", "joydown", "Left Stick Down")
+		config.set_value("JoypadBinding", "joyright", "Left Stick right")
+		config.set_value("JoypadBinding", "joyjump", "PS Triangle, Xbox Y")
+		config.set_value("JoypadBinding", "joyrun", "PS R2, Xbox RT")
+		config.set_value("JoypadBinding", "joyinteract", "PS Square, Xbox X")
+		config.set_value("JoypadBinding", "joydash", "PS Circle, Xbox B")
+		config.set_value("JoypadBinding", "joyinventory", "Select")
+		config.set_value("JoypadBinding", "joymelee", "PS R1, Xbox Rb")
+		config.set_value("JoypadBinding", "joymagic", "PS L1, Xbox Lb")
 		
 		config.save(SETTING_FILE_PATH)
 	else:
@@ -30,7 +41,15 @@ func save_keybinding(action : StringName, event : InputEvent):
 		
 	config.set_value("Keybinding", action, event_str)
 	config.save(SETTING_FILE_PATH)
-
+	
+func save_joybinding(action : StringName, event : InputEvent):
+	var event_str
+	if event is InputEventJoypadButton:
+		event_str = str(event)
+	if event is InputEventJoypadMotion:
+		event_str = str(event)
+	config.set_value("JoypadBinding", action, event_str)
+	
 func load_keybindings():
 	var keybindings = {}
 	var keys = config.get_section_keys("Keybinding")
@@ -46,3 +65,17 @@ func load_keybindings():
 		
 		keybindings[key] = input_event
 	return keybindings
+
+func load_joypadbindings():
+	var joypadbindings = {}
+	var keys = config.get_section_keys("JoypadBinding")
+	for key in keys:
+		var input_event
+		var event_str = config.get_value("JoypadBinding", key)
+		if event_str.contains("motion"):
+			input_event = InputEventJoypadMotion.new()
+		else:
+			input_event = InputEventJoypadButton.new()
+		
+		joypadbindings[key] = input_event
+	return joypadbindings

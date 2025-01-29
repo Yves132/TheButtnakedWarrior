@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dry5x0ua8f06g"]
+[gd_scene load_steps=7 format=3 uid="uid://dry5x0ua8f06g"]
 
 [ext_resource type="Texture2D" uid="uid://dqt0d8k4vgukv" path="res://Sprites/UI/LevelupScreen/DeathScreenBackground.webp" id="1_0x6mh"]
 [ext_resource type="Script" path="res://Scripts/LevelUp/levelup_screen.gd" id="1_qutfj"]
-[ext_resource type="Texture2D" uid="uid://3u0oqea80mwq" path="res://Sprites/UI/LevelupScreen/WarriorSkill.png" id="2_yj2ho"]
 [ext_resource type="Texture2D" uid="uid://ck71g3biviuo8" path="res://Sprites/UI/PerkLine.png" id="3_0bwsq"]
 [ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="3_vf5j5"]
+[ext_resource type="PackedScene" uid="uid://bfoqw6wa8kb4" path="res://Scenes/Particles/skill.tscn" id="6_a237a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flmbn"]
 
 [node name="LevelupScreen" type="Control"]
 layout_mode = 3
@@ -94,22 +96,31 @@ scale = Vector2(0.1, 0.164145)
 texture = ExtResource("3_0bwsq")
 
 [node name="WarriorHeart" type="Button" parent="."]
-layout_mode = 0
-offset_left = 512.0
-offset_top = 32.0
-offset_right = 776.0
-offset_bottom = 296.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.5
+offset_top = -241.0
+offset_right = 45.5
+offset_bottom = -151.0
+grow_horizontal = 2
+grow_vertical = 2
 tooltip_text = "Increases your health by 1 for every perk point spent.
 Max health : 10"
-icon = ExtResource("2_yj2ho")
 flat = true
 
 [node name="Perk Name" type="Label" parent="WarriorHeart"]
-layout_mode = 0
-offset_left = 15.8919
-offset_top = 9.83248
-offset_right = 246.892
-offset_bottom = 32.8325
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.5
+offset_right = 115.5
+offset_bottom = 23.0
+grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -120,11 +131,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Perk Level" type="Label" parent="WarriorHeart"]
-layout_mode = 0
-offset_left = 53.1875
-offset_top = 240.22
-offset_right = 93.1875
-offset_bottom = 263.22
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -135,24 +152,45 @@ text = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Container" type="PanelContainer" parent="WarriorHeart"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_flmbn")
+
+[node name="Skill" parent="WarriorHeart/Container" instance=ExtResource("6_a237a")]
+position = Vector2(19.4719, 20.7475)
+
 [node name="WarriorMight" type="Button" parent="."]
 layout_mode = 0
-offset_left = 576.0
-offset_top = 300.0
-offset_right = 840.0
-offset_bottom = 564.0
+offset_left = 620.5
+offset_top = 312.5
+offset_right = 710.5
+offset_bottom = 402.5
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Increase your melee DMG by 1 for every perk point spent"
 disabled = true
-icon = ExtResource("2_yj2ho")
 flat = true
 
 [node name="Perk Name" type="Label" parent="WarriorMight"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 10.0
-offset_right = 247.0
-offset_bottom = 33.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.5
+offset_right = 115.5
+offset_bottom = 23.0
+grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -163,11 +201,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Perk Level" type="Label" parent="WarriorMight"]
-layout_mode = 0
-offset_left = 47.7855
-offset_top = 240.22
-offset_right = 87.7855
-offset_bottom = 263.22
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -178,25 +222,46 @@ text = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Container" type="PanelContainer" parent="WarriorMight"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_flmbn")
+
+[node name="Skill" parent="WarriorMight/Container" instance=ExtResource("6_a237a")]
+position = Vector2(19.4719, 20.7475)
+
 [node name="QuickStep" type="Button" parent="."]
 layout_mode = 0
 offset_left = 858.387
 offset_top = 203.005
-offset_right = 1122.39
-offset_bottom = 467.005
+offset_right = 948.387
+offset_bottom = 293.005
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Increase the number of dashes for every perk point spent.
 Max Dashes : 5"
 disabled = true
-icon = ExtResource("2_yj2ho")
 flat = true
 
 [node name="Perk Name" type="Label" parent="QuickStep"]
-layout_mode = 0
-offset_left = 15.8919
-offset_top = 9.83248
-offset_right = 246.892
-offset_bottom = 32.8325
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.5
+offset_right = 115.5
+offset_bottom = 23.0
+grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -207,11 +272,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Perk Level" type="Label" parent="QuickStep"]
-layout_mode = 0
-offset_left = 61.7855
-offset_top = 240.22
-offset_right = 101.785
-offset_bottom = 263.22
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.9998
+offset_top = -23.0
+offset_right = 19.9998
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -222,26 +293,47 @@ text = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Container" type="PanelContainer" parent="QuickStep"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_flmbn")
+
+[node name="Skill" parent="QuickStep/Container" instance=ExtResource("6_a237a")]
+position = Vector2(19.4719, 20.7475)
+
 [node name="FlowingWater" type="Button" parent="."]
 layout_mode = 0
 offset_left = 939.637
 offset_top = 383.74
-offset_right = 1203.64
-offset_bottom = 647.74
+offset_right = 1029.64
+offset_bottom = 473.74
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Increase your dodge chance for every perk point spent.
 Dodging negates damage.
 Max Dodge Chanche : 30%"
 disabled = true
-icon = ExtResource("2_yj2ho")
 flat = true
 
 [node name="Perk Name" type="Label" parent="FlowingWater"]
-layout_mode = 0
-offset_left = 15.8919
-offset_top = 9.83248
-offset_right = 246.892
-offset_bottom = 32.8325
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.5
+offset_right = 115.5
+offset_bottom = 23.0
+grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -252,11 +344,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Perk Level" type="Label" parent="FlowingWater"]
-layout_mode = 0
-offset_left = -8.2145
-offset_top = 240.22
-offset_right = 31.785
-offset_bottom = 263.22
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.9998
+offset_top = -23.0
+offset_right = 19.9998
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -267,26 +365,47 @@ text = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Container" type="PanelContainer" parent="FlowingWater"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_flmbn")
+
+[node name="Skill" parent="FlowingWater/Container" instance=ExtResource("6_a237a")]
+position = Vector2(19.4719, 20.7475)
+
 [node name="DeepCuts" type="Button" parent="."]
 layout_mode = 0
-offset_left = 575.722
+offset_left = 620.5
 offset_top = 477.212
-offset_right = 839.725
-offset_bottom = 741.212
+offset_right = 710.5
+offset_bottom = 567.212
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Increase your Critical Chanche for every perk point spent.
 Critical Hits do Double Damage.
 Max Critical Chanche : 30%"
 disabled = true
-icon = ExtResource("2_yj2ho")
 flat = true
 
 [node name="Perk Name" type="Label" parent="DeepCuts"]
-layout_mode = 0
-offset_left = 15.8919
-offset_top = 9.83248
-offset_right = 246.892
-offset_bottom = 32.8325
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.5
+offset_right = 115.5
+offset_bottom = 23.0
+grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -297,11 +416,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Perk Level" type="Label" parent="DeepCuts"]
-layout_mode = 0
-offset_left = -8.2145
-offset_top = 240.22
-offset_right = 31.785
-offset_bottom = 263.22
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.9998
+offset_top = -23.0
+offset_right = 19.9998
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -312,24 +437,45 @@ text = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Container" type="PanelContainer" parent="DeepCuts"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_flmbn")
+
+[node name="Skill" parent="DeepCuts/Container" instance=ExtResource("6_a237a")]
+position = Vector2(19.4719, 20.7475)
+
 [node name="Waterfall" type="Button" parent="."]
 layout_mode = 0
 offset_left = 819.195
 offset_top = 559.6
-offset_right = 1083.2
-offset_bottom = 823.6
+offset_right = 909.195
+offset_bottom = 649.6
 scale = Vector2(0.5, 0.5)
 tooltip_text = "if you cut the enemy while dashing deal 4 x DMG"
 disabled = true
-icon = ExtResource("2_yj2ho")
 flat = true
 
 [node name="Perk Name" type="Label" parent="Waterfall"]
-layout_mode = 0
-offset_left = 15.8919
-offset_top = 9.83248
-offset_right = 246.892
-offset_bottom = 32.8325
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.5
+offset_right = 115.5
+offset_bottom = 23.0
+grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -340,11 +486,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Perk Level" type="Label" parent="Waterfall"]
-layout_mode = 0
-offset_left = 81.7855
-offset_top = 240.22
-offset_right = 121.785
-offset_bottom = 263.22
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.9998
+offset_top = -23.0
+offset_right = 19.9998
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -355,24 +507,45 @@ text = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Container" type="PanelContainer" parent="Waterfall"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_flmbn")
+
+[node name="Skill" parent="Waterfall/Container" instance=ExtResource("6_a237a")]
+position = Vector2(19.4719, 20.7475)
+
 [node name="DeepBurn" type="Button" parent="."]
 layout_mode = 0
 offset_left = 337.7
 offset_top = 561.033
-offset_right = 601.703
-offset_bottom = 825.033
+offset_right = 427.7
+offset_bottom = 651.033
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Your Fireballs set the enemy on fire for 3 seconds, dealing your magic damage over time"
 disabled = true
-icon = ExtResource("2_yj2ho")
 flat = true
 
 [node name="Perk Name" type="Label" parent="DeepBurn"]
-layout_mode = 0
-offset_left = 15.8919
-offset_top = 9.83248
-offset_right = 246.892
-offset_bottom = 32.8325
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.5
+offset_right = 115.5
+offset_bottom = 23.0
+grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -383,11 +556,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Perk Level" type="Label" parent="DeepBurn"]
-layout_mode = 0
-offset_left = 81.7855
-offset_top = 240.22
-offset_right = 121.785
-offset_bottom = 263.22
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.9998
+offset_top = -23.0
+offset_right = 19.9998
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -398,24 +577,45 @@ text = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Container" type="PanelContainer" parent="DeepBurn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_flmbn")
+
+[node name="Skill" parent="DeepBurn/Container" instance=ExtResource("6_a237a")]
+position = Vector2(19.4719, 20.7475)
+
 [node name="FocusedChi" type="Button" parent="."]
 layout_mode = 0
 offset_left = 216.926
 offset_top = 386.986
-offset_right = 480.926
-offset_bottom = 650.986
+offset_right = 306.926
+offset_bottom = 476.986
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Increase your magic DMG by 1 for every perk point spent"
 disabled = true
-icon = ExtResource("2_yj2ho")
 flat = true
 
 [node name="Perk Name" type="Label" parent="FocusedChi"]
-layout_mode = 0
-offset_left = 15.8919
-offset_top = 9.83248
-offset_right = 246.892
-offset_bottom = 32.8325
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.5
+offset_right = 115.5
+offset_bottom = 23.0
+grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -426,11 +626,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Perk Level" type="Label" parent="FocusedChi"]
-layout_mode = 0
-offset_left = 45.7855
-offset_top = 240.22
-offset_right = 85.7855
-offset_bottom = 263.22
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -441,25 +647,46 @@ text = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Container" type="PanelContainer" parent="FocusedChi"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_flmbn")
+
+[node name="Skill" parent="FocusedChi/Container" instance=ExtResource("6_a237a")]
+position = Vector2(19.4719, 20.7475)
+
 [node name="SharpMind" type="Button" parent="."]
 layout_mode = 0
 offset_left = 304.379
 offset_top = 205.898
-offset_right = 568.379
-offset_bottom = 469.898
+offset_right = 394.379
+offset_bottom = 295.898
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Increase your mana by 1 for every perk point spent.
 Max mana : 5"
 disabled = true
-icon = ExtResource("2_yj2ho")
 flat = true
 
 [node name="Perk Name" type="Label" parent="SharpMind"]
-layout_mode = 0
-offset_left = 15.8919
-offset_top = 9.83248
-offset_right = 246.892
-offset_bottom = 32.8325
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.5
+offset_right = 115.5
+offset_bottom = 23.0
+grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -470,11 +697,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Perk Level" type="Label" parent="SharpMind"]
-layout_mode = 0
-offset_left = 69.7855
-offset_top = 240.22
-offset_right = 109.785
-offset_bottom = 263.22
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.9998
+offset_top = -23.0
+offset_right = 19.9998
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 5
@@ -484,6 +717,25 @@ text = "
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Container" type="PanelContainer" parent="SharpMind"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_flmbn")
+
+[node name="Skill" parent="SharpMind/Container" instance=ExtResource("6_a237a")]
+position = Vector2(19.4719, 20.7475)
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
