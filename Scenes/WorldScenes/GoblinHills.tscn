@@ -761,7 +761,7 @@ position = Vector2(2124.71, 524.219)
 scale = Vector2(0.1, 0.1)
 
 [node name="Chest" parent="." instance=ExtResource("13_favq6")]
-position = Vector2(1302.89, 251.434)
+position = Vector2(1299.89, 251.434)
 scale = Vector2(0.2, 0.2)
 
 [node name="Weapon" parent="." instance=ExtResource("15_ght8f")]
@@ -794,7 +794,6 @@ debug_color = Color(0.65098, 1, 0, 0.419608)
 [node name="UIManager" parent="." instance=ExtResource("22_8ai56")]
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("32_dy583")]
-visible = false
 z_index = 2
 
 [node name="Checkpoint" parent="." instance=ExtResource("13_fuini")]

@@ -47,9 +47,18 @@ func _process(delta):
 		if Input.is_action_just_pressed("PauseMenu") and shopopen == true:
 			shopopen = false
 			GameManager.pause_play()
-		if Input.is_action_just_pressed("PauseMenu") and input_settings.visible == true:
+		if Input.is_action_just_pressed("PauseMenu") and input_settings.visible == true and not input_settings.keyboard_controls.visible == true:
 			input_settings.hide()
 			GameManager.pause_play()
+		if Input.is_action_just_pressed("PauseMenu") and input_settings.keyboard_controls.visible:
+			input_settings.keyboard_controls.hide()
+			input_settings.reset_controls_button.hide()
+			input_settings.keyboard_bindings_button.show()
+			input_settings.keyboard_label.show()
+			input_settings.full_screen_checkbox.show()
+			input_settings.full_screen_checkbox.grab_focus()
+			input_settings.full_screen_label.show()
+			
 			
 	if levelup_screen.visible:
 		GameManager.pause_play()
@@ -97,7 +106,8 @@ func Update_playerlevel():
 func _on_settings_button_pressed():
 	pausemenuOpen = true
 	GameManager.pause_play()
-	$InputSettings.show()
+	input_settings.show()
+	input_settings.full_screen_checkbox.grab_focus()
 
 func _on_quit_button_pressed():
 	GameManager.quit()

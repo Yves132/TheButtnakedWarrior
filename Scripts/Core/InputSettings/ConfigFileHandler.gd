@@ -16,6 +16,12 @@ func _ready():
 		config.set_value("Keybinding", "Inventory", "I")
 		config.set_value("Keybinding", "Melee", "mouse_1")
 		config.set_value("Keybinding", "Magic", "mouse_2")
+		
+		config.set_value("video", "fullscreen", true)
+		
+		config.set_value("audio", "master_volume", 1.0)
+		config.set_value("audio", "sfx_volume", 1.0)
+		
 		config.set_value("JoypadBinding", "joyup", "Left Stick Up")
 		config.set_value("JoypadBinding", "joyleft", "Left Stick Left")
 		config.set_value("JoypadBinding", "joydown", "Left Stick Down")
@@ -31,6 +37,27 @@ func _ready():
 		config.save(SETTING_FILE_PATH)
 	else:
 		config.load(SETTING_FILE_PATH)
+
+func save_video_setting(key:String, value):
+	config.set_value("video", key, value)
+	config.save(SETTING_FILE_PATH)
+	
+func load_video_settings():
+	var video_settings = {}
+	for key in config.get_section_keys("video"):
+		video_settings[key] = config.get_value("video", key)
+	return video_settings
+		
+func save_audio_setting(key:String, value):
+	config.set_value("audio", key, value)
+	config.save(SETTING_FILE_PATH)
+
+func load_audio_settings():
+	var audio_settings = {}
+	for key in config.get_section_keys("audio"):
+		audio_settings[key] = config.get_value("audio", key)
+	return audio_settings
+		
 
 func save_keybinding(action : StringName, event : InputEvent):
 	var event_str

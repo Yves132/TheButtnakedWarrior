@@ -3,6 +3,12 @@ extends Control
 @onready var input_button_scene = preload("res://Scenes/UI/InputSettings/input_button.tscn")
 @onready var action_list = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList
 @onready var action_list_j =$PanelContainer2/MarginContainer/VBoxContainer/ScrollContainer/ActionList
+@onready var keyboard_controls = $PanelContainer
+@onready var reset_controls_button = $TextureRect/resetbutton
+@onready var keyboard_bindings_button = $KeyBoardBindings
+@onready var keyboard_label = $TextureRect/Keyboard
+@onready var full_screen_checkbox = $TextureRect/FullScreenCheckBox
+@onready var full_screen_label = $TextureRect/FullScreen
 
 
 var is_remapping = false
@@ -38,6 +44,8 @@ var input_actions_j ={
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var video_settings = ConfigFileHandler.load_video_settings()
+	full_screen_checkbox.button_pressed = video_settings.fullscreen
 	_load_keybindings_from_settings()
 	_load_joypadbindings_from_settings()
 	_create_action_list()
@@ -83,7 +91,7 @@ func _create_action_list():
 		if events.size() > 0:#if there is a key bound to an action
 			var first = events[0].as_text().find("(")
 			var second = events[0].as_text().find(",")
-			print(events[0].as_text())
+			#print(events[0].as_text())
 			var str :String = events[0].as_text().substr(first, second-first)
 			label_input.text =  str
 		else:
@@ -129,7 +137,7 @@ func _update_action_list(button, event):
 func _update_action_list_j(button, event):
 	var first = event.as_text().find("(")
 	var second = event.as_text().find(",")
-	print(event.as_text())
+	#print(event.as_text())
 	var str :String = event.as_text().substr(first, second-first)
 	button.find_child("LabelInput").text = str
 
@@ -149,10 +157,23 @@ func _on_reset_button_pressed():
 
 
 func _on_key_board_bindings_pressed():
-	$PanelContainer.show()
+	keyboard_controls.show()
+	reset_controls_button.show()
+	keyboard_bindings_button.hide()
+	keyboard_label.hide()
+	full_screen_checkbox.hide()
+	full_screen_label.hide()
 	$PanelContainer2.hide()
 
 
 func _on_joypad_bindings_pressed():
 	$PanelContainer2.show()
 	$PanelContainer.hide()
+
+
+func _on_check_box_toggled(toggled_on):
+	ConfigFileHandler.save_video_setting("fullscreen", toggled_on)
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)

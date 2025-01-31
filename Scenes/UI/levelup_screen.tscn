@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dry5x0ua8f06g"]
+[gd_scene load_steps=8 format=3 uid="uid://dry5x0ua8f06g"]
 
 [ext_resource type="Texture2D" uid="uid://dqt0d8k4vgukv" path="res://Sprites/UI/LevelupScreen/DeathScreenBackground.webp" id="1_0x6mh"]
 [ext_resource type="Script" path="res://Scripts/LevelUp/levelup_screen.gd" id="1_qutfj"]
-[ext_resource type="Texture2D" uid="uid://ck71g3biviuo8" path="res://Sprites/UI/PerkLine.png" id="3_0bwsq"]
+[ext_resource type="PackedScene" uid="uid://bihsrr7smlc1i" path="res://Scenes/Particles/falling_stars.tscn" id="3_4svhj"]
+[ext_resource type="PackedScene" uid="uid://d03ypcb4l5wn3" path="res://Scenes/Particles/line.tscn" id="3_d4db8"]
 [ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="3_vf5j5"]
 [ext_resource type="PackedScene" uid="uid://bfoqw6wa8kb4" path="res://Scenes/Particles/skill.tscn" id="6_a237a"]
 
@@ -27,73 +28,74 @@ texture = ExtResource("1_0x6mh")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="WHLine1" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(494.34, 233.234)
-rotation = 1.309
-scale = Vector2(0.1, 0.164145)
-texture = ExtResource("3_0bwsq")
+[node name="FallingStars" parent="." instance=ExtResource("3_4svhj")]
+position = Vector2(649, 0)
+amount = 25
+explosiveness = 0.7
 
-[node name="SMLine" type="Sprite2D" parent="."]
+[node name="WHLine1" parent="." instance=ExtResource("3_d4db8")]
 visible = false
-position = Vector2(318.721, 354.83)
-rotation = 0.523598
-scale = Vector2(0.1, 0.124146)
-texture = ExtResource("3_0bwsq")
+position = Vector2(620.5, 171.747)
+lifetime = 0.8
+emission_rect_extents = Vector2(10, 1)
+gravity = Vector2(-980, 200)
+linear_accel_max = 10.0
 
-[node name="QSLine" type="Sprite2D" parent="."]
+[node name="WHLine2" parent="." instance=ExtResource("3_d4db8")]
 visible = false
-position = Vector2(975.873, 350.663)
-rotation = -0.523598
-scale = Vector2(0.1, 0.124146)
-texture = ExtResource("3_0bwsq")
+position = Vector2(653, 171.747)
+lifetime = 0.8
+emission_rect_extents = Vector2(10, 1)
+gravity = Vector2(980, 200)
+linear_accel_max = 10.0
 
-[node name="FCLine" type="Sprite2D" parent="."]
+[node name="SMLine" parent="." instance=ExtResource("3_d4db8")]
 visible = false
-position = Vector2(331.802, 546.292)
-rotation = -0.523598
-scale = Vector2(0.1, 0.124146)
-texture = ExtResource("3_0bwsq")
+position = Vector2(312.615, 237.398)
+lifetime = 0.6
+gravity = Vector2(-450, 980)
 
-[node name="DCLine1" type="Sprite2D" parent="."]
+[node name="QSLine" parent="." instance=ExtResource("3_d4db8")]
 visible = false
-position = Vector2(528.452, 589.766)
-rotation = 1.309
-scale = Vector2(0.1, 0.157)
-texture = ExtResource("3_0bwsq")
+position = Vector2(963.874, 246.505)
+lifetime = 0.6
+gravity = Vector2(450, 980)
 
-[node name="DCLine2" type="Sprite2D" parent="."]
+[node name="FCLine" parent="." instance=ExtResource("3_d4db8")]
 visible = false
-position = Vector2(761.536, 592.144)
-rotation = 1.83259
-scale = Vector2(0.11, 0.173)
-texture = ExtResource("3_0bwsq")
+position = Vector2(233.162, 421.24)
+lifetime = 0.6
+gravity = Vector2(750, 980)
 
-[node name="FWLine" type="Sprite2D" parent="."]
+[node name="FWLine" parent="." instance=ExtResource("3_d4db8")]
 visible = false
-position = Vector2(956.325, 543.076)
-rotation = 0.523598
-scale = Vector2(0.1, 0.124146)
-texture = ExtResource("3_0bwsq")
+position = Vector2(1040.87, 420.24)
+lifetime = 0.6
+gravity = Vector2(-750, 980)
 
-[node name="WHLine3" type="Sprite2D" parent="."]
+[node name="DCLine1" parent="." instance=ExtResource("3_d4db8")]
 visible = false
-position = Vector2(642.99, 236.802)
-scale = Vector2(0.1, 0.164145)
-texture = ExtResource("3_0bwsq")
+position = Vector2(620.5, 552.712)
+lifetime = 0.8
+gravity = Vector2(-750, 100)
 
-[node name="WMLine" type="Sprite2D" parent="."]
+[node name="DCLine2" parent="." instance=ExtResource("3_d4db8")]
 visible = false
-position = Vector2(641.99, 454.689)
-scale = Vector2(-0.103267, 0.0850848)
-texture = ExtResource("3_0bwsq")
+position = Vector2(661.5, 552.712)
+lifetime = 0.8
+gravity = Vector2(750, 100)
 
-[node name="WHLine2" type="Sprite2D" parent="."]
+[node name="WHLine3" parent="." instance=ExtResource("3_d4db8")]
 visible = false
-position = Vector2(798.839, 231.98)
-rotation = 1.83259
-scale = Vector2(0.1, 0.164145)
-texture = ExtResource("3_0bwsq")
+position = Vector2(639.972, 184)
+lifetime = 0.6
+gravity = Vector2(0, 980)
+
+[node name="WMLine" parent="." instance=ExtResource("3_d4db8")]
+visible = false
+position = Vector2(639.972, 362)
+lifetime = 0.6
+gravity = Vector2(0, 980)
 
 [node name="WarriorHeart" type="Button" parent="."]
 layout_mode = 1
@@ -173,10 +175,10 @@ position = Vector2(19.4719, 20.7475)
 
 [node name="WarriorMight" type="Button" parent="."]
 layout_mode = 0
-offset_left = 620.5
-offset_top = 312.5
-offset_right = 710.5
-offset_bottom = 402.5
+offset_left = 617.5
+offset_top = 328.5
+offset_right = 707.5
+offset_bottom = 418.5
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Increase your melee DMG by 1 for every perk point spent"
 disabled = true
@@ -243,10 +245,10 @@ position = Vector2(19.4719, 20.7475)
 
 [node name="QuickStep" type="Button" parent="."]
 layout_mode = 0
-offset_left = 858.387
-offset_top = 203.005
-offset_right = 948.387
-offset_bottom = 293.005
+offset_left = 938.387
+offset_top = 214.005
+offset_right = 1028.39
+offset_bottom = 304.005
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Increase the number of dashes for every perk point spent.
 Max Dashes : 5"
@@ -314,10 +316,10 @@ position = Vector2(19.4719, 20.7475)
 
 [node name="FlowingWater" type="Button" parent="."]
 layout_mode = 0
-offset_left = 939.637
-offset_top = 383.74
-offset_right = 1029.64
-offset_bottom = 473.74
+offset_left = 1018.64
+offset_top = 387.74
+offset_right = 1108.64
+offset_bottom = 477.74
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Increase your dodge chance for every perk point spent.
 Dodging negates damage.
@@ -386,10 +388,10 @@ position = Vector2(19.4719, 20.7475)
 
 [node name="DeepCuts" type="Button" parent="."]
 layout_mode = 0
-offset_left = 620.5
-offset_top = 477.212
-offset_right = 710.5
-offset_bottom = 567.212
+offset_left = 616.5
+offset_top = 520.212
+offset_right = 706.5
+offset_bottom = 610.212
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Increase your Critical Chanche for every perk point spent.
 Critical Hits do Double Damage.
@@ -458,10 +460,10 @@ position = Vector2(19.4719, 20.7475)
 
 [node name="Waterfall" type="Button" parent="."]
 layout_mode = 0
-offset_left = 819.195
-offset_top = 559.6
-offset_right = 909.195
-offset_bottom = 649.6
+offset_left = 884.586
+offset_top = 565.212
+offset_right = 974.586
+offset_bottom = 655.212
 scale = Vector2(0.5, 0.5)
 tooltip_text = "if you cut the enemy while dashing deal 4 x DMG"
 disabled = true
@@ -524,7 +526,7 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_flmbn")
 
 [node name="Skill" parent="Waterfall/Container" instance=ExtResource("6_a237a")]
-position = Vector2(19.4719, 20.7475)
+position = Vector2(20.7497, 23.6136)
 
 [node name="DeepBurn" type="Button" parent="."]
 layout_mode = 0
@@ -598,10 +600,10 @@ position = Vector2(19.4719, 20.7475)
 
 [node name="FocusedChi" type="Button" parent="."]
 layout_mode = 0
-offset_left = 216.926
-offset_top = 386.986
-offset_right = 306.926
-offset_bottom = 476.986
+offset_left = 210.926
+offset_top = 387.74
+offset_right = 300.926
+offset_bottom = 477.74
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Increase your magic DMG by 1 for every perk point spent"
 disabled = true
@@ -668,10 +670,10 @@ position = Vector2(19.4719, 20.7475)
 
 [node name="SharpMind" type="Button" parent="."]
 layout_mode = 0
-offset_left = 304.379
-offset_top = 205.898
-offset_right = 394.379
-offset_bottom = 295.898
+offset_left = 292.379
+offset_top = 211.898
+offset_right = 382.379
+offset_bottom = 301.898
 scale = Vector2(0.5, 0.5)
 tooltip_text = "Increase your mana by 1 for every perk point spent.
 Max mana : 5"

@@ -188,7 +188,7 @@ func _on_death_timer_timeout():
 	while counter < coinspawntrue:
 		spawn_coin()#runs function to spawn coins
 		counter +=1
-	if legspawnchance < 100:
+	if legspawnchance < 50:
 		spawn_legs()
 	queue_free()#delete it
 	GameManager.gain_xp(1)#calls a function in a global file (gamemanager) that allows the player to gain xp and updates it visually

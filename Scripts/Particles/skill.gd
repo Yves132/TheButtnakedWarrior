@@ -15,10 +15,10 @@ func _process(delta):
 		available = false
 		unavailable = false
 	if available:
-		modulate = Color(0.392, 0.459, 1)
+		modulate = Color(1,1,1,0.2)
 		taken = false
 		unavailable = false
 	if unavailable:
-		modulate = Color(0.664, 0, 0.1)
+		modulate = Color(0.664, 0, 0.1, 0.2)
 		available = false
 		taken = false

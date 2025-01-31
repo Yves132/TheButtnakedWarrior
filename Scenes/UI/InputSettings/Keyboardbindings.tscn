@@ -43,4 +43,5 @@ theme_override_constants/separation = 15
 
 [node name="InputButton" parent="MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("1_1th7i")]
 layout_mode = 2
+focus_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_ykl0p")

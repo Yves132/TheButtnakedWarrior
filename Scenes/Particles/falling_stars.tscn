@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bihsrr7smlc1i"]
+
+[sub_resource type="Curve" id="Curve_4jty3"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, -360), 0.0, 1008.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ljpkp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.494505), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_rf3l3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.356863)
+
+[node name="FallingStars" type="CPUParticles2D"]
+amount = 500
+explosiveness = 0.1
+randomness = 0.75
+emission_shape = 3
+emission_rect_extents = Vector2(1280, 720)
+spread = 70.0
+gravity = Vector2(250, 500)
+initial_velocity_min = 10.0
+initial_velocity_max = 70.0
+linear_accel_min = -70.0
+linear_accel_max = 50.0
+angle_min = -40.0
+angle_max = 50.0
+angle_curve = SubResource("Curve_4jty3")
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_ljpkp")
+color_ramp = SubResource("Gradient_rf3l3")
