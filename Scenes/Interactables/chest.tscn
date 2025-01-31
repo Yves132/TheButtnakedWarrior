@@ -52,6 +52,7 @@ script = ExtResource("3_v0q1q")
 shape = SubResource("RectangleShape2D_87bmd")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 z_index = 5
 anchors_preset = 5
 anchor_left = 0.5

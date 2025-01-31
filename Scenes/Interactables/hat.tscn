@@ -28,6 +28,7 @@ position = Vector2(0.5, 88)
 shape = SubResource("RectangleShape2D_vbppx")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 z_index = 5
 anchors_preset = 5
 anchor_left = 0.5

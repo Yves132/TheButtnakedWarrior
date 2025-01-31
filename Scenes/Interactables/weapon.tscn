@@ -30,6 +30,7 @@ position = Vector2(4.76837e-06, -20)
 shape = SubResource("RectangleShape2D_gwr58")
 
 [node name="KeyboardLabel" type="Label" parent="."]
+visible = false
 z_index = 5
 anchors_preset = 5
 anchor_left = 0.5
@@ -52,6 +53,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="JoypadLabel" type="Label" parent="."]
+visible = false
 z_index = 5
 anchors_preset = 5
 anchor_left = 0.5

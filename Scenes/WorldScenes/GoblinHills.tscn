@@ -794,7 +794,7 @@ debug_color = Color(0.65098, 1, 0, 0.419608)
 [node name="UIManager" parent="." instance=ExtResource("22_8ai56")]
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("32_dy583")]
-z_index = 2
+z_index = 4
 
 [node name="Checkpoint" parent="." instance=ExtResource("13_fuini")]
 visible = false

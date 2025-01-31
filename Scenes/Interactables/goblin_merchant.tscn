@@ -87,6 +87,7 @@ animation = &"Hello"
 flip_h = true
 
 [node name="Label" type="Label" parent="Path2D/PathFollow2D/AnimatedSprite2D"]
+visible = false
 offset_left = -360.0
 offset_top = -430.0
 offset_right = 380.0

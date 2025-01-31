@@ -308,6 +308,7 @@ drag_vertical_enabled = true
 editor_draw_limits = true
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("27_god3x")]
+z_index = 3
 position = Vector2(-2, 0)
 
 [connection signal="area_entered" from="CaveExit" to="." method="_on_cave_exit_area_entered"]
