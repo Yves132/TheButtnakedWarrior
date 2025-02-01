@@ -92,6 +92,9 @@ func hit_management():
 func lose_health(dmg):
 	current_health -= dmg#lose health based on player damage
 	GameManager.frame_freeze(0, 0.1)
+	$HurtNDeath.play()
+	var pitch_mod = randf_range(-0.5,+0.5)
+	$HurtNDeath.pitch_scale = 1.4 + pitch_mod
 	if (sliced or burnt) and current_health <= 0:#if dead by sword
 		dead = true
 		$DeathTimer.start()#used to allow the animation to play

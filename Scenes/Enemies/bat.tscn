@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://0k3s2k71kem1"]
+[gd_scene load_steps=24 format=3 uid="uid://0k3s2k71kem1"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/bat.gd" id="1_gft11"]
 [ext_resource type="Shader" path="res://Shaders/bat.gdshader" id="2_4e0t4"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d1dqopducj0bs" path="res://Sprites/Enemies/Bat/BatSliced.png" id="12_tha54"]
 [ext_resource type="Texture2D" uid="uid://cah5utj2c28o" path="res://Sprites/Enemies/Bat/BatSliced2.png" id="12_wus1p"]
 [ext_resource type="Texture2D" uid="uid://dy768rewef2kg" path="res://Sprites/Drops/BatWing.png" id="14_afumt"]
+[ext_resource type="AudioStream" uid="uid://bh5oyrcwg7h2q" path="res://Audio/retro-hurt-1-236672.mp3" id="16_r31vb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5ysik"]
 shader = ExtResource("2_4e0t4")
@@ -144,6 +145,9 @@ one_shot = true
 material = SubResource("ShaderMaterial_rcg8c")
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("14_afumt")
+
+[node name="HurtNDeath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_r31vb")
 
 [connection signal="body_entered" from="SpotBox" to="." method="_on_spot_box_body_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

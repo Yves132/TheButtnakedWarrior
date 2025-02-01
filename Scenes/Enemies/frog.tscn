@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://yomc1b05tjfp"]
+[gd_scene load_steps=20 format=3 uid="uid://yomc1b05tjfp"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/frog.gd" id="1_w6b52"]
 [ext_resource type="Shader" path="res://Shaders/frog.gdshader" id="2_c05ms"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dykusqvo7itsj" path="res://Sprites/Enemies/Frog/FrogSliced1.png" id="8_g7ykx"]
 [ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="10_2kta1"]
 [ext_resource type="Texture2D" uid="uid://cg7xo47sf50a" path="res://Sprites/Drops/FrogLeg.png" id="12_0io5u"]
+[ext_resource type="AudioStream" uid="uid://bh5oyrcwg7h2q" path="res://Audio/retro-hurt-1-236672.mp3" id="13_juaxd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o1q3i"]
 shader = ExtResource("2_c05ms")
@@ -140,6 +141,9 @@ shape = SubResource("RectangleShape2D_vtnre")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("12_0io5u")
+
+[node name="HurtNDeath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_juaxd")
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]

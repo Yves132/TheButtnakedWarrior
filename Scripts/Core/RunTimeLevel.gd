@@ -38,6 +38,8 @@ func data_setter():#we set here things that must be set to standard values when 
 func _process(delta):
 	boss_fight_manager(delta)
 	cave_manager()
+	if GameManager.player.dead:
+		$AudioStreamPlayer.stop()
 		
 		
 func boss_fight_manager(delta):

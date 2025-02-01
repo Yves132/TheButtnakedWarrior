@@ -3,6 +3,7 @@ extends CharacterBody2D
 var SPEED = 300
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var InitialPositionY = position.y
+@onready var audioplayer = $AudioStreamPlayer2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -25,4 +26,11 @@ func _physics_process(delta):
 func _on_area_2d_area_entered(area):
 	if area.get_parent() is Player:
 		GameManager.gain_coins(1)#call gamemanager func to count coins
-		queue_free()#delete coin
+		audioplayer.play()
+		var pitch_mod = randf_range(-0.05,+0.05)
+		audioplayer.pitch_scale = 1 + pitch_mod
+		hide()
+
+
+func _on_audio_stream_player_2d_finished():
+	queue_free()#delete coin

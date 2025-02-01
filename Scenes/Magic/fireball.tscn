@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dls8owy3v10xw"]
+[gd_scene load_steps=6 format=3 uid="uid://dls8owy3v10xw"]
 
 [ext_resource type="Script" path="res://Scripts/Magic/fireball.gd" id="1_iqf2a"]
+[ext_resource type="AudioStream" uid="uid://drsib73yoxp7g" path="res://Audio/fireboltshoot.wav" id="3_6xv3d"]
 [ext_resource type="PackedScene" uid="uid://doo5fvixeutcu" path="res://Scenes/Particles/fire.tscn" id="5_crwrj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0qkxw"]
@@ -35,6 +36,9 @@ shape = SubResource("RectangleShape2D_fksfp")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(10, 0)
 scale = Vector2(7.5, 5)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6xv3d")
 
 [connection signal="body_entered" from="Homing_range" to="." method="_on_homing_range_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

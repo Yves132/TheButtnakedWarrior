@@ -8,6 +8,11 @@ const DUSTJUMP = preload("res://Scenes/Particles/DustJump.tscn")
 const DUSTWALLJUMP = preload("res://Scenes/Particles/dustWallJump.tscn")
 #const DUSTWALLSLIDE = preload("res://Scenes/Particles/DustWallSlide.tscn")#not implemented not needed
 const DUSTDASH = preload("res://Scenes/Particles/DustDash.tscn")
+const WALKSOUND = preload("res://Audio/walk.wav")
+const HURTSOUND = preload("res://Audio/hurt.wav")
+const DEADSOUND = preload("res://Audio/lose.wav")
+const SWORDSOUND = preload("res://Audio/sword-sound-260274.mp3")
+const DASHSOUND = preload("res://Audio/speedy-whoosh-229316.mp3")
 
 @onready var animations = $AnimationPlayer
 @onready var sprite = $PlayerNaked
@@ -24,6 +29,9 @@ const DUSTDASH = preload("res://Scenes/Particles/DustDash.tscn")
 @onready var crittimer = $CritTimer
 @onready var interact_ui = $Interact_ui
 @onready var PlayerCamera = $Camera2D
+@onready var audioplayer = $MovementSounds
+@onready var audioplayerattack = $AttackSounds
+@onready var audioplayeraddeffects = $DashNHurtSounds
 
 var ladder_checker := false #is player on ladder
 var climbing := false #is player climbing
@@ -202,18 +210,42 @@ func _physics_process(delta):
 			if ((Input.is_action_pressed("right") or Input.is_action_pressed("left")) and can_spawn_particle == true) and not Input.is_action_pressed("run") and velocity.x != 0:
 				can_spawn_particle = false
 				$DustTimerW.start()
+				audioplayer.stop()
+				audioplayer.set_stream(WALKSOUND)
+				audioplayer.play()
+				var pitch_mod = randf_range(-0.05,+0.05)
+				audioplayer.pitch_scale = 1.4 + pitch_mod
 				dust_walk()
 			if ((Input.is_action_pressed("right") or Input.is_action_pressed("left")) and can_spawn_particle == true) and Input.is_action_pressed("run") and velocity.x != 0:
 				can_spawn_particle = false
 				$DustTimerR.start()
+				audioplayer.stop()
+				audioplayer.set_stream(WALKSOUND)
+				audioplayer.play()
+				var pitch_mod = randf_range(-0.05,+0.05)
+				audioplayer.pitch_scale = 1.4 + pitch_mod
 				dust_run()
 			if Input.is_action_just_pressed("jump"):
 				dust_jump()
+				audioplayer.stop()
+				audioplayer.set_stream(WALKSOUND)
+				audioplayer.play()
+				var pitch_mod = randf_range(-0.5,+0.5)
+				audioplayer.pitch_scale = 1.4 + pitch_mod
 			if landing == true:
 				dust_jump()
+				audioplayer.stop()
+				audioplayer.set_stream(WALKSOUND)
+				audioplayer.play()
+				var pitch_mod = randf_range(-0.5,+0.5)
+				audioplayer.pitch_scale = 1.4 + pitch_mod
 				landing = false
 			if Input.is_action_just_pressed("Dash") and can_dash and PlayerData.player_dic["dashes"] > 0 and (Input.is_action_pressed("left") or Input.is_action_pressed("right")) and velocity.x != 0:
 				dust_dash()
+				audioplayeraddeffects.set_stream(DASHSOUND)
+				audioplayeraddeffects.play()
+				var pitch_mod = randf_range(-0.5,+0.5)
+				audioplayeraddeffects.pitch_scale = 1.4 + pitch_mod
 			
 			if Input.is_action_pressed("Magic") and not Input.is_action_pressed("Melee"):
 				fire()
@@ -288,11 +320,21 @@ func _physics_process(delta):
 				velocity.x = move_toward(velocity.x, PlayerData.player_dic["speed"], 40) 
 				#PARTICLES
 				dust_wall_jump()
+				audioplayer.stop()
+				audioplayer.set_stream(WALKSOUND)
+				audioplayer.play()
+				var pitch_mod = randf_range(-0.5,+0.5)
+				audioplayer.pitch_scale = 1.4 + pitch_mod
 			elif Input.is_action_pressed("jump") and (Input.is_action_pressed("left") and direction ==1) and not Input.is_action_pressed("right"):
 				velocity.y = PlayerData.player_dic["jump_height"]
 				velocity.x = move_toward(velocity.x, -PlayerData.player_dic["speed"], 40) 
 				#PARTICLES
 				dust_wall_jump()
+				audioplayer.stop()
+				audioplayer.set_stream(WALKSOUND)
+				audioplayer.play()
+				var pitch_mod = randf_range(-0.5,+0.5)
+				audioplayer.pitch_scale = 1.4 + pitch_mod
 			elif Input.is_action_pressed("down"):
 				velocity.y = PlayerData.player_dic["speed"]
 				#PARTICLES
@@ -437,6 +479,11 @@ func melee():
 						GameManager.crit = true
 					#print("click")
 					#print(jumpattack)
+					#audioplayer.stop()
+					audioplayerattack.set_stream(SWORDSOUND)
+					audioplayerattack.play()
+					var pitch_mod = randf_range(-0.05,+0.05)
+					audioplayer.pitch_scale = 1 + pitch_mod
 					can_attack = false
 					$WeaponSpeed.start()
 					attacking = true
@@ -536,6 +583,11 @@ func dust_dash():
 
 func Die(): #player has reached 0 health
 	dead = true
+	audioplayer.stop()
+	audioplayer.set_stream(DEADSOUND)
+	audioplayer.play()
+	var pitch_mod = randf_range(-0.05,+0.05)
+	audioplayer.pitch_scale = 1 + pitch_mod
 	#animation_handler()#used to play death animation
 	
 	#used to apply the effect of items, based on effect description
@@ -637,12 +689,17 @@ func bounce():
 func Hurt(posx):
 	if not dodged:
 		if not dead:
-			GameManager.frame_freeze(0,0.1)
+			audioplayeraddeffects.stop()
+			audioplayeraddeffects.set_stream(HURTSOUND)
+			audioplayeraddeffects.play()
+			var pitch_mod = randf_range(-0.05,+0.05)
+			audioplayeraddeffects.pitch_scale = 1 + pitch_mod
+			#GameManager.frame_freeze(0,0.1)
 			velocity.y = PlayerData.player_dic["jump_height"] * 0.7
 			if posx > position.x:
-				velocity.x = -750
+				velocity.x = -400
 			if posx < position.x:
-				velocity.x = 750
+				velocity.x = 400
 			set_modulate(Color(5,5,5,0.9))
 			blink = 4
 			#Input.action_release("left")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://6xqey52tqqyk"]
+[gd_scene load_steps=54 format=4 uid="uid://6xqey52tqqyk"]
 
 [ext_resource type="Texture2D" uid="uid://ea5p6uix3w1w" path="res://Sprites/Background/BackgroundSunrise.png" id="1_cckg2"]
 [ext_resource type="Script" path="res://Scripts/Core/RunTimeLevel.gd" id="1_td4m0"]
@@ -40,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://b7kmts5dr3a7" path="res://Scenes/Enemies/goblin_archer.tscn" id="27_xl8xg"]
 [ext_resource type="PackedScene" uid="uid://d1yu7b1sia373" path="res://Scenes/WorldScenes/scene_transition_animation.tscn" id="32_dy583"]
 [ext_resource type="PackedScene" uid="uid://dy3f3265inlsb" path="res://Scenes/Enemies/enemy.tscn" id="36_c251e"]
+[ext_resource type="AudioStream" uid="uid://cgdcw5iyiemc1" path="res://Audio/FirstLvlFR.wav" id="41_ln38b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xakla"]
 size = Vector2(48, 40)
@@ -878,6 +879,12 @@ size_flags_vertical = 0
 texture = ExtResource("12_2s0ro")
 expand_mode = 1
 script = ExtResource("13_5h4m8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("41_ln38b")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="area_entered" from="CaveEntrance" to="." method="_on_cave_entrance_area_entered"]
 [connection signal="area_exited" from="CaveEntrance" to="." method="_on_cave_entrance_area_exited"]

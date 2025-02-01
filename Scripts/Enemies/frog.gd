@@ -147,6 +147,9 @@ func _on_top_box_body_entered(body):
 
 func lose_health(dmg):#frog loses health equal to player dmg 
 	current_health = current_health - dmg
+	$HurtNDeath.play()
+	var pitch_mod = randf_range(-0.5,+0.5)
+	$HurtNDeath.pitch_scale = 1.4 + pitch_mod
 	#GameManager.frame_freeze(0,0.2)
 	if (burnt or sliced or crushed) and current_health <= 0:#killed by fireball or sword or crushed
 		dead = true

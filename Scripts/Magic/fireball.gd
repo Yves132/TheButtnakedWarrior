@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Fireball
 const EXPLOSION = preload("res://Scenes/Particles/explosion_fire.tscn")
 
+@onready var audioplayer = $AudioStreamPlayer2D
 
 const SPEED = 400
 var direction = 1
@@ -14,6 +15,9 @@ var exploded_when_stuck = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	velocity.x = SPEED * direction
+	audioplayer.play()
+	var pitch_mod = randf_range(-0.05,+0.05)
+	audioplayer.pitch_scale = 1 + pitch_mod
 	#add_child(explosion)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

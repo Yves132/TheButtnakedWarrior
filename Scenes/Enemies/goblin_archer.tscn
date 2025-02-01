@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b7kmts5dr3a7"]
+[gd_scene load_steps=32 format=3 uid="uid://b7kmts5dr3a7"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/goblin_archer.gd" id="1_axys0"]
 [ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="2_eidl6"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://coleewbp1083p" path="res://Sprites/Enemies/GoblinArcher/GoblinArcherFire2.png" id="16_e2yes"]
 [ext_resource type="Texture2D" uid="uid://b4dac60hxau6t" path="res://Sprites/Enemies/GoblinArcher/GoblinArcherFire3.png" id="17_i7x8m"]
 [ext_resource type="Texture2D" uid="uid://0yycala5grty" path="res://Sprites/Drops/GoblinMeat.png" id="21_xdrvx"]
+[ext_resource type="AudioStream" uid="uid://bh5oyrcwg7h2q" path="res://Audio/retro-hurt-1-236672.mp3" id="23_kaaq6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qhvof"]
 shader = ExtResource("3_6melh")
@@ -263,6 +264,9 @@ one_shot = true
 visible = false
 position = Vector2(1, 88)
 texture = ExtResource("21_xdrvx")
+
+[node name="HurtNDeath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_kaaq6")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

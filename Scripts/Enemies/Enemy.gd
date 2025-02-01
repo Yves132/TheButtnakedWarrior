@@ -80,6 +80,9 @@ func lose_health(dmg):
 	#GameManager.frame_freeze(0,0.1)
 	Hit = true
 	current_health -= dmg
+	$HurtNDeath.play()
+	var pitch_mod = randf_range(-0.5,+0.5)
+	$HurtNDeath.pitch_scale = 1.4 + pitch_mod
 
 	
 func Hurt(posx):
@@ -173,6 +176,9 @@ func _on_spot_box_area_exited(area):#for spotting mechanic and animation
 func _on_top_checker_body_entered(body):
 	if not dead and not burn and not sliced:#if enemy not dead
 		if body is Player:
+			$HurtNDeath.play()
+			var pitch_mod = randf_range(-0.5,+0.5)
+			$HurtNDeath.pitch_scale = 1.4 + pitch_mod
 			current_health -= max_health
 			dead=true#i'm dead
 			set_collision_layer_value(5, false)#no more collision

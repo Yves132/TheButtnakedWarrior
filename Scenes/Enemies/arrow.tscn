@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgnlgmb1wpndq"]
+[gd_scene load_steps=12 format=3 uid="uid://dgnlgmb1wpndq"]
 
 [ext_resource type="Texture2D" uid="uid://dajohd22nxj4s" path="res://Sprites/Enemies/GoblinArcher/Arrow.png" id="1_ockvq"]
 [ext_resource type="Script" path="res://Scripts/Enemies/arrow.gd" id="1_xn1x3"]
 [ext_resource type="Shader" path="res://Shaders/arrow.gdshader" id="2_2nj3f"]
 [ext_resource type="Texture2D" uid="uid://vpdc1pl1dxvm" path="res://Sprites/Enemies/GoblinArcher/ArrowBroken1.png" id="2_ha3bp"]
 [ext_resource type="Texture2D" uid="uid://di7tv4d4ioow7" path="res://Sprites/Enemies/GoblinArcher/ArrowBroken3.png" id="4_trkgj"]
+[ext_resource type="AudioStream" uid="uid://kypb4w3j1pkw" path="res://Audio/wind-swoosh-short-289744.mp3" id="6_rwygb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qdcba"]
 shader = ExtResource("2_2nj3f")
@@ -37,7 +38,7 @@ animations = [{
 size = Vector2(108.752, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0eabk"]
-size = Vector2(196.738, 16.1933)
+size = Vector2(242.23, 16.1933)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n4cpu"]
 size = Vector2(159.852, 20)
@@ -61,7 +62,7 @@ shape = SubResource("RectangleShape2D_uyks6")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.5686, 8.09664)
+position = Vector2(-6.34534, 8.09664)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_0eabk")
 debug_color = Color(0.983961, 0, 0.348118, 0.42)
@@ -74,6 +75,9 @@ collision_mask = 1024
 position = Vector2(0.244298, 7.99999)
 shape = SubResource("RectangleShape2D_n4cpu")
 debug_color = Color(2.69532e-06, 0.644433, 0.28099, 0.42)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_rwygb")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

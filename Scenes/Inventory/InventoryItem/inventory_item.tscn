@@ -15,7 +15,7 @@ size = Vector2(79.9895, 24.6325)
 size = Vector2(81.6023, 24.8031)
 
 [node name="InventoryItem" type="Node2D" groups=["Items"]]
-position = Vector2(0, 1953.47)
+position = Vector2(0, 15443.5)
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_35kt1")
 is_on_hotbar = null

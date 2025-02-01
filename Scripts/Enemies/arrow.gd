@@ -7,6 +7,9 @@ var direction = 1
 func _ready():
 	velocity.x = SPEED * direction
 	$AnimatedSprite2D.play("Fly")
+	$AudioStreamPlayer2D.play()
+	var pitch_mod = randf_range(-0.5,+0.5)
+	$AudioStreamPlayer2D.pitch_scale = 1.4 + pitch_mod
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -23,6 +26,8 @@ func _on_area_2d_body_entered(body):
 	if body is Player:
 		GameManager.lose_health(1)
 		GameManager.player.Hurt(position.x)
+		queue_free()
+	if body is tile_map or body is tile_map_one_way:
 		queue_free()
 
 
