@@ -213,6 +213,9 @@ func _on_spot_box_area_entered(area):#for spotting mechanic and animation
 			speed = 0#stop
 			spotted = true#i have spotted!
 			enemy_animation_handler()#for playing spot anim
+			var pitch_mod = randf_range(-0.5,+0.5)
+			$Spot.pitch_scale = 1 + pitch_mod
+			$Spot.play()
 			$SpotTimer.start()#spot anim lasts only for this timer
 
 func _on_spot_box_area_exited(area):#for spotting mechanic and animation

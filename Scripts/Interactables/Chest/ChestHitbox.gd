@@ -16,6 +16,7 @@ func _process(delta):
 		$"../Label".show()
 		if Input.is_action_pressed("interact") and not WorldData.world_dic["chest_opened"]:
 			$"../AnimatedSprite2D".play("Open")
+			$"../open".play()
 			WorldData.world_dic["chest_opened"]= true
 	else:
 		$"../Label".hide()

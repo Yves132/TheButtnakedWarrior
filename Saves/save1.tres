@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="SaveData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SaveData" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Core/SaveData.gd" id="1_58p74"]
+[ext_resource type="Texture2D" path="res://Sprites/Drops/GoblinMeat.png" id="1_6lb01"]
+[ext_resource type="Script" path="res://Scripts/Core/SaveData.gd" id="1_y4htr"]
 
 [resource]
-script = ExtResource("1_58p74")
+script = ExtResource("1_y4htr")
 inventory_dic = {
 "effect": null,
 "name": null,
@@ -13,9 +14,9 @@ inventory_dic = {
 "type": null
 }
 player_dic = {
-"Coins": 6,
+"Coins": 17,
 "crit_chance": 0,
-"current_xp": 2,
+"current_xp": 8,
 "dash_speed": 800,
 "dashes": 1,
 "deep_burn": false,
@@ -27,11 +28,20 @@ player_dic = {
 "has_spell": true,
 "has_weapon": true,
 "hat_found": true,
-"health": 2,
-"inventory": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+"health": 3,
+"inventory": [{
+"cost": 2,
+"effect": "Heal 1 HP",
+"is_on_hotbar": null,
+"name": "Goblin Meat",
+"quantity": 3,
+"scene_path": "res://Scenes/Inventory/InventoryItem/inventory_item.tscn",
+"texture": ExtResource("1_6lb01"),
+"type": "Consumable"
+}, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
 "inventory_hotbar_array": [],
 "jump_height": -300.0,
-"last_positionx": 2370.93,
+"last_positionx": 2341.88,
 "last_positiony": 692.658,
 "magic_dmg": 1,
 "mana": 1,

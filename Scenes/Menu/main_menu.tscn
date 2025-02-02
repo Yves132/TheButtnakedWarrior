@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://k7by1udwp0o3" path="res://icon.svg" id="3_s6660"]
 [ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="4_bis7r"]
 [ext_resource type="Script" path="res://Scripts/Main Menu/PlayButton.gd" id="5_328st"]
-[ext_resource type="AudioStream" uid="uid://bpv6erh67en6h" path="res://Audio/general/MainMenuTheme.wav" id="7_xgt6w"]
+[ext_resource type="AudioStream" uid="uid://dr3qj1eqdckao" path="res://Audio/general/MainMenu.wav" id="7_6fn7m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlghe"]
 bg_color = Color(0, 0.635294, 0.960784, 0.2)
@@ -170,7 +170,7 @@ text = "Quit"
 flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_xgt6w")
+stream = ExtResource("7_6fn7m")
 autoplay = true
 
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]

@@ -13,5 +13,11 @@ func _process(delta):
 
 func _on_book_area_entered(area):
 		if area.get_parent() is Player:#if player touched book
+			$Collected.play()
 			PlayerData.player_dic["has_spell"] = true#player now has spell
-			queue_free()#delete book
+			hide()
+			$Book.set_collision_mask_value(1, false)
+
+
+func _on_collected_finished():
+	queue_free()#delete book

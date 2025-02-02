@@ -115,8 +115,8 @@ func lose_health(dmg):
 	current_health -= dmg#troll loses health equal to player damage
 	#print(current_health)
 	$HurtNDeath.play()
-	var pitch_mod = randf_range(-0.5,+0.5)
-	$HurtNDeath.pitch_scale = 1.4 + pitch_mod
+	var pitch_mod = randf_range(-0.2,+0.2)
+	$HurtNDeath.pitch_scale = 0.5 + pitch_mod
 	if current_health > 0:#if is not dead we reset the causes of death
 		burnt = false
 		sliced = false

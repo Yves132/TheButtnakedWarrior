@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://5hgbcff5glgo" path="res://Sprites/Enemies/Troll/TrollATKL3.png" id="19_nfue6"]
 [ext_resource type="Shader" path="res://Shaders/little_troll.gdshader" id="20_eswte"]
 [ext_resource type="Texture2D" uid="uid://lxn48qu250c8" path="res://Sprites/Drops/TrollBlood.png" id="20_u1kmr"]
-[ext_resource type="AudioStream" uid="uid://bh5oyrcwg7h2q" path="res://Audio/enemies/retro-hurt-1-236672.mp3" id="22_y5ff7"]
+[ext_resource type="AudioStream" uid="uid://e2imi81p11pn" path="res://Audio/GoblinHurt.wav" id="22_pn06o"]
 [ext_resource type="AudioStream" uid="uid://chvgsa34nsdmk" path="res://Audio/enemies/bossroar.wav" id="23_tjo1r"]
 
 [sub_resource type="Animation" id="Animation_j0ed8"]
@@ -307,7 +307,8 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("20_u1kmr")
 
 [node name="HurtNDeath" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("22_y5ff7")
+stream = ExtResource("22_pn06o")
+volume_db = 15.0
 
 [node name="ROAR" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("23_tjo1r")
