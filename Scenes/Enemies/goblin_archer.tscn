@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://coleewbp1083p" path="res://Sprites/Enemies/GoblinArcher/GoblinArcherFire2.png" id="16_e2yes"]
 [ext_resource type="Texture2D" uid="uid://b4dac60hxau6t" path="res://Sprites/Enemies/GoblinArcher/GoblinArcherFire3.png" id="17_i7x8m"]
 [ext_resource type="Texture2D" uid="uid://0yycala5grty" path="res://Sprites/Drops/GoblinMeat.png" id="21_xdrvx"]
-[ext_resource type="AudioStream" uid="uid://bh5oyrcwg7h2q" path="res://Audio/retro-hurt-1-236672.mp3" id="23_kaaq6"]
+[ext_resource type="AudioStream" uid="uid://bh5oyrcwg7h2q" path="res://Audio/enemies/retro-hurt-1-236672.mp3" id="23_kaaq6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qhvof"]
 shader = ExtResource("3_6melh")

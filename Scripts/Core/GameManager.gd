@@ -14,6 +14,7 @@ var uimanager : UiManager
 var crit = false
 var joypaddetected = false
 var keyboarddetected = false
+var coin_audio_playing = false
 
 func _input(event):
 	#if event is InputEventJoypadButton or event is InputEventJoypadMotion:

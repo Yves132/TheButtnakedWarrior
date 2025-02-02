@@ -1,6 +1,8 @@
 extends Node
 class_name RuntimeLevel
 
+const FIGHTSTART = preload("res://Audio/combat-clash-276688.mp3")
+const BOSSMUSIC = preload("res://Audio/enemies/BOSSMUSIC.wav")
 
 @onready var level_name = $".".name#level name
 @onready var actual_level = get_scene_file_path()#returns the packedscene 
@@ -11,6 +13,7 @@ class_name RuntimeLevel
 @onready var path2d = $Path2D#for cutscene purposes
 @onready var camera = $Path2D/PathFollow2D/Camera2D#for cutscene purposes
 @onready var bossfightstart = $BossFightStart#to know when bossfight starts
+
 
 func _ready():
 	data_setter()
@@ -40,10 +43,18 @@ func _process(delta):
 	cave_manager()
 	if GameManager.player.dead:
 		$AudioStreamPlayer.stop()
+	var pitch_mod = randf_range(-0.05,+0.05)
+	$AudioStreamPlayer2.pitch_scale = 1 + pitch_mod
 		
 		
+func audio_manager():
+	$AudioStreamPlayer2.set_stream(FIGHTSTART)
+	$AudioStreamPlayer2.play()
+	
 func boss_fight_manager(delta):
 	if GameManager.cutscene and not WorldData.world_dic["first_boss_defeated"]:
+		$AudioStreamPlayer.stop()
+		$AudioStreamPlayer.set_stream(BOSSMUSIC)
 		if path2d != null:
 			$Path2D/PathFollow2D.progress_ratio += delta#start to move the camera towards boss
 	if WorldData.world_dic["first_boss_defeated"] and GameManager.cutscene:
@@ -94,6 +105,7 @@ func _on_change_scene_area_entered(area):
 
 func _on_boss_fight_start_area_exited(area):
 	if area.get_parent() is Player:
+		audio_manager()
 		print("here")
 		GameManager.player.PlayerCamera.enabled = false#disable player camera, we do it thorugh gamemanager reference to player
 		camera.enabled = true#enable boss battle camera
@@ -121,3 +133,7 @@ func _on_cave_exit_area_entered(area):
 func _on_cave_exit_area_exited(area):
 	if area.get_parent() is Player:
 		$CaveExit/Label.hide()
+
+
+func _on_audio_stream_player_2_finished():
+	$AudioStreamPlayer.play()

@@ -2178,7 +2178,7 @@ texture = ExtResource("4_1os25")
 
 [node name="PlayerNaked" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_1ss5a")
-texture = ExtResource("10_ntwk8")
+texture = ExtResource("25_fvwlj")
 
 [node name="Hat" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_mxtxb")

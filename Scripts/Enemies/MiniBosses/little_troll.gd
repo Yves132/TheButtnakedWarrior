@@ -24,6 +24,8 @@ const EXPLOSION = preload("res://Scenes/Particles/explosion_fire.tscn")
 @onready var attack = false#used to determine when troll is attacking
 @onready var counter = 0#used to determine when to give the player breath
 
+var pitchmod
+
 func _ready():
 	if WorldData.world_dic["first_boss_defeated"]:#this prevents it from spawning if it is already killed
 		queue_free()
@@ -68,6 +70,7 @@ func _physics_process(delta):
 			sprite.flip_h = true
 		animation_handler()
 	#cutscene animations
+	
 	
 	#healthbar management start
 	if GameManager.BossBattleStart:#to make sure healthbar shows only when battle starts
@@ -156,6 +159,8 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "WAAAAGH":#this determines the end of the cutscene and the start of the battle
 		GameManager.cutscene = false
 		GameManager.BossBattleStart = true
+		pitchmod = randf_range(-0.5, 0.5)
+		$ROAR.pitch_scale = 1 + pitchmod
 		counter = 0
 	if anim_name == "ATKR" or anim_name == "ATKL":
 		attack = false

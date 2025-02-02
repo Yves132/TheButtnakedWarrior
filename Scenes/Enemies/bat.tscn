@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d1dqopducj0bs" path="res://Sprites/Enemies/Bat/BatSliced.png" id="12_tha54"]
 [ext_resource type="Texture2D" uid="uid://cah5utj2c28o" path="res://Sprites/Enemies/Bat/BatSliced2.png" id="12_wus1p"]
 [ext_resource type="Texture2D" uid="uid://dy768rewef2kg" path="res://Sprites/Drops/BatWing.png" id="14_afumt"]
-[ext_resource type="AudioStream" uid="uid://bh5oyrcwg7h2q" path="res://Audio/retro-hurt-1-236672.mp3" id="16_r31vb"]
+[ext_resource type="AudioStream" uid="uid://bh5oyrcwg7h2q" path="res://Audio/enemies/retro-hurt-1-236672.mp3" id="16_r31vb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5ysik"]
 shader = ExtResource("2_4e0t4")

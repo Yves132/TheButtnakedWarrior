@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dls8owy3v10xw"]
 
 [ext_resource type="Script" path="res://Scripts/Magic/fireball.gd" id="1_iqf2a"]
-[ext_resource type="AudioStream" uid="uid://drsib73yoxp7g" path="res://Audio/fireboltshoot.wav" id="3_6xv3d"]
+[ext_resource type="AudioStream" uid="uid://drsib73yoxp7g" path="res://Audio/player/fireboltshoot.wav" id="3_6xv3d"]
 [ext_resource type="PackedScene" uid="uid://doo5fvixeutcu" path="res://Scenes/Particles/fire.tscn" id="5_crwrj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0qkxw"]

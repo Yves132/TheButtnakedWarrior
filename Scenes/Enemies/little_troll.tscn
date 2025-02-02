@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://8nip1xxexekq"]
+[gd_scene load_steps=38 format=3 uid="uid://8nip1xxexekq"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/MiniBosses/little_troll.gd" id="1_fxoq4"]
 [ext_resource type="PackedScene" uid="uid://b11g73e0rrdi8" path="res://Scenes/Enemies/health_bar.tscn" id="2_4jc66"]
@@ -21,7 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://5hgbcff5glgo" path="res://Sprites/Enemies/Troll/TrollATKL3.png" id="19_nfue6"]
 [ext_resource type="Shader" path="res://Shaders/little_troll.gdshader" id="20_eswte"]
 [ext_resource type="Texture2D" uid="uid://lxn48qu250c8" path="res://Sprites/Drops/TrollBlood.png" id="20_u1kmr"]
-[ext_resource type="AudioStream" uid="uid://bh5oyrcwg7h2q" path="res://Audio/retro-hurt-1-236672.mp3" id="22_y5ff7"]
+[ext_resource type="AudioStream" uid="uid://bh5oyrcwg7h2q" path="res://Audio/enemies/retro-hurt-1-236672.mp3" id="22_y5ff7"]
+[ext_resource type="AudioStream" uid="uid://chvgsa34nsdmk" path="res://Audio/enemies/bossroar.wav" id="23_tjo1r"]
 
 [sub_resource type="Animation" id="Animation_j0ed8"]
 resource_name = "ATKL"
@@ -122,6 +123,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(47.7147, 24.093)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ROAR:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_b77d8"]
 resource_name = "WAAAAGH"
@@ -137,6 +150,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [ExtResource("3_4hs15"), ExtResource("5_obm1m"), ExtResource("3_4hs15")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ROAR:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_7adl6"]
@@ -283,6 +308,9 @@ texture = ExtResource("20_u1kmr")
 
 [node name="HurtNDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_y5ff7")
+
+[node name="ROAR" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_tjo1r")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

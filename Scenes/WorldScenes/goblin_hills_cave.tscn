@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://b2qsl7ki83fh8"]
+[gd_scene load_steps=38 format=4 uid="uid://b2qsl7ki83fh8"]
 
 [ext_resource type="Script" path="res://Scripts/Core/RunTimeLevel.gd" id="1_avmcr"]
 [ext_resource type="Texture2D" uid="uid://w5buavxbqv3t" path="res://Sprites/Background/Cave/BackgroundCaveWall1.png" id="2_v6di0"]
@@ -30,6 +30,9 @@
 [ext_resource type="PackedScene" uid="uid://cyclli0bxvryn" path="res://Scenes/Interactables/goblin_merchant.tscn" id="27_mamiy"]
 [ext_resource type="Texture2D" uid="uid://iahqr6sx72w8" path="res://Sprites/Interactables/Exit.png" id="28_vqp5p"]
 [ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="29_e2djh"]
+[ext_resource type="AudioStream" uid="uid://6ok8sqtrtmqn" path="res://Audio/cave/dripping-water-stereo-sound-257182.mp3" id="31_o7ydr"]
+[ext_resource type="AudioStream" uid="uid://j27msadbadt5" path="res://Audio/cave/creepy-cave-47164.mp3" id="32_cderk"]
+[ext_resource type="AudioStream" uid="uid://dueaicob0ks4i" path="res://Audio/cave/CaveFR.wav" id="33_jyuei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4nf7"]
 size = Vector2(51.3928, 34.5638)
@@ -311,7 +314,23 @@ editor_draw_limits = true
 z_index = 3
 position = Vector2(-2, 0)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("33_jyuei")
+volume_db = -5.0
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_cderk")
+autoplay = true
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("31_o7ydr")
+volume_db = -5.0
+autoplay = true
+
 [connection signal="area_entered" from="CaveExit" to="." method="_on_cave_exit_area_entered"]
 [connection signal="area_exited" from="CaveExit" to="." method="_on_cave_exit_area_exited"]
 [connection signal="body_entered" from="Fallzone" to="player" method="_on_fallzone_body_entered"]
 [connection signal="area_exited" from="BossFightStart" to="." method="_on_boss_fight_start_area_exited"]
+[connection signal="finished" from="AudioStreamPlayer2" to="." method="_on_audio_stream_player_2_finished"]

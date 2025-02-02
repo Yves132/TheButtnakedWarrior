@@ -8,11 +8,11 @@ const DUSTJUMP = preload("res://Scenes/Particles/DustJump.tscn")
 const DUSTWALLJUMP = preload("res://Scenes/Particles/dustWallJump.tscn")
 #const DUSTWALLSLIDE = preload("res://Scenes/Particles/DustWallSlide.tscn")#not implemented not needed
 const DUSTDASH = preload("res://Scenes/Particles/DustDash.tscn")
-const WALKSOUND = preload("res://Audio/walk.wav")
-const HURTSOUND = preload("res://Audio/hurt.wav")
-const DEADSOUND = preload("res://Audio/lose.wav")
-const SWORDSOUND = preload("res://Audio/sword-sound-260274.mp3")
-const DASHSOUND = preload("res://Audio/speedy-whoosh-229316.mp3")
+const WALKSOUND = preload("res://Audio/player/walk.wav")
+const HURTSOUND = preload("res://Audio/player/hurt.wav")
+const DEADSOUND = preload("res://Audio/player/lose.wav")
+const SWORDSOUND = preload("res://Audio/player/sword-sound-260274.mp3")
+const DASHSOUND = preload("res://Audio/player/speedy-whoosh-229316.mp3")
 
 @onready var animations = $AnimationPlayer
 @onready var sprite = $PlayerNaked

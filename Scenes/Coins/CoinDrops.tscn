@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bb6nwdm3li1v2" path="res://Sprites/Coins/Coin1.png" id="1_naa3u"]
 [ext_resource type="Shader" path="res://Shaders/CoinDrops.gdshader" id="2_670ah"]
 [ext_resource type="Texture2D" uid="uid://foec7n1v6cx3" path="res://Sprites/Coins/Coin12.png" id="2_uqin2"]
-[ext_resource type="AudioStream" uid="uid://b580b5f4k2gvr" path="res://Audio/coin.wav" id="5_ffmlb"]
+[ext_resource type="AudioStream" uid="uid://b580b5f4k2gvr" path="res://Audio/general/coin.wav" id="5_ffmlb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ib548"]
 radius = 7.0
