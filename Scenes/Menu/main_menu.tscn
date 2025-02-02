@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba1tj506kpsrf"]
+[gd_scene load_steps=10 format=3 uid="uid://ba1tj506kpsrf"]
 
 [ext_resource type="Texture2D" uid="uid://b68wa75s5ylp1" path="res://Sprites/Menu/BackgroundMenu.png" id="1_48dsx"]
 [ext_resource type="Script" path="res://Scripts/Core/main_menu.gd" id="1_bs3c0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://k7by1udwp0o3" path="res://icon.svg" id="3_s6660"]
 [ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="4_bis7r"]
 [ext_resource type="Script" path="res://Scripts/Main Menu/PlayButton.gd" id="5_328st"]
+[ext_resource type="AudioStream" uid="uid://bpv6erh67en6h" path="res://Audio/general/MainMenuTheme.wav" id="7_xgt6w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlghe"]
 bg_color = Color(0, 0.635294, 0.960784, 0.2)
@@ -167,6 +168,10 @@ theme_override_fonts/font = ExtResource("4_bis7r")
 theme_override_font_sizes/font_size = 50
 text = "Quit"
 flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_xgt6w")
+autoplay = true
 
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/NewGame" to="." method="_on_new_game_mouse_entered"]

@@ -30,6 +30,9 @@ func set_initial_data():
 	#uimanager.input_settings._on_reset_button_pressed()
 	PlayerData.player_dic["positionx"] = PlayerData.positionx
 	PlayerData.player_dic["positiony"] = PlayerData.positiony
+	PlayerData.player_dic["max_health"] = PlayerData.max_health
+	PlayerData.player_dic["max_mana"] = PlayerData.max_mana
+	PlayerData.player_dic["max_dashes"] = PlayerData.max_dashes
 	PlayerData.player_dic["health"] = PlayerData.max_health
 	PlayerData.player_dic["mana"] = PlayerData.max_mana
 	PlayerData.player_dic["dashes"] = PlayerData.max_dashes

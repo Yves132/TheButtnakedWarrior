@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="SaveData" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Core/SaveData.gd" id="1_udokk"]
+[ext_resource type="Script" path="res://Scripts/Core/SaveData.gd" id="1_58p74"]
 
 [resource]
-script = ExtResource("1_udokk")
+script = ExtResource("1_58p74")
 inventory_dic = {
 "effect": null,
 "name": null,
@@ -13,9 +13,9 @@ inventory_dic = {
 "type": null
 }
 player_dic = {
-"Coins": 16,
+"Coins": 6,
 "crit_chance": 0,
-"current_xp": 3,
+"current_xp": 2,
 "dash_speed": 800,
 "dashes": 1,
 "deep_burn": false,
@@ -27,37 +27,37 @@ player_dic = {
 "has_spell": true,
 "has_weapon": true,
 "hat_found": true,
-"health": 3,
+"health": 2,
 "inventory": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
 "inventory_hotbar_array": [],
 "jump_height": -300.0,
-"last_positionx": 2336.59,
-"last_positiony": 692.698,
+"last_positionx": 2370.93,
+"last_positiony": 692.658,
 "magic_dmg": 1,
-"mana": 0,
+"mana": 1,
 "max_dashes": 1,
-"max_health": 4,
-"max_mana": 2,
+"max_health": 3,
+"max_mana": 1,
 "melee_dmg": 2,
-"player_level": 2,
+"player_level": 1,
 "positionx": 11.0,
 "positiony": 693.0,
 "quick_step": false,
 "runspeed": 260.0,
-"sharp_mind": true,
-"skillpoints": 101,
+"sharp_mind": false,
+"skillpoints": 100,
 "speed": 200.0,
-"warrior_heart": true,
+"warrior_heart": false,
 "warrior_might": false,
 "waterfall": false,
 "weapon_found": true,
-"xp_required": 15.0
+"xp_required": 10
 }
 world_dic = {
 "actual_level": "res://Scenes/WorldScenes/goblin_hills_cave.tscn",
 "checkpoint_active": true,
 "chest_opened": true,
 "enemies": [],
-"first_boss_defeated": true,
+"first_boss_defeated": false,
 "secret_found": true
 }
