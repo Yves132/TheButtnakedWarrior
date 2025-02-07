@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://b2qsl7ki83fh8"]
+[gd_scene load_steps=37 format=4 uid="uid://b2qsl7ki83fh8"]
 
 [ext_resource type="Script" path="res://Scripts/Core/RunTimeLevel.gd" id="1_avmcr"]
 [ext_resource type="Texture2D" uid="uid://w5buavxbqv3t" path="res://Sprites/Background/Cave/BackgroundCaveWall1.png" id="2_v6di0"]
@@ -29,7 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://d1yu7b1sia373" path="res://Scenes/WorldScenes/scene_transition_animation.tscn" id="27_god3x"]
 [ext_resource type="PackedScene" uid="uid://cyclli0bxvryn" path="res://Scenes/Interactables/goblin_merchant.tscn" id="27_mamiy"]
 [ext_resource type="Texture2D" uid="uid://iahqr6sx72w8" path="res://Sprites/Interactables/Exit.png" id="28_vqp5p"]
-[ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="29_e2djh"]
 [ext_resource type="AudioStream" uid="uid://6ok8sqtrtmqn" path="res://Audio/cave/dripping-water-stereo-sound-257182.mp3" id="31_o7ydr"]
 [ext_resource type="AudioStream" uid="uid://j27msadbadt5" path="res://Audio/cave/creepy-cave-47164.mp3" id="32_cderk"]
 [ext_resource type="AudioStream" uid="uid://dueaicob0ks4i" path="res://Audio/cave/CaveFR.wav" id="33_jyuei"]
@@ -180,7 +179,7 @@ offset_left = 1.0
 offset_top = 641.0
 offset_right = 74.0
 offset_bottom = 664.0
-theme_override_fonts/font = ExtResource("29_e2djh")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
 text = "W to exit"
 horizontal_alignment = 1

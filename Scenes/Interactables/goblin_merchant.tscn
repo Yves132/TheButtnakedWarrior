@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cyclli0bxvryn"]
+[gd_scene load_steps=12 format=3 uid="uid://cyclli0bxvryn"]
 
 [ext_resource type="Script" path="res://Scripts/Interactables/GoblinMerchant/goblin_merchant.gd" id="1_ion7s"]
 [ext_resource type="Texture2D" uid="uid://biobsktec5fm8" path="res://Sprites/Enemies/GoblinMerchant/GoblinMerchant1.png" id="2_4mkda"]
 [ext_resource type="Shader" path="res://Shaders/goblin.gdshader" id="2_7n1ps"]
-[ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="2_hr2nd"]
 [ext_resource type="Texture2D" uid="uid://b3cg7ob1jjmio" path="res://Sprites/Enemies/GoblinMerchant/GoblinMerchant2.png" id="3_d76qe"]
 [ext_resource type="Texture2D" uid="uid://qhcr50p42f8h" path="res://Sprites/Enemies/GoblinMerchant/GoblinMerchantWalk1.png" id="4_vtqxl"]
 [ext_resource type="Texture2D" uid="uid://dmpktb1ppnhqx" path="res://Sprites/Enemies/GoblinMerchant/GoblinMerchantWalk2.png" id="5_bpqmr"]
@@ -92,9 +91,7 @@ offset_left = -360.0
 offset_top = -430.0
 offset_right = 380.0
 offset_bottom = 23.0
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 5
-theme_override_fonts/font = ExtResource("2_hr2nd")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "E to interact"
 horizontal_alignment = 1

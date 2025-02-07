@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dh2faf0wtebff"]
+[gd_scene load_steps=29 format=3 uid="uid://dh2faf0wtebff"]
 
 [ext_resource type="Script" path="res://Scripts/Core/UIManager.gd" id="1_8od5i"]
 [ext_resource type="Texture2D" uid="uid://b5y84kjvwhfdw" path="res://Sprites/UI/SavingIcon.png" id="2_ok00t"]
@@ -11,10 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://c2qjuhvxqdtuw" path="res://Sprites/UI/DashFull.png" id="9_pyn3m"]
 [ext_resource type="Texture2D" uid="uid://cm7pnxgppuwgw" path="res://Sprites/UI/DashEmpty.png" id="10_m2454"]
 [ext_resource type="PackedScene" uid="uid://chm8puhhex6gt" path="res://Scenes/Inventory/Shop/Shop.tscn" id="11_hhe3s"]
-[ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="11_yqkgd"]
 [ext_resource type="PackedScene" uid="uid://b2ta5k5pav6tx" path="res://Scenes/Inventory/inventoryUI.tscn" id="12_t7o42"]
 [ext_resource type="PackedScene" uid="uid://e7aomf3mgu74" path="res://Scenes/Inventory/InventoryHotbar/inventory_hotbar.tscn" id="13_0sjtn"]
-[ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="13_1m8h7"]
 [ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="14_cyf1x"]
 [ext_resource type="Shader" path="res://Shaders/ui_manager.gdshader" id="14_r47jh"]
 [ext_resource type="Texture2D" uid="uid://j73qinx4qvk8" path="res://Sprites/UI/Inventory.png" id="14_x8ypa"]
@@ -107,9 +105,10 @@ offset_left = 65.1397
 offset_top = 165.448
 offset_right = 105.14
 offset_bottom = 188.448
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ManaFull" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_leexm")
@@ -193,11 +192,6 @@ offset_bottom = -230.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.344076, 0.344076, 0.344076, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("11_yqkgd")
 theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -251,9 +245,6 @@ focus_neighbor_bottom = NodePath("../../HBoxContainer/SettingsButton")
 focus_next = NodePath("../../HBoxContainer/SettingsButton")
 focus_previous = NodePath("../../HBoxContainer4/QuitButton")
 mouse_default_cursor_shape = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("13_1m8h7")
 theme_override_font_sizes/font_size = 30
 text = "INVENTORY"
 flat = true
@@ -270,9 +261,6 @@ focus_neighbor_bottom = NodePath("../../HBoxContainer5/MenuButton")
 focus_next = NodePath("../../HBoxContainer5/MenuButton")
 focus_previous = NodePath("../../HBoxContainer2/InventoryButton")
 mouse_default_cursor_shape = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("13_1m8h7")
 theme_override_font_sizes/font_size = 30
 text = "SETTINGS"
 flat = true
@@ -289,9 +277,6 @@ focus_neighbor_bottom = NodePath("../../HBoxContainer4/QuitButton")
 focus_next = NodePath("../../HBoxContainer4/QuitButton")
 focus_previous = NodePath("../../HBoxContainer/SettingsButton")
 mouse_default_cursor_shape = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("13_1m8h7")
 theme_override_font_sizes/font_size = 30
 text = "MAIN MENU"
 flat = true
@@ -308,9 +293,6 @@ focus_neighbor_bottom = NodePath("../../HBoxContainer2/InventoryButton")
 focus_next = NodePath("../../HBoxContainer2/InventoryButton")
 focus_previous = NodePath("../../HBoxContainer5/MenuButton")
 mouse_default_cursor_shape = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("13_1m8h7")
 theme_override_font_sizes/font_size = 30
 text = "QUIT"
 flat = true
@@ -332,11 +314,7 @@ offset_left = 232.0
 offset_top = 224.0
 offset_right = 1034.0
 offset_bottom = 300.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("11_yqkgd")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 75
 text = "Rest In Peace"
 
@@ -347,11 +325,6 @@ offset_top = 342.0
 offset_right = 785.0
 offset_bottom = 445.0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_hover_color = Color(0.545098, 0.545098, 0.545098, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.568627)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("13_1m8h7")
 theme_override_font_sizes/font_size = 25
 text = "Load Game"
 flat = true
@@ -363,11 +336,6 @@ offset_top = 445.0
 offset_right = 785.0
 offset_bottom = 537.0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_hover_color = Color(0.454902, 0.454902, 0.454902, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.592157)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("13_1m8h7")
 theme_override_font_sizes/font_size = 25
 text = "Main Menu"
 flat = true
@@ -379,11 +347,6 @@ offset_top = 537.0
 offset_right = 785.0
 offset_bottom = 629.0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_hover_color = Color(0.454902, 0.454902, 0.454902, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.592157)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("13_1m8h7")
 theme_override_font_sizes/font_size = 25
 text = "Quit"
 flat = true

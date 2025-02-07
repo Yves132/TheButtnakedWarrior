@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://ba1tj506kpsrf"]
+[gd_scene load_steps=9 format=3 uid="uid://ba1tj506kpsrf"]
 
 [ext_resource type="Texture2D" uid="uid://b68wa75s5ylp1" path="res://Sprites/Menu/BackgroundMenu.png" id="1_48dsx"]
 [ext_resource type="Script" path="res://Scripts/Core/main_menu.gd" id="1_bs3c0"]
-[ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="2_yx7dr"]
 [ext_resource type="Texture2D" uid="uid://k7by1udwp0o3" path="res://icon.svg" id="3_s6660"]
 [ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="4_bis7r"]
 [ext_resource type="Script" path="res://Scripts/Main Menu/PlayButton.gd" id="5_328st"]
@@ -36,15 +35,10 @@ texture = ExtResource("1_48dsx")
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
 offset_left = 59.0
-offset_top = 136.0
+offset_top = 85.0
 offset_right = 1216.0
-offset_bottom = 291.0
+offset_bottom = 294.0
 theme_override_colors/font_color = Color(0.733333, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_yx7dr")
 theme_override_font_sizes/font_size = 75
 text = "The Buttnaked 
 Warrior"
@@ -70,11 +64,7 @@ offset_left = 157.0
 offset_top = 32.0
 offset_right = 427.0
 offset_bottom = 104.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 5
-theme_override_fonts/font = ExtResource("4_bis7r")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Made with Godot 4!
 
 Go make games!"
@@ -102,6 +92,7 @@ offset_left = 411.0
 offset_top = 316.0
 offset_right = 869.0
 offset_bottom = 624.0
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -116,14 +107,8 @@ focus_neighbor_bottom = NodePath("../../HBoxContainer2/LoadGame")
 focus_next = NodePath("../../HBoxContainer2/LoadGame")
 focus_previous = NodePath("../../HBoxContainer3/Quit")
 mouse_default_cursor_shape = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 0.52549)
-theme_override_colors/font_pressed_color = Color(0.411765, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("4_bis7r")
 theme_override_font_sizes/font_size = 50
 text = "New Game"
-flat = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(450, 100)
@@ -138,15 +123,9 @@ focus_next = NodePath("../../HBoxContainer3/Quit")
 focus_previous = NodePath("../../HBoxContainer/NewGame")
 mouse_default_cursor_shape = 2
 theme_override_colors/font_disabled_color = Color(0.277528, 0.277528, 0.277528, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 0.52549)
-theme_override_colors/font_pressed_color = Color(0.411765, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("4_bis7r")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/disabled = SubResource("StyleBoxFlat_3r2u2")
 text = "Load Game"
-flat = true
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(450, 100)
@@ -160,14 +139,8 @@ focus_neighbor_bottom = NodePath("../../HBoxContainer/NewGame")
 focus_next = NodePath("../../HBoxContainer/NewGame")
 focus_previous = NodePath("../../HBoxContainer2/LoadGame")
 mouse_default_cursor_shape = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 0.52549)
-theme_override_colors/font_pressed_color = Color(0.411765, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("4_bis7r")
 theme_override_font_sizes/font_size = 50
 text = "Quit"
-flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_6fn7m")

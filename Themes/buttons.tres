@@ -1,0 +1,86 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://c1evabappeac3"]
+
+[ext_resource type="FontFile" uid="uid://bv6lvo757nr1t" path="res://Fonts/FiveByFive.ttf" id="1_3osxo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yew4l"]
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oys6d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34bpa"]
+bg_color = Color(0, 0, 0, 0.513726)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kd5jt"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgjhj"]
+bg_color = Color(0, 0, 0, 0.556863)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmffu"]
+bg_color = Color(1, 1, 1, 0.545098)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1rat8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qn6j"]
+bg_color = Color(1, 1, 1, 0.701961)
+
+[resource]
+default_font = ExtResource("1_3osxo")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 0.435294)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0.758192, 0.758192, 0.758192, 1)
+Button/colors/font_pressed_color = Color(0.147672, 0.147672, 0.147672, 1)
+Button/constants/outline_size = 5
+Button/fonts/font = ExtResource("1_3osxo")
+Button/styles/disabled = SubResource("StyleBoxFlat_yew4l")
+Button/styles/focus = SubResource("StyleBoxEmpty_oys6d")
+Button/styles/hover = SubResource("StyleBoxFlat_34bpa")
+Button/styles/normal = SubResource("StyleBoxFlat_kd5jt")
+Button/styles/pressed = SubResource("StyleBoxFlat_wgjhj")
+InventoryButtons/base_type = &"Button"
+InventoryButtons/font_sizes/font_size = 16
+InventoryButtons/fonts/font = ExtResource("1_3osxo")
+InventoryButtons/styles/hover = SubResource("StyleBoxFlat_wmffu")
+InventoryButtons/styles/normal = SubResource("StyleBoxEmpty_1rat8")
+InventoryButtons/styles/pressed = SubResource("StyleBoxFlat_8qn6j")
+Label/colors/font_color = Color(1, 0, 0.113725, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 10
+Label/constants/shadow_outline_size = 10
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_3osxo")

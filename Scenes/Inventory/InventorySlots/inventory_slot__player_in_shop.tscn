@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bycqi3pc56nyt"]
+[gd_scene load_steps=11 format=3 uid="uid://bycqi3pc56nyt"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/InventorySlot/inventory_slot_player_shop.gd" id="1_rxx36"]
 [ext_resource type="Shader" path="res://Shaders/inventory_item.gdshader" id="2_i1lwj"]
-[ext_resource type="FontFile" uid="uid://bisjg3o0wiags" path="res://Fonts/04B_30__.TTF" id="3_0n7r7"]
 [ext_resource type="Shader" path="res://Shaders/CoinDrops.gdshader" id="4_nxde6"]
 [ext_resource type="Texture2D" uid="uid://bb6nwdm3li1v2" path="res://Sprites/Coins/Coin1.png" id="5_00qex"]
 
@@ -73,6 +72,7 @@ offset_left = 69.5927
 offset_top = 86.9908
 offset_right = 109.593
 offset_bottom = 109.991
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "
 "
 horizontal_alignment = 1
@@ -100,8 +100,7 @@ layout_mode = 1
 offset_left = 5.0
 offset_right = 45.0
 offset_bottom = 23.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_0n7r7")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "Name"
 
@@ -115,8 +114,7 @@ offset_top = -27.5
 offset_right = 71.0
 offset_bottom = -4.5
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 0.788235)
-theme_override_fonts/font = ExtResource("3_0n7r7")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "type"
 
@@ -130,8 +128,7 @@ offset_top = -52.0
 offset_right = 104.0
 offset_bottom = -29.0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 0.713726)
-theme_override_fonts/font = ExtResource("3_0n7r7")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "effect"
 
@@ -151,8 +148,7 @@ offset_left = 40.0
 offset_top = 14.0
 offset_right = 110.0
 offset_bottom = 37.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_0n7r7")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "Cost"
 
@@ -178,8 +174,6 @@ offset_right = 60.0
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_0n7r7")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxEmpty_pgro1")
 text = "Sell"
@@ -214,8 +208,7 @@ offset_top = 4.0
 offset_right = 62.5
 offset_bottom = 27.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_0n7r7")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "How many?"
 
 [node name="Quantity" type="Label" parent="QuantityPanel"]
@@ -231,7 +224,7 @@ offset_right = 7.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
 text = "5"
 horizontal_alignment = 1
@@ -246,8 +239,6 @@ offset_left = 3.0
 offset_top = -20.0
 offset_right = 59.0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_0n7r7")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = SubResource("StyleBoxEmpty_21pgf")
 text = "Confirm"
@@ -264,8 +255,6 @@ offset_top = -20.0
 offset_right = -4.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_0n7r7")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ltb1j")
 text = "Cancel"

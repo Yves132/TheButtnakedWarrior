@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cskutqvtm0f4c"]
+[gd_scene load_steps=71 format=3 uid="uid://cskutqvtm0f4c"]
 
 [ext_resource type="Script" path="res://Scripts/player/player.gd" id="1_i0dw4"]
 [ext_resource type="Texture2D" uid="uid://tqhnk1sqylfw" path="res://Sprites/Player/KnightRest2.png" id="2_1rwc1"]
@@ -41,7 +41,6 @@
 [ext_resource type="Texture2D" uid="uid://cjahuit37o5bi" path="res://Sprites/Player/KnightMeleeJump2.png" id="27_p5utt"]
 [ext_resource type="Texture2D" uid="uid://ea5xfjuh0343" path="res://Sprites/Player/KnightMeleeWalk1.png" id="28_morn2"]
 [ext_resource type="Texture2D" uid="uid://ffd6i47ka7fx" path="res://Sprites/Player/KnightRest1.png" id="32_35w0e"]
-[ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="33_dkqwd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fawia"]
 size = Vector2(97.6523, 193.716)
@@ -2321,8 +2320,6 @@ offset_right = 231.395
 offset_bottom = -113.431
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Press [E] to pick up"
 horizontal_alignment = 1
@@ -2341,11 +2338,7 @@ offset_right = 60.0
 offset_bottom = -138.474
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("33_dkqwd")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 25
 text = "Level Up!"
 horizontal_alignment = 1
@@ -2364,11 +2357,7 @@ offset_right = 60.0
 offset_bottom = -138.474
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("33_dkqwd")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 25
 text = "Max Health!"
 horizontal_alignment = 1
@@ -2387,11 +2376,7 @@ offset_right = 60.0
 offset_bottom = -138.474
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("33_dkqwd")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 25
 text = "Dodged!"
 horizontal_alignment = 1
@@ -2410,11 +2395,7 @@ offset_right = 60.0
 offset_bottom = -138.474
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("33_dkqwd")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
 vertical_alignment = 1

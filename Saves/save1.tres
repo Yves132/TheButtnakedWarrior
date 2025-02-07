@@ -14,9 +14,9 @@ inventory_dic = {
 "type": null
 }
 player_dic = {
-"Coins": 17,
+"Coins": 24,
 "crit_chance": 0,
-"current_xp": 8,
+"current_xp": 10,
 "dash_speed": 800,
 "dashes": 1,
 "deep_burn": false,
@@ -28,7 +28,7 @@ player_dic = {
 "has_spell": true,
 "has_weapon": true,
 "hat_found": true,
-"health": 3,
+"health": 4,
 "inventory": [{
 "cost": 2,
 "effect": "Heal 1 HP",
@@ -41,33 +41,33 @@ player_dic = {
 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
 "inventory_hotbar_array": [],
 "jump_height": -300.0,
-"last_positionx": 2341.88,
-"last_positiony": 692.658,
+"last_positionx": 2360.87,
+"last_positiony": 692.729,
 "magic_dmg": 1,
 "mana": 1,
 "max_dashes": 1,
-"max_health": 3,
+"max_health": 4,
 "max_mana": 1,
-"melee_dmg": 2,
-"player_level": 1,
-"positionx": 11.0,
-"positiony": 693.0,
+"melee_dmg": 3,
+"player_level": 2,
+"positionx": 2360.87,
+"positiony": 692.729,
 "quick_step": false,
 "runspeed": 260.0,
 "sharp_mind": false,
 "skillpoints": 100,
 "speed": 200.0,
-"warrior_heart": false,
-"warrior_might": false,
+"warrior_heart": true,
+"warrior_might": true,
 "waterfall": false,
 "weapon_found": true,
-"xp_required": 10
+"xp_required": 15.0
 }
 world_dic = {
-"actual_level": "res://Scenes/WorldScenes/goblin_hills_cave.tscn",
+"actual_level": "res://Scenes/WorldScenes/GoblinHills.tscn",
 "checkpoint_active": true,
 "chest_opened": true,
 "enemies": [],
-"first_boss_defeated": false,
+"first_boss_defeated": true,
 "secret_found": true
 }

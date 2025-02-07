@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4ca3kyhop4p0"]
+[gd_scene load_steps=3 format=3 uid="uid://d4ca3kyhop4p0"]
 
-[ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="1_3mqcd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4yo8"]
+bg_color = Color(1, 1, 1, 0.529412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqu0k"]
+bg_color = Color(0, 0, 0, 0.486275)
 
 [node name="InputButton" type="Button"]
 custom_minimum_size = Vector2(0, 30)
@@ -8,6 +12,9 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_v4yo8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v4yo8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rqu0k")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -27,7 +34,7 @@ layout_mode = 2
 [node name="LabelAction" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_fonts/font = ExtResource("1_3mqcd")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 25
 text = "Action Name"
 vertical_alignment = 1
@@ -39,7 +46,8 @@ mouse_filter = 1
 
 [node name="LabelInput" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_3mqcd")
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 25
 text = "Input Name"
 vertical_alignment = 1

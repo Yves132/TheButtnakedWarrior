@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmnrnme3f5sb8"]
+[gd_scene load_steps=6 format=3 uid="uid://bmnrnme3f5sb8"]
 
 [ext_resource type="Texture2D" uid="uid://dep6b86a8n38a" path="res://Sprites/Armors/RattanHat.png" id="1_e3b3g"]
 [ext_resource type="Shader" path="res://Shaders/hat.gdshader" id="1_vog74"]
 [ext_resource type="Script" path="res://Scripts/InitialHat/HatHitbox.gd" id="2_f60au"]
-[ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="3_tcgqa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3rytp"]
 shader = ExtResource("1_vog74")
@@ -38,13 +37,7 @@ offset_top = -110.0
 offset_right = 100.0
 offset_bottom = -84.0
 grow_horizontal = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 5
-theme_override_fonts/font = ExtResource("3_tcgqa")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 100
 text = "[E]  to   interact"
 horizontal_alignment = 1

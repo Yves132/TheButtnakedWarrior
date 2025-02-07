@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bnea6xilhcajx"
-path="res://.godot/imported/Daydream.ttf-727c999d345777972a95d9602fd47f52.fontdata"
+uid="uid://bv6lvo757nr1t"
+path="res://.godot/imported/FiveByFive.ttf-7102d23316a322048c12e7bc9c21452d.fontdata"
 
 [deps]
 
-source_file="res://Fonts/Daydream.ttf"
-dest_files=["res://.godot/imported/Daydream.ttf-727c999d345777972a95d9602fd47f52.fontdata"]
+source_file="res://Fonts/FiveByFive.ttf"
+dest_files=["res://.godot/imported/FiveByFive.ttf-7102d23316a322048c12e7bc9c21452d.fontdata"]
 
 [params]
 
