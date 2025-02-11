@@ -247,10 +247,12 @@ texture = ExtResource("18_qb0h1")
 [node name="HurtNDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_pxu2q")
 volume_db = 10.0
+bus = &"Sfx"
 
 [node name="Spot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_hs1xh")
 volume_db = 15.0
+bus = &"Sfx"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Idle_timer" to="." method="_on_idle_timer_timeout"]

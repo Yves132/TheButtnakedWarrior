@@ -24,12 +24,13 @@ WorldData="*res://Scripts/Core/WorldData.gd"
 InventoryManager="*res://Scripts/Core/InventoryManager.gd"
 FrogAi="*res://Scripts/Core/FrogAI.gd"
 ConfigFileHandler="*res://Scripts/Core/InputSettings/ConfigFileHandler.gd"
+WindowManager="*res://Scripts/Core/WindowManager.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [gui]
 

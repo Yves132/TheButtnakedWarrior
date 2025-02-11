@@ -317,16 +317,19 @@ position = Vector2(-2, 0)
 process_mode = 3
 stream = ExtResource("33_jyuei")
 volume_db = -5.0
+bus = &"Music"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("32_cderk")
 autoplay = true
+bus = &"Sfx"
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("31_o7ydr")
 volume_db = -5.0
 autoplay = true
+bus = &"Sfx"
 
 [connection signal="area_entered" from="CaveExit" to="." method="_on_cave_exit_area_entered"]
 [connection signal="area_exited" from="CaveExit" to="." method="_on_cave_exit_area_exited"]

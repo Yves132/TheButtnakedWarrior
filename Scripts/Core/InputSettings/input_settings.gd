@@ -9,6 +9,8 @@ extends Control
 @onready var keyboard_label = $TextureRect/Keyboard
 @onready var full_screen_checkbox = $TextureRect/FullScreenCheckBox
 @onready var full_screen_label = $TextureRect/FullScreen
+@onready var music_volume = $TextureRect/MusicVolume
+@onready var sfx_volume = $TextureRect/SfxVolume
 
 
 var is_remapping = false
@@ -46,6 +48,10 @@ var input_actions_j ={
 func _ready():
 	var video_settings = ConfigFileHandler.load_video_settings()
 	full_screen_checkbox.button_pressed = video_settings.fullscreen
+	var audio_settings = ConfigFileHandler.load_audio_settings()
+	$TextureRect/MusicVolume/MusicSlider.value = min(audio_settings.master_volume, 1.0)*100
+	$TextureRect/SfxVolume/SFXSlider.value = min(audio_settings.sfx_volume, 1.0)*100
+	GameManager.volume_manager()
 	_load_keybindings_from_settings()
 	_load_joypadbindings_from_settings()
 	_create_action_list()
@@ -163,6 +169,8 @@ func _on_key_board_bindings_pressed():
 	keyboard_label.hide()
 	full_screen_checkbox.hide()
 	full_screen_label.hide()
+	music_volume.hide()
+	sfx_volume.hide()
 	$PanelContainer2.hide()
 
 
@@ -177,3 +185,14 @@ func _on_check_box_toggled(toggled_on):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+		
+func _on_music_slider_drag_ended(value_changed):
+	if value_changed:
+		ConfigFileHandler.save_audio_setting("master_volume", $TextureRect/MusicVolume/MusicSlider.value / 100)
+		GameManager.volume_manager()
+
+
+func _on_sfx_slider_drag_ended(value_changed):
+	if value_changed:
+		ConfigFileHandler.save_audio_setting("sfx_volume", $TextureRect/SfxVolume/SFXSlider.value / 100)
+		GameManager.volume_manager()

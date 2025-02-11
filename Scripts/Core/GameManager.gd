@@ -15,6 +15,14 @@ var crit = false
 var joypaddetected = false
 var keyboarddetected = false
 var coin_audio_playing = false
+var window_size
+var music_bus = 0
+var sfx_bus = 0
+var audio_settings
+
+func _ready():
+	music_bus = AudioServer.get_bus_index("Music")
+	sfx_bus = AudioServer.get_bus_index("Sfx")
 
 func _input(event):
 	#if event is InputEventJoypadButton or event is InputEventJoypadMotion:
@@ -68,6 +76,11 @@ func Respawn_Player():#respawns player
 	if CurrentCheckpoint != null:#if there is a Checkpoint
 		player.position = CurrentCheckpoint.global_position#Player gets respawned on the Checkpoint
 		
+func volume_manager():
+	audio_settings = ConfigFileHandler.load_audio_settings()
+	AudioServer.set_bus_volume_db(music_bus, linear_to_db(audio_settings.master_volume))
+	AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(audio_settings.sfx_volume))
+
 func gain_coins(coins_gained):#func to count gained coins
 	PlayerData.player_dic["Coins"] += coins_gained #coins = coins + coins_gained
 	emit_signal("collected_coins", coins_gained)#emits signal, we use this to update ui of coins

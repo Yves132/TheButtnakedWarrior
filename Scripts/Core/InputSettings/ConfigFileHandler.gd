@@ -1,7 +1,7 @@
 extends Node
 
 var config = ConfigFile.new()
-const SETTING_FILE_PATH = "res://Saves/settings.ini"
+const SETTING_FILE_PATH = "user://settings.ini"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if !FileAccess.file_exists(SETTING_FILE_PATH):

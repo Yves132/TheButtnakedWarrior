@@ -2434,10 +2434,13 @@ shape = SubResource("RectangleShape2D_161cd")
 [node name="Healthregen" type="Timer" parent="."]
 
 [node name="MovementSounds" type="AudioStreamPlayer2D" parent="."]
+bus = &"Sfx"
 
 [node name="AttackSounds" type="AudioStreamPlayer2D" parent="."]
+bus = &"Sfx"
 
 [node name="DashNHurtSounds" type="AudioStreamPlayer2D" parent="."]
+bus = &"Sfx"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="LadderChecker" to="." method="_on_ladder_checker_body_entered"]

@@ -102,6 +102,51 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 25
 text = "Reset"
 
+[node name="MusicVolume" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 240.0
+offset_right = 155.0
+offset_bottom = 260.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "Music volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="TextureRect/MusicVolume"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 574.5
+offset_top = -0.5
+offset_right = 927.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SfxVolume" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 315.0
+offset_right = 152.0
+offset_bottom = 335.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "SFX volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="TextureRect/SfxVolume"]
+layout_mode = 0
+offset_left = 690.0
+offset_top = 16.0
+offset_right = 1043.0
+offset_bottom = 32.0
+
 [node name="PanelContainer" parent="." instance=ExtResource("3_n6ay4")]
 visible = false
 layout_mode = 1
@@ -143,5 +188,7 @@ text = "Controls"
 
 [connection signal="toggled" from="TextureRect/FullScreenCheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="pressed" from="TextureRect/resetbutton" to="." method="_on_reset_button_pressed"]
+[connection signal="drag_ended" from="TextureRect/MusicVolume/MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="drag_ended" from="TextureRect/SfxVolume/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
 [connection signal="pressed" from="KeyBoardBindings" to="." method="_on_key_board_bindings_pressed"]
 [connection signal="pressed" from="JoypadBindings" to="." method="_on_joypad_bindings_pressed"]

@@ -19,6 +19,16 @@ var manaempty = preload("res://Sprites/UI/ManaEmpty.png")
 @onready var inventory_hotbar = $Inventory_Hotbar
 @onready var levelup_screen = $LevelupScreen
 @onready var input_settings = $InputSettings
+@onready var hearts_full = $HeartsFull
+@onready var hearts_empty = $HeartsEmpty
+@onready var mana_full = $ManaFull
+@onready var mana_empty = $ManaEmpty
+@onready var dash_full = $DashFull
+@onready var dash_empty = $DashEmpty
+@onready var coin_img = $CoinImg
+@onready var coin_amount_display = $CoinDisplay
+
+
 
 
 func _ready():
@@ -58,7 +68,8 @@ func _process(delta):
 			input_settings.full_screen_checkbox.show()
 			input_settings.full_screen_checkbox.grab_focus()
 			input_settings.full_screen_label.show()
-			
+			input_settings.music_volume.show()
+			input_settings.sfx_volume.show()
 			
 	if levelup_screen.visible:
 		GameManager.pause_play()
@@ -76,19 +87,19 @@ func UpdateCoins(coins_gained): #coins_gained stores the variable of the signal
 	$CoinDisplay.text = str(PlayerData.player_dic["Coins"]) #we update the text with the value received
 
 func Update_health():#updates ui health of player
-	$HeartsFull.size.x = PlayerData.player_dic["health"] * 512
-	$HeartsEmpty.size.x = (PlayerData.player_dic["max_health"] - PlayerData.player_dic["health"]) * 512
+	$HeartsFull.size.x = PlayerData.player_dic["health"] * 32
+	$HeartsEmpty.size.x = (PlayerData.player_dic["max_health"] - PlayerData.player_dic["health"]) * 32
 	$HeartsEmpty.position.x = $HeartsFull.position.x + $HeartsFull.size.x * $HeartsFull.scale.x
 	
 	
 func Update_mana(currentmana):
-	$ManaFull.size.x = currentmana *512 
-	$ManaEmpty.size.x =(PlayerData.player_dic["max_mana"] - currentmana) *512
+	$ManaFull.size.x = currentmana *32 
+	$ManaEmpty.size.x =(PlayerData.player_dic["max_mana"] - currentmana) *32
 	$ManaEmpty.position.x = $ManaFull.position.x + $ManaFull.size.x * $ManaFull.scale.x
 
 func Update_dashes(currentdashes):
-	$DashFull.size.x = currentdashes * 512
-	$DashEmpty.size.x = (PlayerData.player_dic["max_dashes"] - currentdashes) * 512
+	$DashFull.size.x = currentdashes * 32
+	$DashEmpty.size.x = (PlayerData.player_dic["max_dashes"] - currentdashes) * 32
 	$DashEmpty.position.x = $DashFull.position.x + $DashFull.size.x * $DashFull.scale.x
 
 func Update_playerxp():

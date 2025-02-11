@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba1tj506kpsrf"]
+[gd_scene load_steps=12 format=3 uid="uid://ba1tj506kpsrf"]
 
 [ext_resource type="Texture2D" uid="uid://b68wa75s5ylp1" path="res://Sprites/Menu/BackgroundMenu.png" id="1_48dsx"]
 [ext_resource type="Script" path="res://Scripts/Core/main_menu.gd" id="1_bs3c0"]
@@ -6,6 +6,9 @@
 [ext_resource type="FontFile" uid="uid://bnea6xilhcajx" path="res://Fonts/Daydream.ttf" id="4_bis7r"]
 [ext_resource type="Script" path="res://Scripts/Main Menu/PlayButton.gd" id="5_328st"]
 [ext_resource type="AudioStream" uid="uid://dr3qj1eqdckao" path="res://Audio/general/MainMenu.wav" id="7_6fn7m"]
+[ext_resource type="Texture2D" uid="uid://b8ubt50lduryl" path="res://Sprites/UI/SettingsButtonNormal.png" id="7_ayyqv"]
+[ext_resource type="PackedScene" uid="uid://gepfu372cr2f" path="res://Scenes/UI/InputSettings/input_settings.tscn" id="8_lv34q"]
+[ext_resource type="Script" path="res://Scripts/Main Menu/settings_button_menu.gd" id="8_pq4u0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlghe"]
 bg_color = Color(0, 0.635294, 0.960784, 0.2)
@@ -145,6 +148,27 @@ text = "Quit"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_6fn7m")
 autoplay = true
+bus = &"Music"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+
+[node name="Settings" type="Button" parent="CenterContainer"]
+texture_filter = 1
+layout_mode = 2
+icon = ExtResource("7_ayyqv")
+flat = true
+script = ExtResource("8_pq4u0")
+
+[node name="InputSettings" parent="." instance=ExtResource("8_lv34q")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/NewGame" to="." method="_on_new_game_mouse_entered"]
@@ -153,3 +177,6 @@ autoplay = true
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/LoadGame" to="." method="_on_load_game_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer3/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/Quit" to="." method="_on_quit_pressed"]
+[connection signal="button_down" from="CenterContainer/Settings" to="CenterContainer/Settings" method="_on_button_down"]
+[connection signal="button_up" from="CenterContainer/Settings" to="CenterContainer/Settings" method="_on_button_up"]
+[connection signal="pressed" from="CenterContainer/Settings" to="." method="_on_settings_pressed"]

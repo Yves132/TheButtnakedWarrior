@@ -309,9 +309,11 @@ texture = ExtResource("20_u1kmr")
 [node name="HurtNDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_pn06o")
 volume_db = 15.0
+bus = &"Sfx"
 
 [node name="ROAR" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("23_tjo1r")
+bus = &"Sfx"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

@@ -760,6 +760,7 @@ debug_color = Color(0.65098, 1, 0, 0.419608)
 [node name="UIManager" parent="." instance=ExtResource("22_8ai56")]
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("32_dy583")]
+visible = false
 z_index = 4
 
 [node name="Checkpoint" parent="." instance=ExtResource("13_fuini")]
@@ -850,12 +851,14 @@ process_mode = 3
 stream = ExtResource("41_ln38b")
 volume_db = -5.0
 autoplay = true
+bus = &"Music"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("42_cw75m")
 autoplay = true
 max_polyphony = 2
+bus = &"Sfx"
 
 [connection signal="area_entered" from="CaveEntrance" to="." method="_on_cave_entrance_area_entered"]
 [connection signal="area_exited" from="CaveEntrance" to="." method="_on_cave_entrance_area_exited"]

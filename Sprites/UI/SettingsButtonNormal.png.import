@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4l6v5q0ew8mk"
-path="res://.godot/imported/ManaEmpty.png-ba7ad280ff59d254751caf92e4099daf.ctex"
+uid="uid://b8ubt50lduryl"
+path="res://.godot/imported/SettingsButtonNormal.png-bdc65a195202a3e4c0252d4ff32724f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/ManaEmpty.png"
-dest_files=["res://.godot/imported/ManaEmpty.png-ba7ad280ff59d254751caf92e4099daf.ctex"]
+source_file="res://Sprites/UI/SettingsButtonNormal.png"
+dest_files=["res://.godot/imported/SettingsButtonNormal.png-bdc65a195202a3e4c0252d4ff32724f9.ctex"]
 
 [params]
 

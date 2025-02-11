@@ -70,5 +70,6 @@ vertical_alignment = 1
 
 [node name="open" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_rvun1")
+bus = &"Sfx"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="ChestHitbox" method="_on_animated_sprite_2d_animation_finished"]

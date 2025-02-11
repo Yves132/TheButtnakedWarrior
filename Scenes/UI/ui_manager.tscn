@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://b5y84kjvwhfdw" path="res://Sprites/UI/SavingIcon.png" id="2_ok00t"]
 [ext_resource type="Texture2D" uid="uid://bck4nore8xegx" path="res://Sprites/UI/SavingIcon2.png" id="3_lv7yc"]
 [ext_resource type="Texture2D" uid="uid://bb6nwdm3li1v2" path="res://Sprites/Coins/Coin1.png" id="4_2kg4a"]
-[ext_resource type="Texture2D" uid="uid://cxuattx4c1hdg" path="res://Sprites/UI/HealthFull.png" id="5_qvy0o"]
-[ext_resource type="Texture2D" uid="uid://c6eb0j5fh6tnt" path="res://Sprites/UI/HealthEmpty.png" id="6_pda80"]
-[ext_resource type="Texture2D" uid="uid://c31igtunej24h" path="res://Sprites/UI/ManaFull.png" id="7_m7gc4"]
-[ext_resource type="Texture2D" uid="uid://cglchmtua0hqp" path="res://Sprites/UI/ManaEmpty.png" id="8_qwq4o"]
-[ext_resource type="Texture2D" uid="uid://c2qjuhvxqdtuw" path="res://Sprites/UI/DashFull.png" id="9_pyn3m"]
-[ext_resource type="Texture2D" uid="uid://cm7pnxgppuwgw" path="res://Sprites/UI/DashEmpty.png" id="10_m2454"]
+[ext_resource type="Texture2D" uid="uid://ccijx262juasu" path="res://Sprites/UI/HealthFull.png" id="5_qvy0o"]
+[ext_resource type="Texture2D" uid="uid://c0rmu6yuvm0mg" path="res://Sprites/UI/HealthEmpty.png" id="6_pda80"]
+[ext_resource type="Texture2D" uid="uid://dn10vqmt1vhjp" path="res://Sprites/UI/ManaFull.png" id="7_m7gc4"]
+[ext_resource type="Texture2D" uid="uid://d4l6v5q0ew8mk" path="res://Sprites/UI/ManaEmpty.png" id="8_qwq4o"]
+[ext_resource type="Texture2D" uid="uid://bnu7f1pl7lnps" path="res://Sprites/UI/DashFull.png" id="9_pyn3m"]
+[ext_resource type="Texture2D" uid="uid://b2s1cakqjs81v" path="res://Sprites/UI/DashEmpty.png" id="10_m2454"]
 [ext_resource type="PackedScene" uid="uid://chm8puhhex6gt" path="res://Scenes/Inventory/Shop/Shop.tscn" id="11_hhe3s"]
 [ext_resource type="PackedScene" uid="uid://b2ta5k5pav6tx" path="res://Scenes/Inventory/inventoryUI.tscn" id="12_t7o42"]
 [ext_resource type="PackedScene" uid="uid://e7aomf3mgu74" path="res://Scenes/Inventory/InventoryHotbar/inventory_hotbar.tscn" id="13_0sjtn"]
@@ -114,9 +114,9 @@ vertical_alignment = 1
 material = SubResource("ShaderMaterial_leexm")
 offset_left = 29.1597
 offset_top = 74.0
-offset_right = 541.16
-offset_bottom = 586.0
-scale = Vector2(0.1, 0.1)
+offset_right = 61.1597
+offset_bottom = 106.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_m7gc4")
 expand_mode = 1
 stretch_mode = 1
@@ -125,9 +125,9 @@ stretch_mode = 1
 material = SubResource("ShaderMaterial_sbksm")
 offset_left = 29.1597
 offset_top = 74.0
-offset_right = 541.16
-offset_bottom = 586.0
-scale = Vector2(0.1, 0.1)
+offset_right = 61.1597
+offset_bottom = 106.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_qwq4o")
 expand_mode = 1
 stretch_mode = 1
@@ -136,9 +136,9 @@ stretch_mode = 1
 material = SubResource("ShaderMaterial_idhhk")
 offset_left = 26.1597
 offset_top = 115.0
-offset_right = 538.16
-offset_bottom = 627.0
-scale = Vector2(0.1, 0.1)
+offset_right = 58.1597
+offset_bottom = 147.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("9_pyn3m")
 expand_mode = 1
 stretch_mode = 1
@@ -147,9 +147,9 @@ stretch_mode = 1
 material = SubResource("ShaderMaterial_q25ie")
 offset_left = 26.1597
 offset_top = 115.0
-offset_right = 538.16
-offset_bottom = 627.0
-scale = Vector2(0.1, 0.1)
+offset_right = 58.1597
+offset_bottom = 147.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("10_m2454")
 expand_mode = 1
 stretch_mode = 1
@@ -161,9 +161,9 @@ focus_mode = 2
 material = SubResource("ShaderMaterial_8f3js")
 offset_left = 29.0
 offset_top = 27.0
-offset_right = 532.0
-offset_bottom = 539.0
-scale = Vector2(0.1, 0.1)
+offset_right = 61.0
+offset_bottom = 59.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_qvy0o")
 expand_mode = 1
 stretch_mode = 1
@@ -172,9 +172,9 @@ stretch_mode = 1
 material = SubResource("ShaderMaterial_gf84k")
 offset_left = 29.0
 offset_top = 27.0
-offset_right = 538.0
-offset_bottom = 539.0
-scale = Vector2(0.1, 0.1)
+offset_right = 61.0
+offset_bottom = 59.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_pda80")
 expand_mode = 1
 stretch_mode = 1

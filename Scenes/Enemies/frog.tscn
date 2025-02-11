@@ -144,6 +144,7 @@ texture = ExtResource("12_0io5u")
 
 [node name="HurtNDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_juaxd")
+bus = &"Sfx"
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]
