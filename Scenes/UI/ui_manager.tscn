@@ -102,9 +102,9 @@ stretch_mode = 4
 
 [node name="CoinDisplay" type="Label" parent="."]
 offset_left = 65.1397
-offset_top = 165.448
+offset_top = 163.448
 offset_right = 105.14
-offset_bottom = 188.448
+offset_bottom = 186.448
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "0"
 horizontal_alignment = 1

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvhvikrvy7mjd"]
+
+[ext_resource type="Script" path="res://Scripts/Interactables/Sign/sign.gd" id="1_a7q0j"]
+[ext_resource type="Shader" path="res://Shaders/Sign.gdshader" id="2_8bcr7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_al2qa"]
+shader = ExtResource("2_8bcr7")
+shader_parameter/width = 5.0
+shader_parameter/outline_color = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikwrg"]
+size = Vector2(128, 96)
+
+[node name="Sign" type="Node2D"]
+script = ExtResource("1_a7q0j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_al2qa")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 80)
+shape = SubResource("RectangleShape2D_ikwrg")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_top = -86.0
+offset_right = -50.0
+offset_bottom = -66.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

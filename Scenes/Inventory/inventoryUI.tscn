@@ -89,11 +89,12 @@ expand_mode = 1
 [node name="amount" type="Label" parent="Inventory/PlayerPanel/Coins"]
 layout_mode = 0
 offset_left = 65.0
-offset_top = 4.96063
+offset_top = -0.0393696
 offset_right = 105.0
-offset_bottom = 59.9606
+offset_bottom = 54.9606
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 25
+text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -193,9 +194,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -127.44
-offset_top = 166.136
+offset_top = 157.636
 offset_right = -87.4398
-offset_bottom = 192.136
+offset_bottom = 190.636
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -206,9 +207,9 @@ vertical_alignment = 1
 [node name="Playerxp" type="ProgressBar" parent="Inventory/StatPanel/PlayerLevel"]
 layout_mode = 0
 offset_left = 55.2357
-offset_top = -4.45399
+offset_top = 6.54601
 offset_right = 255.236
-offset_bottom = 25.546
+offset_bottom = 36.546
 theme_override_styles/fill = SubResource("StyleBoxFlat_hv5hl")
 rounded = true
 show_percentage = false
@@ -216,9 +217,9 @@ show_percentage = false
 [node name="XPInfo" type="Label" parent="Inventory/StatPanel/PlayerLevel"]
 layout_mode = 0
 offset_left = 270.388
-offset_top = -0.0455933
+offset_top = 10.9544
 offset_right = 310.388
-offset_bottom = 22.9544
+offset_bottom = 33.9544
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="ItemPanel" type="Panel" parent="Inventory"]

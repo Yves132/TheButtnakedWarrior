@@ -3,6 +3,8 @@ class_name RuntimeLevel
 
 const FIGHTSTART = preload("res://Audio/combat-clash-276688.mp3")
 const BOSSMUSIC = preload("res://Audio/enemies/BOSSMUSIC.wav")
+const CAVEMUSIC = preload("res://Audio/cave/CaveFR.wav")
+const WOO = preload("res://Audio/woo-243761.mp3")
 
 @onready var level_name = $".".name#level name
 @onready var actual_level = get_scene_file_path()#returns the packedscene 
@@ -58,6 +60,9 @@ func boss_fight_manager(delta):
 		if path2d != null:
 			$Path2D/PathFollow2D.progress_ratio += delta#start to move the camera towards boss
 	if WorldData.world_dic["first_boss_defeated"] and GameManager.cutscene:
+		$AudioStreamPlayer2.set_stream(WOO)
+		$AudioStreamPlayer.set_stream(CAVEMUSIC)
+		$AudioStreamPlayer2.play()
 		bossfightstart.monitoring = false#disable area monitoring for bossbattle
 		bossfightstart.set_collision_mask_value(1, false)
 		$BossFightStart/Blocker.set_collision_layer_value(2, false)#disable wall bossfight
@@ -93,15 +98,19 @@ func cave_manager():
 				PlayerData.player_dic["positionx"] = PlayerData.player_dic["last_positionx"]
 				PlayerData.player_dic["positiony"] = PlayerData.player_dic["last_positiony"]
 
-func _on_change_scene_area_entered(area):
+#func _on_change_scene_area_entered(area):
+	#PlayerData.player_dic["positionx"] = PlayerData.positionx
+	#PlayerData.player_dic["positiony"] = PlayerData.positiony
+	#WorldData.world_dic["checkpoint_active"] = WorldData.checkpoint_active
+	#WorldData.world_dic["chest_opened"] = WorldData.chest_opened
+	#WorldData.world_dic["secret_found"] = WorldData.secret_found
+	
+func _on_change_scene_body_entered(body):
 	PlayerData.player_dic["positionx"] = PlayerData.positionx
 	PlayerData.player_dic["positiony"] = PlayerData.positiony
 	WorldData.world_dic["checkpoint_active"] = WorldData.checkpoint_active
 	WorldData.world_dic["chest_opened"] = WorldData.chest_opened
 	WorldData.world_dic["secret_found"] = WorldData.secret_found
-	if actual_level == "res://Scenes/WorldScenes/GoblinHills.tscn":
-		if area.get_parent() is Player:
-			get_tree().change_scene_to_file("res://Scenes/WorldScenes/levelTwo.tscn")
 
 func _on_boss_fight_start_area_exited(area):
 	if area.get_parent() is Player:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://6xqey52tqqyk"]
+[gd_scene load_steps=60 format=4 uid="uid://6xqey52tqqyk"]
 
 [ext_resource type="Texture2D" uid="uid://ea5p6uix3w1w" path="res://Sprites/Background/BackgroundSunrise.png" id="1_cckg2"]
 [ext_resource type="Script" path="res://Scripts/Core/RunTimeLevel.gd" id="1_td4m0"]
@@ -37,11 +37,16 @@
 [ext_resource type="Texture2D" uid="uid://ct6tfgkucoxdi" path="res://Sprites/UI/UIRBJoypad.png" id="25_cvven"]
 [ext_resource type="Texture2D" uid="uid://crruiow5e4cj0" path="res://Sprites/UI/UIStickJUD.png" id="26_bsc6l"]
 [ext_resource type="Texture2D" uid="uid://uisgxrug302a" path="res://Sprites/Interactables/CaveEntrance.png" id="26_m7pxa"]
+[ext_resource type="PackedScene" uid="uid://bvhvikrvy7mjd" path="res://Scenes/Interactables/sign.tscn" id="27_bc01j"]
 [ext_resource type="PackedScene" uid="uid://b7kmts5dr3a7" path="res://Scenes/Enemies/goblin_archer.tscn" id="27_xl8xg"]
+[ext_resource type="Texture2D" uid="uid://c6ec6jifybj2r" path="res://Sprites/Interactables/Sign.png" id="28_ie670"]
+[ext_resource type="Texture2D" uid="uid://dob238pyvaem3" path="res://Sprites/Interactables/SignCrooked.png" id="28_ldi2c"]
+[ext_resource type="Texture2D" uid="uid://cpvpcm6ax4lyy" path="res://Sprites/Interactables/SignSquared.png" id="28_wqrt3"]
 [ext_resource type="PackedScene" uid="uid://d1yu7b1sia373" path="res://Scenes/WorldScenes/scene_transition_animation.tscn" id="32_dy583"]
 [ext_resource type="PackedScene" uid="uid://dy3f3265inlsb" path="res://Scenes/Enemies/enemy.tscn" id="36_c251e"]
 [ext_resource type="AudioStream" uid="uid://dksvy6a1joddv" path="res://Audio/firstlevel/FirstLvlFR.wav" id="41_ln38b"]
 [ext_resource type="AudioStream" uid="uid://dy5tv4n7wv5fy" path="res://Audio/firstlevel/wind-whispers-with-birds-ambiance-209840.mp3" id="42_cw75m"]
+[ext_resource type="PackedScene" uid="uid://buwjq1146lujx" path="res://Scenes/General/change_scene.tscn" id="47_v5ues"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xakla"]
 size = Vector2(48, 40)
@@ -73,11 +78,10 @@ size = Vector2(80, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7gw7d"]
 size = Vector2(266, 66)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_26jof"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ag2a"]
 size = Vector2(456, 51)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1gwa"]
-size = Vector2(20, 3)
 
 [node name="GoblinHills" type="Node2D"]
 script = ExtResource("1_td4m0")
@@ -225,6 +229,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Tutorial" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -511,9 +516,9 @@ texture = ExtResource("21_y820e")
 
 [node name="KeyboardLabel5" type="Label" parent="Tutorial"]
 layout_mode = 0
-offset_left = 1147.0
+offset_left = 1150.0
 offset_top = 532.0
-offset_right = 1424.0
+offset_right = 1427.0
 offset_bottom = 689.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
@@ -669,6 +674,28 @@ horizontal_alignment = 1
 position = Vector2(147, 105)
 shape = SubResource("RectangleShape2D_7gw7d")
 
+[node name="Node2D" type="Node2D" parent="Tutorial"]
+
+[node name="GoblinHillsCave" parent="Tutorial/Node2D" instance=ExtResource("27_bc01j")]
+texture_filter = 1
+material = SubResource("ShaderMaterial_26jof")
+position = Vector2(2297, 674)
+scale = Vector2(0.3, 0.3)
+Img = ExtResource("28_wqrt3")
+Txt = "Goblin Hills Cave"
+
+[node name="Secret" parent="Tutorial/Node2D" instance=ExtResource("27_bc01j")]
+position = Vector2(1216, 673)
+scale = Vector2(0.3, 0.3)
+Img = ExtResource("28_ldi2c")
+Txt = "Secret!"
+
+[node name="GoblinCamp" parent="Tutorial/Node2D" instance=ExtResource("27_bc01j")]
+position = Vector2(2450, 674)
+scale = Vector2(0.3, 0.3)
+Img = ExtResource("28_ie670")
+Txt = "Goblin Camp"
+
 [node name="Corpse" type="Sprite2D" parent="."]
 position = Vector2(509.6, 607.6)
 scale = Vector2(0.2, 0.2)
@@ -746,16 +773,6 @@ metadata/_edit_group_ = true
 position = Vector2(218, 15.5)
 shape = SubResource("RectangleShape2D_2ag2a")
 debug_color = Color(0.619608, 0, 0.654902, 0.419608)
-
-[node name="ChangeScene" type="Area2D" parent="."]
-position = Vector2(2549.62, 701.989)
-collision_layer = 0
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeScene"]
-position = Vector2(0, 8.5)
-shape = SubResource("RectangleShape2D_l1gwa")
-debug_color = Color(0.65098, 1, 0, 0.419608)
 
 [node name="UIManager" parent="." instance=ExtResource("22_8ai56")]
 
@@ -860,8 +877,11 @@ autoplay = true
 max_polyphony = 2
 bus = &"Sfx"
 
+[node name="ChangeScene" parent="." instance=ExtResource("47_v5ues")]
+position = Vector2(2525, 702)
+destination = "res://Scenes/WorldScenes/goblin_hills_cave.tscn"
+txt = "Maybe i should check that cave first"
+
 [connection signal="area_entered" from="CaveEntrance" to="." method="_on_cave_entrance_area_entered"]
 [connection signal="area_exited" from="CaveEntrance" to="." method="_on_cave_entrance_area_exited"]
 [connection signal="body_entered" from="Fallzone" to="player" method="_on_fallzone_body_entered"]
-[connection signal="area_entered" from="ChangeScene" to="." method="_on_change_scene_area_entered"]
-[connection signal="area_entered" from="ChangeScene" to="player" method="_on_change_scene_area_entered"]

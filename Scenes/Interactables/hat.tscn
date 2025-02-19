@@ -27,18 +27,17 @@ position = Vector2(0.5, 88)
 shape = SubResource("RectangleShape2D_vbppx")
 
 [node name="Label" type="Label" parent="."]
-visible = false
 z_index = 5
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -99.0
-offset_top = -110.0
-offset_right = 100.0
-offset_bottom = -84.0
+offset_left = -1012.0
+offset_top = -232.0
+offset_right = 1013.0
+offset_bottom = -44.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 150
 text = "[E]  to   interact"
 horizontal_alignment = 1
 vertical_alignment = 1
