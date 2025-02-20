@@ -104,13 +104,6 @@ func cave_manager():
 	#WorldData.world_dic["checkpoint_active"] = WorldData.checkpoint_active
 	#WorldData.world_dic["chest_opened"] = WorldData.chest_opened
 	#WorldData.world_dic["secret_found"] = WorldData.secret_found
-	
-func _on_change_scene_body_entered(body):
-	PlayerData.player_dic["positionx"] = PlayerData.positionx
-	PlayerData.player_dic["positiony"] = PlayerData.positiony
-	WorldData.world_dic["checkpoint_active"] = WorldData.checkpoint_active
-	WorldData.world_dic["chest_opened"] = WorldData.chest_opened
-	WorldData.world_dic["secret_found"] = WorldData.secret_found
 
 func _on_boss_fight_start_area_exited(area):
 	if area.get_parent() is Player:
@@ -124,8 +117,16 @@ func _on_boss_fight_start_area_exited(area):
 
 func _on_cave_entrance_area_entered(area):
 	if area.get_parent() is Player:
-		$CaveEntrance/Label.text = str(ConfigFileHandler.config.get_value("Keybinding","up"))+" to enter"
-		$CaveEntrance/Label.show()
+		if not WorldData.world_dic["first_boss_defeated"]:
+			$CaveEntrance/Label.show()
+			$CaveEntrance/Label.text = "HELP!"
+			await get_tree().create_timer(0.6).timeout
+			$CaveEntrance/Label.text = "SOMEBODY PLEASE HELP!"
+			await get_tree().create_timer(0.8).timeout
+			$CaveEntrance/Label.text = str(ConfigFileHandler.config.get_value("Keybinding","up"))+" to enter"
+		else:
+			$CaveEntrance/Label.text = str(ConfigFileHandler.config.get_value("Keybinding","up"))+" to enter"
+			$CaveEntrance/Label.show()
 
 
 func _on_cave_entrance_area_exited(area):

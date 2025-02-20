@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://4t2dqsq3jsat"]
+
+[ext_resource type="Script" path="res://Scripts/Core/RunTimeLevel.gd" id="1_vycum"]
+[ext_resource type="Texture2D" uid="uid://br165xc5ve0du" path="res://Sprites/Background/parallax/background_coblin_camp.png" id="2_wcno3"]
+
+[node name="GoblinCamp" type="Node2D"]
+script = ExtResource("1_vycum")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(2, 2.25)
+texture = ExtResource("2_wcno3")
+offset = Vector2(320, 160)
